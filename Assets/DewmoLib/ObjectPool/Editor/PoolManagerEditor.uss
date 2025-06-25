@@ -1,0 +1,42 @@
+.scroll_view {
+    flex-grow: 1;
+}
+
+.inspector_view {
+    flex-grow: 1;
+}
+
+.top_bar {
+    flex-basis: 45px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-right: 20px;
+    padding-bottom: 0;
+    padding-left: 20px;
+    border-bottom-color: rgb(93, 93, 93);
+    border-bottom-width: 2px;
+}
+
+.create_btn {
+    background-color: rgb(165, 0, 0);
+    padding-top: 4px;
+    padding-right: 12px;
+    padding-bottom: 4px;
+    padding-left: 12px;
+    border-left-color: rgb(60, 0, 0);
+    border-right-color: rgb(60, 0, 0);
+    border-top-color: rgb(60, 0, 0);
+    border-bottom-color: rgb(60, 0, 0);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    transition-duration: 0.3s;
+}
+
+.create_btn:hover {
+    background-color: rgb(255, 0, 0);
+    scale: 1.2 1.2;
+}

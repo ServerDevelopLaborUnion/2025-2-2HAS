@@ -1,0 +1,17 @@
+{
+    "name": "Networ.Packets",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bd5dfd5149f1fe34996d00fa6fbb0546",
+        "GUID:292b7c18d0ca8774a8a6ea2b4f1140de"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
