@@ -1,14 +1,12 @@
 ﻿using DewmoLib.Network.Core;
-using DewmoLib.Utiles;
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 
 namespace DewmoLib.Network.Packets
 {
     public class PacketQueue
     {
-        private object _lock = new object();
-        private Queue<IPacket> _packets = new Queue<IPacket>();
+        private ConcurrentQueue<IPacket> _packets = new();
         public PacketManager packetManager;
         public PacketQueue(PacketManager manager)
         {
@@ -18,10 +16,7 @@ namespace DewmoLib.Network.Packets
         public void Push(ArraySegment<byte> packet)
         {
             var pkt = packetManager.OnRecvPacket(packet);
-            lock (_lock)
-            {
-                _packets.Enqueue(pkt);
-            }
+            _packets.Enqueue(pkt);
         }
         public void Clear()
         {
@@ -31,14 +26,11 @@ namespace DewmoLib.Network.Packets
         {
             while (true)
             {
-                lock (_lock)
-                {
-                    if (_packets.Count <= 0)
-                        break;
+                if (_packets.Count <= 0)
+                    break;
 
-                    IPacket packet = _packets.Dequeue();
-                    packetManager.HandlePacket(session, packet);
-                }
+                _packets.TryDequeue(out var packet);
+                packetManager.HandlePacket(session, packet);
             }
         }
     }

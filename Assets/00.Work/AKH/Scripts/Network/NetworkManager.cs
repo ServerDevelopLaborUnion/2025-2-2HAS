@@ -10,6 +10,7 @@ namespace AKH.Network
     public class NetworkManager : MonoBehaviour
     {
         [SerializeField] private EventChannelSO packetChannel;
+        [SerializeField] private string ipAddress;
         private static NetworkManager _instance;
         public static NetworkManager Instance => _instance;
 
@@ -26,8 +27,8 @@ namespace AKH.Network
             _packetQueue = new PacketQueue(new ClientPacketManager(packetChannel));
             try
             {
-                IPAddress ip = Dns.GetHostEntry("akhge.duckdns.org").AddressList[0];
-                IPEndPoint endPoint = new IPEndPoint(ip, 3303);
+                //IPAddress ip = Dns.GetHostEntry("akhge.duckdns.org").AddressList[0];
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipAddress), 3303);
                 _connector.Connect(endPoint, () => _session = new ServerSession(_packetQueue), 1);
             }
             catch (Exception ex)

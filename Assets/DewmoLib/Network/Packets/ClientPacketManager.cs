@@ -18,7 +18,7 @@ namespace DewmoLib.Network.Packets
 
         public abstract void Register();
 
-        private void RegisterHandler<T>(PacketID id, Action<PacketSession, IPacket> handler) where T : IPacket, new()
+        protected void RegisterHandler<T>(PacketID id, Action<PacketSession, IPacket> handler) where T : IPacket, new()
         {
             _onRecv.Add((ushort)id, PacketUtility.CreatePacket<T>);
             _handler.Add((ushort)id, handler);
