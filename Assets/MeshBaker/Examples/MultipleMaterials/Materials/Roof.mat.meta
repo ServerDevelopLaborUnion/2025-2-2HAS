@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ef5c8ffc0cd7932478cf7ae842c3e318
+timeCreated: 1501094664
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/Materials/Roof.mat
+  uploadId: 687110

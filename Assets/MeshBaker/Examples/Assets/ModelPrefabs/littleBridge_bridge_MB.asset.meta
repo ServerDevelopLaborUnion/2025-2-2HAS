@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 49d25d8d60b76f0468c4b7cc0265cdc7
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/ModelPrefabs/littleBridge_bridge_MB.asset
+  uploadId: 687110

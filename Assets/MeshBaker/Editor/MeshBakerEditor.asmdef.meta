@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dd9493fbefb52fd48926bb1291844728
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Editor/MeshBakerEditor.asmdef
+  uploadId: 687110

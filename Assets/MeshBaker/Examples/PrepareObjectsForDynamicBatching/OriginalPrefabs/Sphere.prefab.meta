@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 53a47a6baada1e84a89ab22a37845b65
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/PrepareObjectsForDynamicBatching/OriginalPrefabs/Sphere.prefab
+  uploadId: 687110

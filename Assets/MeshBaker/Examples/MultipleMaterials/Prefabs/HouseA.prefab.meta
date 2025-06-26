@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2b666fb61bb8a5d4483f6ac42b22135d
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/Prefabs/HouseA.prefab
+  uploadId: 687110

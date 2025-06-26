@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b0a9b036354075940a475a0ec5dbf8db
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/core/MB_MeshCombinerSingle_SubCombiner.cs
+  uploadId: 687110

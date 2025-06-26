@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: ea3e78048ccee4d49bd8a4c281bfcc8e
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneRuntimeExample_SkinnedMesh.unity
+  uploadId: 687110

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 4b0977f6c44c13549b0a87d41e8d7bd8
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/BatchPrepareObjectsForDynamicBatching/__Out/bb
+    1.asset
+  uploadId: 687110

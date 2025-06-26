@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d1cd955a282b6004291054eb9a5701ca
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/Prefab/stepPlatform.prefab
+  uploadId: 687110

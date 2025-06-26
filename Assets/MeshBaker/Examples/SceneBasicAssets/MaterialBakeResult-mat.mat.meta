@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: e2472e2aff433164fbaa396999a85302
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneBasicAssets/MaterialBakeResult-mat.mat
+  uploadId: 687110

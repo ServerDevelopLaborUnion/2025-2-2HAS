@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: c2cbcd309b312d6489c306475d74ff5a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneDynamicAddDelete/combinedMaterial-mat.mat
+  uploadId: 687110

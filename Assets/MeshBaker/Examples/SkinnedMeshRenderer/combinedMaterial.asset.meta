@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: c067ebfba078fdc48b4e3f78525fc128
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SkinnedMeshRenderer/combinedMaterial.asset
+  uploadId: 687110

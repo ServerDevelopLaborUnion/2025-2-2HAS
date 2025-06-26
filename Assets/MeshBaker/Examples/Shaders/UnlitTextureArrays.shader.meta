@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 97fb762651d3c1443958de03ed612907
+timeCreated: 1568407712
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Shaders/UnlitTextureArrays.shader
+  uploadId: 687110

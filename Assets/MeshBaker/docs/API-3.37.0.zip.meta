@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8f911f683f29db04f89a8b11655eb22f
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/docs/API-3.37.0.zip
+  uploadId: 687110

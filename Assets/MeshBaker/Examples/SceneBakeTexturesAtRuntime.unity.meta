@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 34534bc8ee1c47b42ac3eb9027f07776
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneBakeTexturesAtRuntime.unity
+  uploadId: 687110

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 03a757cc40f030246aba4d12cf385c71
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SkinnedMeshRenderer/MB_SkinnedMeshSceneController.cs
+  uploadId: 687110

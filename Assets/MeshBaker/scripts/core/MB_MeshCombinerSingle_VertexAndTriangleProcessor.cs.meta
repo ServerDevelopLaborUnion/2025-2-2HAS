@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2f26c7f05822dc548bc30c73cf305f6e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/core/MB_MeshCombinerSingle_VertexAndTriangleProcessor.cs
+  uploadId: 687110
