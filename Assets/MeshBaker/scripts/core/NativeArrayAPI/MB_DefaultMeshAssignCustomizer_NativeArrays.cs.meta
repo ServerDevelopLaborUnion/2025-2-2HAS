@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1997a4b7afa57ef429a95eef762abe43
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/core/NativeArrayAPI/MB_DefaultMeshAssignCustomizer_NativeArrays.cs
+  uploadId: 687110

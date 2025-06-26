@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 6b0235b2674cd9043a6dd19f848cdc4a
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/ModelPrefabs/floatingPlatform_floatingPlatform_MB.asset
+  uploadId: 687110

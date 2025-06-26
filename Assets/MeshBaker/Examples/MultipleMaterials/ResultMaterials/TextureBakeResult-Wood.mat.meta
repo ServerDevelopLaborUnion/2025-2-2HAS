@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: d5647dc4ea2a573448d9f5031a2a87b3
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/ResultMaterials/TextureBakeResult-Wood.mat
+  uploadId: 687110

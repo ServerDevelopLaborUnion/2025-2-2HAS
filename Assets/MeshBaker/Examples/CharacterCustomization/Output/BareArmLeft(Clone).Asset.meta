@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7a698996467e56b4da72301bb98c27c4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/CharacterCustomization/Output/BareArmLeft(Clone).Asset
+  uploadId: 687110

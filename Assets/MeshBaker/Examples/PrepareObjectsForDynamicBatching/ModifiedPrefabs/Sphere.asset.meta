@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1ac5f23981aac7744a8b7f895c937444
+timeCreated: 1531872384
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/PrepareObjectsForDynamicBatching/ModifiedPrefabs/Sphere.asset
+  uploadId: 687110

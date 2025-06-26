@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: b8c21b341e2a930489a33369f7a9616b
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/BatchPrepareObjectsForDynamicBatching/__In/c.prefab
+  uploadId: 687110

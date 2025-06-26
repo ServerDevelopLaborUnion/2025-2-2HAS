@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 959e65ff9fc9f824fbfe60a2f2d6c8bc
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/ModelPrefabs/PalmMesh.asset
+  uploadId: 687110

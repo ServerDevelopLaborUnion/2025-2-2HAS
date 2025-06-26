@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 0d69d864034e1a1459d20eb8c7bc0b3b
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/ModelPrefabs/Goober Artwork/FBX/Materials/goober@jump-goober_txt.mat
+  uploadId: 687110

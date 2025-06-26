@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c1bbc5bb3e346074b850f84ca25acd1d
+timeCreated: 1501094664
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/Materials/Trunk.mat
+  uploadId: 687110

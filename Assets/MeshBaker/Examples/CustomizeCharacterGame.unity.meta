@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 54f3016678beb434c9d6cc3bec96193c
+DefaultImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/CustomizeCharacterGame.unity
+  uploadId: 687110
