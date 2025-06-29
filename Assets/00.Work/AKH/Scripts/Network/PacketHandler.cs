@@ -7,7 +7,4 @@ public partial class PacketHandler
     {
         _packetChannel = packetChannel;
     }
-    public void ASDASDASD()
-    {
-    }
 }
