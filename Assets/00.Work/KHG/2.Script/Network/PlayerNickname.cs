@@ -1,16 +1,13 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerNickname : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TextMeshProUGUI inputText;
 
-    // Update is called once per frame
-    void Update()
+    private string nickname;
+    public void ApplyName()
     {
-        
+        nickname = inputText.text;
     }
 }
