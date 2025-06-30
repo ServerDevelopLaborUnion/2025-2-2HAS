@@ -14,6 +14,7 @@ namespace AKH.Network
 
         public override void Register()
         {
+            RegisterHandler<S_Chat>((ushort)PacketID.S_Chat, _packetHandler.S_ChatHandler);
         }
     }
 }
