@@ -3,10 +3,6 @@
     public enum ObjectType
     {
         None,
-        BombArea,
-        PlantArea,
-        Door,
-        BreakableWall,
         Player
     }
     public enum RoomState
