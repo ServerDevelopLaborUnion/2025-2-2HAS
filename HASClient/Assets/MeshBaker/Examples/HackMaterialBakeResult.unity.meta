@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 078f50beb93465c4d81000fe3e098b5b
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/HackMaterialBakeResult.unity
+  uploadId: 687110

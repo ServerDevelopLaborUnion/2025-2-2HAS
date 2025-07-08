@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d55bff31ea39ada4a9bd9cb6b7712b52
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Resources/Shaders/UnlitWithAlpha.shader
+  uploadId: 687110

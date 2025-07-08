@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: d98b78a8f11bf3f4f927b4b7f53d2557
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Resources/Shaders/NormalMapShaderSwizzle.shader
+  uploadId: 687110

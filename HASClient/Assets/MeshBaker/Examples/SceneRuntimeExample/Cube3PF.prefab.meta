@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: a4f9992175e14c94cb482cc785f4d6f6
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneRuntimeExample/Cube3PF.prefab
+  uploadId: 687110

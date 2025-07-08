@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e2bb7c59e3400ba40a42672ace02bab2
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/core/MB2_MBVersion.cs
+  uploadId: 687110

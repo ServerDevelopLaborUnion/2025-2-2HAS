@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f5e91e5766af4df47b5f9e2a29f02090
+timeCreated: 1526405316
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/ModelPrefabs/Materials/hatPrefab-mat-_MainTex-atlas0.mat
+  uploadId: 687110

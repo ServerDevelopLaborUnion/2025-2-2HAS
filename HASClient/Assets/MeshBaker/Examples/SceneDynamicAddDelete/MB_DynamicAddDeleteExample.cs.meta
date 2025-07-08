@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7ec66f9a47c9a734db6a2668c276c705
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneDynamicAddDelete/MB_DynamicAddDeleteExample.cs
+  uploadId: 687110

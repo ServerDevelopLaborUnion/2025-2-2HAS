@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 35ed290a39ec86349826445279f9b20e
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/CharacterCustomization/Output/CustomizedCharacter.prefab
+  uploadId: 687110

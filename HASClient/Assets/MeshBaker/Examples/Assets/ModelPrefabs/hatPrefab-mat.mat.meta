@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: c2a26e9085c36924589607803ad52b25
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/ModelPrefabs/hatPrefab-mat.mat
+  uploadId: 687110

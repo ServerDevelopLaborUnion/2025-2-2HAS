@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: ae81bc73e51f2b045a2b14e9227aece3
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/CharacterCustomization/Materials/colour_ground_tex.mat
+  uploadId: 687110

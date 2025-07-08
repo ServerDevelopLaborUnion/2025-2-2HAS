@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ff99ee0c0f6d7c546a69a893cdaa997e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/ResultMaterials/TextureBakeResult-BirchBark.mat.asset
+  uploadId: 687110

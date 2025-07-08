@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 057069291b3c0f345b796a0f7396027a
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SceneDynamicAddDelete/Cube4pf.prefab
+  uploadId: 687110

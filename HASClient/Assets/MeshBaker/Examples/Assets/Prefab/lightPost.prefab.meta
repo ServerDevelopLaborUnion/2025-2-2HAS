@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 19ebbd2eab9133f4b91cf0f674a67eb6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/Prefab/lightPost.prefab
+  uploadId: 687110

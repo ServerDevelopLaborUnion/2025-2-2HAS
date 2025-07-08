@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 71ee627d5d54dd841a3bb24bb8ec3d90
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SkinnedMeshRenderer/CombinedMaterial.mat
+  uploadId: 687110

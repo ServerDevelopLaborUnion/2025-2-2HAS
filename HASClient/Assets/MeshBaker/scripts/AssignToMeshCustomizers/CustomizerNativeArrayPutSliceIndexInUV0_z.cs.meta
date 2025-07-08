@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ebd18543ada83a040a1a56860f3c02e7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/AssignToMeshCustomizers/CustomizerNativeArrayPutSliceIndexInUV0_z.cs
+  uploadId: 687110

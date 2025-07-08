@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 57b7f6c8e29f2c644989f67dda794da2
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/core/TextureCombiner/MB_TextureCombinerSRPCustom.cs
+  uploadId: 687110

@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: f336d57a7c6245c4faf89ceea81010de
+TextScriptImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Release Notes.txt
+  uploadId: 687110

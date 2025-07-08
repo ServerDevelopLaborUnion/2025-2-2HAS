@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 071cd512bd11410ba00004694ada8c59
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/Assets/Materials/tree.mat
+  uploadId: 687110

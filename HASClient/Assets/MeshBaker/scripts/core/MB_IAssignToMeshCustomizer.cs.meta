@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a3c363d98fc0b8a4dacbfb882890a560
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/scripts/core/MB_IAssignToMeshCustomizer.cs
+  uploadId: 687110

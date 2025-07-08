@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--가독성을 위해 dataPacket을 제일 위부터 쓰기!!-->
+<PDL>
+	<!--DataPackets-->
+	<dataPacket name ="VectorPacket">
+		<float name="x"/>
+		<float name="y"/>
+		<float name="z"/>
+	</dataPacket>
+	
+	<dataPacket name ="QuaternionPacket">
+		<float name="x"/>
+		<float name="y"/>
+		<float name="z"/>
+		<float name="w"/>
+	</dataPacket>
+	
+	<dataPacket name="RoomInfoPacket">
+		<int name ="roomId"/>
+		<int name ="maxCount"/>
+		<int name ="currentCount"/>
+		<string name="roomName"/>
+	</dataPacket>
+	
+	<dataPacket name="PlayerNamePacket">
+		<string name ="nickName"/>
+		<int name="index"/>
+	</dataPacket>
+	
+	<dataPacket name="LocationInfoPacket">
+		<int name="index"/>
+		<VectorPacket name="position"/>
+		<QuaternionPacket name="rotation"/>
+	</dataPacket>
+
+	<dataPacket name="SnapshotPacket">
+		<int name="index"/>
+		<long name="timestamp"/>
+		<VectorPacket name="position"/>
+		<QuaternionPacket name="rotation"/>
+	</dataPacket>
+
+	<!--Packets-->
+	<packet name="C_RoomEnter">
+		<int name ="roomId"/>
+	</packet>
+	<packet name="C_SetName">
+		<string name="name"/>
+	</packet>
+	
+	<packet name="S_RoomEnter">
+		<PlayerNamePacket name="playerName"/>
+		<LocationInfoPacket name="newPlayer"/>
+	</packet>
+	
+	<packet name="C_RoomExit">
+	</packet>
+	
+	<packet name="S_RoomExit">
+		<int name="Index"/>
+	</packet>
+	
+	<packet name="C_CreateRoom">
+		<string name="roomName"/>
+	</packet>
+	
+	<packet name ="S_RoomList">
+		<list name ="roomInfos">
+			<roomInfoPacket name ="att"/>
+		</list>
+	</packet>
+	
+	<packet name="S_PacketResponse">
+		<ushort name="responsePacket"/>
+		<bool name="success"/>
+	</packet>
+	
+	<packet name ="C_RoomList">
+	</packet>
+	
+	<packet name="S_Chat">
+		<string name="pName"/>
+		<string name="text"/>
+	</packet>
+	
+	<packet name="C_Chat">
+		<string name="text"/>
+	</packet>
+
+	<packet name="C_UpdateLocation">
+		<LocationInfoPacket name="location"/>
+	</packet>
+	<packet name="S_SyncTimer">
+		<float name="time"/>
+	</packet>
+	<packet name="S_UpdateRoomState">
+		<ushort name="state"/>
+	</packet>
+</PDL>

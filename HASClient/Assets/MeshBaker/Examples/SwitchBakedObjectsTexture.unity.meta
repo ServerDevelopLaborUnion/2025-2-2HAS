@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5cd140490857b4d4b9e1f36fb7348e62
+timeCreated: 1545092221
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/SwitchBakedObjectsTexture.unity
+  uploadId: 687110

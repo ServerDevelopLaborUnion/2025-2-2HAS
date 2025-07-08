@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 1031ef5166ec9514298e667574ededc6
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/SourceMaterials/bush.mat
+  uploadId: 687110

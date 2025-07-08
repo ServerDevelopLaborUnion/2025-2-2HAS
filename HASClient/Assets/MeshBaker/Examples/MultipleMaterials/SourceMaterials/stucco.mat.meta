@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: d16d800741935b841a3bb53b9f0a6773
+NativeFormatImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 5017
+  packageName: Mesh Baker
+  packageVersion: 3.39.0
+  assetPath: Assets/MeshBaker/Examples/MultipleMaterials/SourceMaterials/stucco.mat
+  uploadId: 687110
