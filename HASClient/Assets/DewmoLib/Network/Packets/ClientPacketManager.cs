@@ -8,11 +8,6 @@ namespace DewmoLib.Network.Packets
 
     public abstract class PacketManager
     {
-        public PacketManager(EventChannelSO packetChannel)
-        {
-            Register();
-        }
-
         Dictionary<ushort, Func<ArraySegment<byte>, IPacket>> _onRecv = new();
         Dictionary<ushort, Action<PacketSession, IPacket>> _handler = new Dictionary<ushort, Action<PacketSession, IPacket>>();
 
