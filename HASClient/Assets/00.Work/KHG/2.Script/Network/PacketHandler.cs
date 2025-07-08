@@ -1,15 +1,15 @@
 ﻿using DewmoLib.Network.Core;
+using KHG.Events;
 
 public partial class PacketHandler
 {
-    public void S_NameHandler(PacketSession session, IPacket packet)
+    public void S_RoomListHandler(PacketSession session, IPacket packet)
     {
-        C_SetName name = packet as C_SetName;
-        if (name.name.Length < 2)
-            return;
+        S_RoomList s_RoomList = packet as S_RoomList;
+        if (s_RoomList == null) return;
 
-        PlayerNameEvent evt = PlayerInfoEvents.PlayerNameEvent;
-        evt.Name = name.name;
-        _packetChannel.InvokeEvent(evt);
+        RoomListEvent roomListEvent = PacketEvents.RoomListEvent;
+        roomListEvent.infoPackets = s_RoomList.roomInfos;
+        _packetChannel.InvokeEvent(roomListEvent);
     }
 }
