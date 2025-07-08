@@ -103,7 +103,7 @@ class PacketHandler
         bool success = !string.IsNullOrEmpty(setName.name) || (setName.name.Length < 6 && setName.name.Length > 2);
         if (success)
             clientSession.Name = setName.name;
-        SendPacketResponse(clientSession, PacketID.C_SetName, success);
+        //SendPacketResponse(clientSession, PacketID.C_SetName, success);
     }
 
     internal static void C_ChatHandler(PacketSession session, IPacket packet)
@@ -112,7 +112,9 @@ class PacketHandler
         var cchat = packet as C_Chat;
         S_Chat chat = new();
         chat.text = cchat.text;
-        chat.pName = clientSession.Name;
+        //chat.pName = clientSession.Name;
+        chat.pName = "ASD";
+        Console.WriteLine(chat.text);
         SessionManager.Instance.Broadcast(chat);
     }
 }
