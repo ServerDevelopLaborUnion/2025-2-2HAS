@@ -445,7 +445,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 225205470}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 937346958}
+        m_TargetAssemblyTypeName: NameApplyUI, Assembly-CSharp
+        m_MethodName: ApplyName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &225205470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,8 +842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f8c207b63b87aa498de48039dc8ea81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  packetChannel: {fileID: 0}
-  ipAddress: 
+  packetChannel: {fileID: 11400000, guid: 5aea3de103c6cff49bae0b2b51905628, type: 2}
+  ipAddress: 172.31.0.186
 --- !u!4 &655705648
 Transform:
   m_ObjectHideFlags: 0
@@ -1111,6 +1123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde8ed6043bc27147a3bf19b294f7317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputText: {fileID: 511122540}
+  playerInfoChannel: {fileID: 11400000, guid: 5aea3de103c6cff49bae0b2b51905628, type: 2}
 --- !u!1 &995244555
 GameObject:
   m_ObjectHideFlags: 0
