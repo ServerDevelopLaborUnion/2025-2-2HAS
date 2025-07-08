@@ -1,6 +1,7 @@
 ﻿using DewmoLib.Network.Core;
 using System;
 using System.Collections.Concurrent;
+using UnityEngine;
 
 namespace DewmoLib.Network.Packets
 {
@@ -26,11 +27,13 @@ namespace DewmoLib.Network.Packets
         {
             while (true)
             {
-                if (_packets.Count <= 0)
+                if (_packets.TryDequeue(out var packet))
+                {
+                    Debug.Log(packet.Protocol);
+                    packetManager.HandlePacket(session, packet);
+                }
+                else
                     break;
-
-                _packets.TryDequeue(out var packet);
-                packetManager.HandlePacket(session, packet);
             }
         }
     }

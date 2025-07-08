@@ -21,7 +21,6 @@ public class NameApplyUI : MonoBehaviour
     {
         PlayerNameEvent evt = PlayerInfoEvents.PlayerNameEvent;
         evt.Name = nickname;
-
         playerInfoChannel.InvokeEvent(evt);
     }
 }

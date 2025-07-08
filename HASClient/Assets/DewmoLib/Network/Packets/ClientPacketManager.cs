@@ -29,6 +29,8 @@ namespace DewmoLib.Network.Packets
         }
         public void HandlePacket(PacketSession session, IPacket packet)
         {
+            Debug.Log(_handler);
+            Debug.Log(packet.Protocol);
             if (_handler.ContainsKey(packet.Protocol))
                 _handler[packet.Protocol].Invoke(session, packet);
             else

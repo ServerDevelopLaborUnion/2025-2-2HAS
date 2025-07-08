@@ -1,6 +1,6 @@
 using AKH.Network;
 using DewmoLib.Utiles;
-using System.Diagnostics.Tracing;
+using System.Diagnostics    .Tracing;
 using UnityEngine;
 
 public class PlayerInfoManager : MonoBehaviour
