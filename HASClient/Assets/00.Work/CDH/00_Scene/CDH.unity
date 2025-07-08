@@ -240,6 +240,55 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &116427715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116427716}
+  - component: {fileID: 116427717}
+  m_Layer: 0
+  m_Name: ChatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &116427716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116427715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1847.2473, y: 221.86238, z: 274.55066}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &116427717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116427715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30a6f8af2de43f38bb27ac0651ff823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatEventChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
+  chatsTrm: {fileID: 241732386}
+  chatUI: {fileID: 2126211707}
+  chatInput: {fileID: 892364659}
+  chatPrefab: {fileID: 3819089825942642270, guid: 1c28e978c260c794cbeccaf4b8183653, type: 3}
 --- !u!1 &241732385
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   packetChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
-  ipAddress: 172.31.0.193
+  ipAddress: 172.31.0.186
 --- !u!4 &1182028000
 Transform:
   m_ObjectHideFlags: 0
@@ -1257,9 +1306,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126211708}
-  - component: {fileID: 2126211709}
   m_Layer: 5
-  m_Name: Chating
+  m_Name: ChatUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,20 +1333,6 @@ RectTransform:
   m_AnchoredPosition: {x: 590, y: -343.45}
   m_SizeDelta: {x: 390, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2126211709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126211707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b30a6f8af2de43f38bb27ac0651ff823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatsTrm: {fileID: 0}
-  chatPrefab: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1308,3 +1342,4 @@ SceneRoots:
   - {fileID: 1182028000}
   - {fileID: 1321399781}
   - {fileID: 1316548166}
+  - {fileID: 116427716}

@@ -7,9 +7,10 @@ namespace AKH.Network
     public class ClientPacketManager : PacketManager
     {
         private PacketHandler _packetHandler;
-        public ClientPacketManager(EventChannelSO packetChannel) : base(packetChannel)
+        public ClientPacketManager(EventChannelSO packetChannel)
         {
             _packetHandler = new(packetChannel);
+            Register();
         }
 
         public override void Register()
