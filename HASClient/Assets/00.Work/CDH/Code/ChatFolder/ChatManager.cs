@@ -11,6 +11,8 @@ namespace _00.Work.CDH.Code.ChatFolder
         [SerializeField] private EventChannelSO chatEventChannel;
 
         [SerializeField] private ChatGenerator chatGenerator;
+        [SerializeField] private Transform chatsTrm;
+
         private List<Chat> _chats;
         private bool _isChatting = false;
         private bool _isChatActive = false;
@@ -24,6 +26,8 @@ namespace _00.Work.CDH.Code.ChatFolder
         private void RecvChat(ChatRecvEventHandler evt)
         {
             Chat newChat = chatGenerator.Generate(evt.pName, evt.message);
+            newChat.transform.SetParent(chatsTrm);
+            newChat.transform.localScale = Vector3.one;
             _chats.Add(newChat);
         }
 
