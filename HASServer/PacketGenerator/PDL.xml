@@ -63,6 +63,7 @@
 	
 	<packet name="C_CreateRoom">
 		<string name="roomName"/>
+		<int name="maxCount"/>
 	</packet>
 	
 	<packet name ="S_RoomList">

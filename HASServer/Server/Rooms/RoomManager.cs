@@ -48,7 +48,8 @@ namespace Server.Rooms
                     roomName = room.Value.RoomName,
                     roomId = room.Key,
                     maxCount = room.Value.MaxSessionCount,
-                    currentCount = room.Value.SessionCount
+                    currentCount = room.Value.SessionCount,
+                    hostName = room.Value.HostName
                 });
             }
             return list;
