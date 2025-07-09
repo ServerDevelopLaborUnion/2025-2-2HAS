@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Threading;
 using UnityEngine;
 
-namespace DewmoLib.Network.Core
+namespace ServerCore
 {
     public abstract class PacketSession : Session
     {

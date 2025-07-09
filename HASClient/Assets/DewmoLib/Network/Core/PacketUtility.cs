@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DewmoLib.Network.Core
+namespace ServerCore
 {
     public class PacketUtility
     {
