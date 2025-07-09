@@ -23,8 +23,7 @@ public class RoomBar : MonoBehaviour
         
         roomCountTmp.SetText($"{info.currentCount}/{info.maxCount}");
 
-        //roomOwnerTmp.SetText("방 주인장!");
-        //추후 Player가 추가되면 UI에 설정하는거 만들것
+        roomOwnerTmp.SetText(info.hostName);
     }
 
     private void CheckPlayerCount(int cur,int max)
