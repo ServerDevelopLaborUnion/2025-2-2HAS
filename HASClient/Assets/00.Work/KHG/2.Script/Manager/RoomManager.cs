@@ -1,13 +1,12 @@
-using AKH.Network;
-using DewmoLib.Utiles;
-using KHG.Events;
-using System;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+namespace KHG.UIs
 {
-    private void Start()
+    public class RoomManager : MonoBehaviour
     {
-        
+        private void Start()
+        {
+
+        }
     }
 }

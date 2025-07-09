@@ -3,19 +3,23 @@ using DewmoLib.Utiles;
 using System.Diagnostics    .Tracing;
 using UnityEngine;
 
-public class PlayerInfoManager : MonoBehaviour
+namespace KHG.Managers
 {
-    [SerializeField] private EventChannelSO playerInfoChannel;
-
-    private void Awake()
+    public class PlayerInfoManager : MonoBehaviour
     {
-        playerInfoChannel.AddListener<PlayerNameEvent>(SetPlayerName);
+        [SerializeField] private EventChannelSO playerInfoChannel;
+
+        private void Awake()
+        {
+            playerInfoChannel.AddListener<PlayerNameEvent>(SetPlayerName);
+        }
+
+        private void SetPlayerName(PlayerNameEvent evt)
+        {
+            C_SetName c_SetName = new C_SetName();
+            c_SetName.name = evt.Name;
+            NetworkManager.Instance.SendPacket(c_SetName);
+        }
     }
 
-    private void SetPlayerName(PlayerNameEvent evt)
-    {
-        C_SetName c_SetName = new C_SetName();
-        c_SetName.name = evt.Name;
-        NetworkManager.Instance.SendPacket(c_SetName);
-    }
 }
