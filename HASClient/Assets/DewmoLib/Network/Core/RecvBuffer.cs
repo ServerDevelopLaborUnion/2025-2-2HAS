@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DewmoLib.Network.Core
+namespace ServerCore
 
 {
     public class RecvBuffer

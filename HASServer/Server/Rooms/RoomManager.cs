@@ -29,12 +29,12 @@ namespace Server.Rooms
         {
             return _rooms.GetValueOrDefault(roomId);
         }
-        public int GenerateRoom(C_CreateRoom packet)
+        public int GenerateRoom(C_CreateRoom packet,string hostName)
         {
             int id = Interlocked.Increment(ref _roomIdGenerator);
             Console.WriteLine($"Generate Room: {id}");
             GameRoom room = new(Instance, id, packet.roomName);
-            room.Push(() => room.SetUpRoom(packet));
+            room.Push(() => room.SetUpRoom(packet,hostName));
             _rooms.TryAdd(id, room);
             return id;
         }
