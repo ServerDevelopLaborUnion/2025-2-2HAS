@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &223371404
 RectTransform:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.5999756, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &225205466
@@ -607,6 +607,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: NameApplyUI, Assembly-CSharp
         m_MethodName: ApplyName
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 223371403}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1134,8 +1146,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 223371404}
   - {fileID: 622748126}
+  - {fileID: 223371404}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1193,6 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomHandleTrm: {fileID: 1594941108}
+  packetChannel: {fileID: 11400000, guid: 99db24c427466c147930557418b823d0, type: 2}
   roomPrefab: {fileID: 6040900563855845204, guid: 4a0701978c475934a90e2d659fb562d3, type: 3}
 --- !u!1 &655705646
 GameObject:
@@ -1249,7 +1262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 663890515}
-  - component: {fileID: 663890514}
+  - component: {fileID: 663890517}
   - component: {fileID: 663890516}
   m_Layer: 0
   m_Name: Manager
@@ -1258,19 +1271,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &663890514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663890513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c3bd0e5c55cd34a812319713b90554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInfoChannel: {fileID: 11400000, guid: 5aea3de103c6cff49bae0b2b51905628, type: 2}
 --- !u!4 &663890515
 Transform:
   m_ObjectHideFlags: 0
@@ -1298,8 +1298,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce972c255fef4654db5f8833dd755fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  packetChannel: {fileID: 11400000, guid: 99db24c427466c147930557418b823d0, type: 2}
-  roomUI: {fileID: 622748127}
+--- !u!114 &663890517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663890513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e0594bc31040649b5393beec4802c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInfoChannel: {fileID: 11400000, guid: 5aea3de103c6cff49bae0b2b51905628, type: 2}
 --- !u!1 &678563469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,7 +1800,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &937346954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3109,6 +3120,7 @@ GameObject:
   - component: {fileID: 1728579470}
   - component: {fileID: 1728579469}
   - component: {fileID: 1728579468}
+  - component: {fileID: 1728579471}
   m_Layer: 5
   m_Name: 'RefreshButton '
   m_TagString: Untagged
@@ -3155,7 +3167,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.22352941}
     m_HighlightedColor: {r: 0.93710685, g: 0.8752224, b: 0.8752224, a: 0.16862746}
@@ -3179,7 +3191,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1728579469}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 622748127}
+        m_TargetAssemblyTypeName: RoomUI, Assembly-CSharp
+        m_MethodName: RequestRoomList
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1728579469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3218,6 +3242,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728579466}
   m_CullTransparentMesh: 1
+--- !u!95 &1728579471
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728579466}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea8830a8cdacfae40a91a00717d810ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1771455386
 GameObject:
   m_ObjectHideFlags: 0
