@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets._00.Work.CDH.Code.ChatFolder
 {
-    public class ChatGenerator
+    public class ChatGenerator : MonoBehaviour
     {
         [SerializeField] private Chat chatPrefab;
 

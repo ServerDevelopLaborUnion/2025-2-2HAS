@@ -1,5 +1,6 @@
 using _00.Work.CDH.Code;
 using _00.Work.CDH.Code.ChatFolder;
+using Assets._00.Work.CDH.Code.ChatFolder;
 using DewmoLib.Network.Core;
 
 public partial class PacketHandler
