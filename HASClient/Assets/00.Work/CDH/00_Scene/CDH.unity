@@ -287,6 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chatEventChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
   chatGenerator: {fileID: 756615739}
+  chatsTrm: {fileID: 241732386}
 --- !u!114 &116427718
 MonoBehaviour:
   m_ObjectHideFlags: 0
