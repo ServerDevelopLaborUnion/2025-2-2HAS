@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace _00.Work.CDH.Code.Chat
+namespace _00.Work.CDH.Code.ChatFolder
 {
     public class Chat : MonoBehaviour
     {
