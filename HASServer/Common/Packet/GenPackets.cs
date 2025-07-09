@@ -82,6 +82,7 @@ public struct RoomInfoPacket : IDataPacket
 	public int maxCount;
 	public int currentCount;
 	public string roomName;
+	public string hostName;
 
 	public ushort Deserialize(ArraySegment<byte> segment, int offset)
 	{
@@ -90,6 +91,7 @@ public struct RoomInfoPacket : IDataPacket
 		count += PacketUtility.ReadIntData(segment, count, out maxCount);
 		count += PacketUtility.ReadIntData(segment, count, out currentCount);
 		count += PacketUtility.ReadStringData(segment, count, out roomName);
+		count += PacketUtility.ReadStringData(segment, count, out hostName);
 		return (ushort)(count - offset);
 	}
 
@@ -100,6 +102,7 @@ public struct RoomInfoPacket : IDataPacket
 		count += PacketUtility.AppendIntData(this.maxCount, segment, count);
 		count += PacketUtility.AppendIntData(this.currentCount, segment, count);
 		count += PacketUtility.AppendStringData(this.roomName, segment, count);
+		count += PacketUtility.AppendStringData(this.hostName, segment, count);
 		return (ushort)(count - offset);
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DewmoLib.Network.Core
+namespace ServerCore
 {
     public class PriorityQueue<T> where T : IComparable<T>
     {

@@ -20,6 +20,7 @@
 		<int name ="maxCount"/>
 		<int name ="currentCount"/>
 		<string name="roomName"/>
+		<string name="hostName"/>
 	</dataPacket>
 	
 	<dataPacket name="PlayerNamePacket">

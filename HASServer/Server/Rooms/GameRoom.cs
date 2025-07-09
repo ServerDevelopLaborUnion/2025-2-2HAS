@@ -17,10 +17,5 @@ namespace Server.Rooms
         public override void UpdateRoom()
         {
         }
-
-        internal void SetUpRoom(C_CreateRoom packet)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

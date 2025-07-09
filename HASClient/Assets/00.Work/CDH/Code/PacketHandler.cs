@@ -1,7 +1,8 @@
-using _00.Work.CDH.Code;
-using _00.Work.CDH.Code.ChatFolder;
-using Assets._00.Work.CDH.Code.ChatFolder;
-using DewmoLib.Network.Core;
+
+using _00.Work.CDH.Code.Chat;
+using ServerCore;
+using DewmoLib.Utiles;
+using VHierarchy.Libs;
 
 public partial class PacketHandler
 {
@@ -10,11 +11,12 @@ public partial class PacketHandler
         S_Chat chat = packet as S_Chat;
         if (chat == null)
             return;
-
-        ChatRecvEventHandler evt = ChatPacketEvents.ChatEvent;
-        evt.pName = chat.pName;
-        evt.message = chat.text;
-
-        _packetChannel.InvokeEvent(evt);
+        
+        ChatEventHandler chatEventHandler = new()
+        {
+            pName = chat.pName,
+            message = chat.text
+        };
+        _packetChannel.InvokeEvent(chatEventHandler);
     }
 }
