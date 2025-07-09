@@ -35,7 +35,7 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
                 }
                 else if(isChatVisible && !isChat)
                 {
-                    ChattingClose();
+                    Chatting();
                 }
             }
         }
@@ -44,6 +44,11 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         {
             chatUIObj.SetActive(true);
             isChatVisible = true;
+            Chatting();
+        }
+
+        private void Chatting()
+        {
             chatInputField.ActivateInputField();
             isChat = true;
         }
@@ -60,6 +65,8 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
             isChat = false;
             chatInputField.DeactivateInputField();
             chatSendEvent?.Invoke(chatInputField.text);
+            chatInputField.text = "";
+            ChattingClose();
         }
     }
 }
