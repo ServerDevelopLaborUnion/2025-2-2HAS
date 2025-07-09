@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Threading;
 
 namespace Server.Utiles
 {
-    internal class CountTime
+    public class CountTimeSync
     {
-        private Timer _timer;
-        private Stopwatch _stopWatch;
         private int _endTime;
+        private float _currentTime;
         private int _timeInterval;
         private Action<double> _elapsed;
         private Action _callback;
         public bool IsRunning { get; private set; }
-        public CountTime(Action<double> elapsed, Action callback, int endTime, int interval)
+        public CountTimeSync(Action<double> elapsed, Action callback, int endTime, int interval)
         {
             _callback = callback;
             _elapsed = elapsed;
-            _stopWatch = new Stopwatch();
             _timeInterval = interval;
             _endTime = endTime;
             IsRunning = false;
         }
-        public CountTime(Action<double> elapsed, Action callback, int interval)
+        public CountTimeSync(Action<double> elapsed, Action callback, int interval)
         {
             _callback = callback;
             _elapsed = elapsed;
-            _stopWatch = new Stopwatch();
             _timeInterval = interval;
             IsRunning = false;
         }
@@ -37,25 +32,31 @@ namespace Server.Utiles
         public void StartCount()
         {
             IsRunning = true;
-            _stopWatch.Restart();
-            _timer = new Timer(HandleTimerElapsed, null, 0, _timeInterval);
         }
-        private void HandleTimerElapsed(object state)
+        public void UpdateDeltaTime()
         {
-            double elapsed = _stopWatch.Elapsed.TotalSeconds;
-            _elapsed?.Invoke(elapsed);
-            if (elapsed > _endTime)
+            if (IsRunning)
             {
+                _currentTime += Time.deltaTime;
+                if (_timeInterval % _currentTime <= 30)
+                    HandleTimerElapsed();
+            }
+        }
+        private void HandleTimerElapsed()
+        {
+            _elapsed?.Invoke(_currentTime);
+            if (_currentTime > _endTime)
+            {
+                _currentTime = 0;
                 IsRunning = false;
                 _callback?.Invoke();
-                _timer?.Dispose();
             }
         }
         public void Abort(bool invokeCallback = true)
         {
             Console.WriteLine("Count Dispose");
-            _timer.Dispose();
             IsRunning = false;
+            _currentTime = 0;
             if (invokeCallback)
                 _callback?.Invoke();
         }

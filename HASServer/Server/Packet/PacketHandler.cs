@@ -1,7 +1,6 @@
 ﻿using Server;
 using Server.Objects;
 using Server.Rooms;
-using Server.Utiles;
 using ServerCore;
 using System;
 
@@ -29,7 +28,10 @@ class PacketHandler
     {
         var room = _roomManager.GetRoomById(roomId) as GameRoom;
         if (room == default)
+        {
+            Console.WriteLine($"Wrong RoomId: {roomId}");
             return;
+        }
         Console.WriteLine("EnterRoom");
         room.Push(() =>
         {
@@ -44,8 +46,7 @@ class PacketHandler
                 room.Enter(clientSession);
                 //room.FirstEnterProcess(clientSession);
                 LocationInfoPacket location = new() { index = newPlayer.index };
-                //PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = newPlayer.Name};
-                PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = "ㅁㄴㅇ"};
+                PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = newPlayer.Name };
                 room.Broadcast(new S_RoomEnter() { newPlayer = location, playerName = playerName });
                 SendPacketResponse(clientSession, caller, true);
             }
@@ -102,8 +103,11 @@ class PacketHandler
         var clientSession = session as ClientSession;
         var setName = packet as C_SetName;
         bool success = !string.IsNullOrEmpty(setName.name) || (setName.name.Length < 6 && setName.name.Length > 2);
+        Console.WriteLine(clientSession.Name);
         if (success)
+        {
             clientSession.Name = setName.name;
+        }
         //SendPacketResponse(clientSession, PacketID.C_SetName, success);
     }
 
@@ -111,10 +115,12 @@ class PacketHandler
     {
         ClientSession clientSession = session as ClientSession;
         var cchat = packet as C_Chat;
+        if (string.IsNullOrEmpty(clientSession.Name))
+            return;
         S_Chat chat = new();
         chat.text = cchat.text;
-        //chat.pName = clientSession.Name;
-        chat.pName = "ASD";
+        chat.pName = clientSession.Name;
+        //chat.pName = "ASD";
         Console.WriteLine(chat.text);
         SessionManager.Instance.Broadcast(chat);
     }

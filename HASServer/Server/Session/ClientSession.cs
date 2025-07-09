@@ -21,7 +21,8 @@ namespace Server
 		public override void OnConnected(EndPoint endPoint)
 		{
 			Console.WriteLine($"OnConnected : {endPoint}");
-		}
+            //Name = $"테스트고한결{SessionId}";
+        }
 
 		public override void OnRecvPacket(ArraySegment<byte> buffer)
 		{

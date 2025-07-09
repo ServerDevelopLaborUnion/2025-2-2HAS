@@ -182,7 +182,7 @@ public struct SnapshotPacket : IDataPacket
 	}
 }
 
-public class C_RoomEnter : IPacket
+public struct C_RoomEnter : IPacket
 {
 	public int roomId;
 
@@ -210,7 +210,7 @@ public class C_RoomEnter : IPacket
 	}
 }
 
-public class C_SetName : IPacket
+public struct C_SetName : IPacket
 {
 	public string name;
 
@@ -238,7 +238,7 @@ public class C_SetName : IPacket
 	}
 }
 
-public class S_RoomEnter : IPacket
+public struct S_RoomEnter : IPacket
 {
 	public PlayerNamePacket playerName;
 	public LocationInfoPacket newPlayer;
@@ -269,7 +269,7 @@ public class S_RoomEnter : IPacket
 	}
 }
 
-public class C_RoomExit : IPacket
+public struct C_RoomExit : IPacket
 {
 	
 
@@ -297,7 +297,7 @@ public class C_RoomExit : IPacket
 	}
 }
 
-public class S_RoomExit : IPacket
+public struct S_RoomExit : IPacket
 {
 	public int Index;
 
@@ -325,9 +325,10 @@ public class S_RoomExit : IPacket
 	}
 }
 
-public class C_CreateRoom : IPacket
+public struct C_CreateRoom : IPacket
 {
 	public string roomName;
+	public int maxCount;
 
 	public ushort Protocol { get { return (ushort)PacketID.C_CreateRoom; } }
 
@@ -338,6 +339,7 @@ public class C_CreateRoom : IPacket
 		count += sizeof(ushort);
 		count += sizeof(ushort);
 		count += PacketUtility.ReadStringData(segment, count, out roomName);
+		count += PacketUtility.ReadIntData(segment, count, out maxCount);
 	}
 
 	public ArraySegment<byte> Serialize()
@@ -348,12 +350,13 @@ public class C_CreateRoom : IPacket
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
 		count += PacketUtility.AppendStringData(this.roomName, segment, count);
+		count += PacketUtility.AppendIntData(this.maxCount, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}
 }
 
-public class S_RoomList : IPacket
+public struct S_RoomList : IPacket
 {
 	public List<RoomInfoPacket> roomInfos;
 
@@ -381,7 +384,7 @@ public class S_RoomList : IPacket
 	}
 }
 
-public class S_PacketResponse : IPacket
+public struct S_PacketResponse : IPacket
 {
 	public ushort responsePacket;
 	public bool success;
@@ -412,7 +415,7 @@ public class S_PacketResponse : IPacket
 	}
 }
 
-public class C_RoomList : IPacket
+public struct C_RoomList : IPacket
 {
 	
 
@@ -440,7 +443,7 @@ public class C_RoomList : IPacket
 	}
 }
 
-public class S_Chat : IPacket
+public struct S_Chat : IPacket
 {
 	public string pName;
 	public string text;
@@ -471,7 +474,7 @@ public class S_Chat : IPacket
 	}
 }
 
-public class C_Chat : IPacket
+public struct C_Chat : IPacket
 {
 	public string text;
 
@@ -499,7 +502,7 @@ public class C_Chat : IPacket
 	}
 }
 
-public class C_UpdateLocation : IPacket
+public struct C_UpdateLocation : IPacket
 {
 	public LocationInfoPacket location;
 
@@ -527,7 +530,7 @@ public class C_UpdateLocation : IPacket
 	}
 }
 
-public class S_SyncTimer : IPacket
+public struct S_SyncTimer : IPacket
 {
 	public float time;
 
@@ -555,7 +558,7 @@ public class S_SyncTimer : IPacket
 	}
 }
 
-public class S_UpdateRoomState : IPacket
+public struct S_UpdateRoomState : IPacket
 {
 	public ushort state;
 
