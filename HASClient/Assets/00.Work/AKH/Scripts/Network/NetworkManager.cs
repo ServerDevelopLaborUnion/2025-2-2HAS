@@ -1,4 +1,4 @@
-using DewmoLib.Network.Core;
+using ServerCore;
 using DewmoLib.Network.Packets;
 using DewmoLib.Utiles;
 using System;

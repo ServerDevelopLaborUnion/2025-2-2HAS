@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
 
-namespace DewmoLib.Network.Core
+namespace ServerCore
 {
     public class Connector
     {

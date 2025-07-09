@@ -2,7 +2,7 @@
 using System.Net;
 using UnityEngine;
 using DewmoLib.Network.Packets;
-using DewmoLib.Network.Core;
+using ServerCore;
 
 namespace AKH.Network
 {

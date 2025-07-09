@@ -13,13 +13,13 @@ namespace Server.Objects
         }
         public string Name;
 
-        public int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Health { get; set; }
 
-        public bool IsDead => throw new NotImplementedException();
+        public bool IsDead => Health <= 0;
 
         public override IDataPacket CreatePacket()
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public void Hit()

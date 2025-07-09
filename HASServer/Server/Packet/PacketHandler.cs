@@ -12,7 +12,7 @@ class PacketHandler
     {
         var createRoom = packet as C_CreateRoom;
         var clientSession = session as ClientSession;
-        int roomId = _roomManager.GenerateRoom(createRoom);
+        int roomId = _roomManager.GenerateRoom(createRoom, clientSession.Name);
         EnterRoomProcess(roomId, clientSession, (PacketID)createRoom.Protocol);
     }
 
@@ -44,7 +44,8 @@ class PacketHandler
                 room.Enter(clientSession);
                 //room.FirstEnterProcess(clientSession);
                 LocationInfoPacket location = new() { index = newPlayer.index };
-                PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = newPlayer.Name};
+                //PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = newPlayer.Name};
+                PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = "ㅁㄴㅇ"};
                 room.Broadcast(new S_RoomEnter() { newPlayer = location, playerName = playerName });
                 SendPacketResponse(clientSession, caller, true);
             }
