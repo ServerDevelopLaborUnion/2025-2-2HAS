@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 6478315613087181526}
   - component: {fileID: 7058320024564630125}
   - component: {fileID: 791776341016331504}
+  - component: {fileID: 9204685413429312500}
   m_Layer: 5
   m_Name: RoomBar
   m_TagString: Untagged
@@ -624,6 +625,22 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &9204685413429312500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040900563855845204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0ac774464bd5c44887315d6f5b5c42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomNameTmp: {fileID: 8472532437970412260}
+  roomCountTmp: {fileID: 8650071267388790768}
+  roomOwnerTmp: {fileID: 4708506249262198838}
+  connectButton: {fileID: 2931866181257830242}
 --- !u!1 &6586327813613455275
 GameObject:
   m_ObjectHideFlags: 0
