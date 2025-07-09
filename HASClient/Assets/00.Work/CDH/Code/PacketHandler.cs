@@ -1,6 +1,6 @@
 
 using _00.Work.CDH.Code.Chat;
-using DewmoLib.Network.Core;
+using ServerCore;
 using DewmoLib.Utiles;
 using VHierarchy.Libs;
 
