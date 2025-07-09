@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:HASClient/Assets/00.Work/KHG/3.Prefab.meta
-guid: 784a99539af1fff4ca025e65747e7b91
-========
+<<<<<<<< HEAD:HASClient/Assets/00.Work/KHG/2.Script/Manager.meta
 guid: 5fd0e3f38988d5b428bc3768b3a9c975
->>>>>>>> main:HASClient/Assets/00.Work/KHG/2.Script/Manager.meta
+========
+guid: 0b635848a9d8e8345b905c1f25c5e3ef
+>>>>>>>> CDH:HASClient/Assets/00.Work/KHG/2.Script/UI.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

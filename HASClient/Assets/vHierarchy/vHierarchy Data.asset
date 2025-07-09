@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneDatas_byGuid:
     keys:
-    - e8d9c392a502d2c4a993cf23435b54b6
+    - f5c5174b74276b049b1abfc2368deb37
     values:
     - goDatas_byGlobalId:
         keys: []
