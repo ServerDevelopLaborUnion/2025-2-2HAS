@@ -1,6 +1,6 @@
 using DewmoLib.Utiles;
 
-namespace _00.Work.CDH.Code.Chat
+namespace _00.Work.CDH.Code.ChatFolder
 {
     public class ChatEventHandler : GameEvent
     {

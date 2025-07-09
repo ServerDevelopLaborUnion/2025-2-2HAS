@@ -285,10 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatEventChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
-  chatsTrm: {fileID: 241732386}
-  chatUI: {fileID: 2126211707}
-  chatInput: {fileID: 892364659}
-  chatPrefab: {fileID: 3819089825942642270, guid: 1c28e978c260c794cbeccaf4b8183653, type: 3}
 --- !u!1 &241732385
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +495,7 @@ GameObject:
   - component: {fileID: 892364661}
   - component: {fileID: 892364660}
   - component: {fileID: 892364659}
+  - component: {fileID: 892364662}
   m_Layer: 5
   m_Name: ChatInput
   m_TagString: Untagged
@@ -665,6 +662,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892364657}
   m_CullTransparentMesh: 1
+--- !u!114 &892364662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892364657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8355f56abc863843999885998787e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatSendEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116427717}
+        m_TargetAssemblyTypeName: _00.Work.CDH.Code.ChatFolder.ChatManager, Assembly-CSharp
+        m_MethodName: SendChat
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  chatInputField: {fileID: 892364659}
 --- !u!1 &1016482652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,6 +1331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126211708}
+  - component: {fileID: 2126211709}
   m_Layer: 5
   m_Name: ChatUI
   m_TagString: Untagged
@@ -1333,6 +1359,20 @@ RectTransform:
   m_AnchoredPosition: {x: 590, y: -343.45}
   m_SizeDelta: {x: 390, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2126211709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126211707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c45aa5223dc9b4b8faf9d5a64c8b6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatsTrm: {fileID: 241732386}
+  chatInput: {fileID: 892364659}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
