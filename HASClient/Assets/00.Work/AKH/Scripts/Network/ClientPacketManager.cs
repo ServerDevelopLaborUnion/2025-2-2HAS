@@ -17,6 +17,7 @@ namespace AKH.Network
         {
             RegisterHandler<S_Chat>((ushort)PacketID.S_Chat, _packetHandler.S_ChatHandler);
             RegisterHandler<S_RoomList>((ushort)PacketID.S_RoomList, _packetHandler.S_RoomListHandler);
+            RegisterHandler<S_RoomEnter>((ushort)PacketID.S_RoomEnter, _packetHandler.S_RoomEnterHandler);
         }
     }
 }

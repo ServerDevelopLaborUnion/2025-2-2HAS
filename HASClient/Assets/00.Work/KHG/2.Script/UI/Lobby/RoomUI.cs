@@ -52,11 +52,7 @@ public class RoomUI : MonoBehaviour
         CreateRoomList(evt.infoPackets);
     }
 
-    private void RemoveChildren(Transform target)
+    private void RemoveChildren(Transform target)//새로고침을 만들어야합니다
     {
-        foreach (Transform child in target)
-        {
-            Destroy(child);
-        }
     }
 }
