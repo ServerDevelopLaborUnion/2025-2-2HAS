@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AKH.Scripts.Packet
 {
-    public static class PacketEvevnts
+    public static class PacketEvents
     {
         public static readonly PacketResponse PacketResponse = new();
     }
