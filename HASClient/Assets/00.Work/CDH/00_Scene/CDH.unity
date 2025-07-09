@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116427716}
   - component: {fileID: 116427717}
+  - component: {fileID: 116427718}
   m_Layer: 0
   m_Name: ChatManager
   m_TagString: Untagged
@@ -285,6 +286,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chatEventChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
+--- !u!114 &116427718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116427715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8355f56abc863843999885998787e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatSendEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 116427717}
+        m_TargetAssemblyTypeName: _00.Work.CDH.Code.ChatFolder.ChatManager, Assembly-CSharp
+        m_MethodName: SendChat
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  chatInputField: {fileID: 892364659}
+  chatUIObj: {fileID: 2126211707}
 --- !u!1 &241732385
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,9 +525,8 @@ GameObject:
   - component: {fileID: 892364661}
   - component: {fileID: 892364660}
   - component: {fileID: 892364659}
-  - component: {fileID: 892364662}
   m_Layer: 5
-  m_Name: ChatInput
+  m_Name: ChatInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -662,34 +691,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 892364657}
   m_CullTransparentMesh: 1
---- !u!114 &892364662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 892364657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8355f56abc863843999885998787e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatSendEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 116427717}
-        m_TargetAssemblyTypeName: _00.Work.CDH.Code.ChatFolder.ChatManager, Assembly-CSharp
-        m_MethodName: SendChat
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  chatInputField: {fileID: 892364659}
 --- !u!1 &1016482652
 GameObject:
   m_ObjectHideFlags: 0

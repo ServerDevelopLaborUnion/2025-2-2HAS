@@ -10,7 +10,7 @@ public partial class PacketHandler
         if (chat == null)
             return;
 
-        ChatEventHandler evt = ChatPacketEvents.ChatEvent;
+        ChatRecvEventHandler evt = ChatPacketEvents.ChatEvent;
         evt.pName = chat.pName;
         evt.message = chat.text;
 

@@ -4,6 +4,6 @@ namespace _00.Work.CDH.Code
 {
     public class ChatPacketEvents
     {
-        public static readonly ChatEventHandler ChatEvent = new();
+        public static readonly ChatRecvEventHandler ChatEvent = new();
     }
 }

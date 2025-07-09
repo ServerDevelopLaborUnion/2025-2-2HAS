@@ -11,9 +11,15 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         public UnityEvent<string> chatSendEvent;
 
         [SerializeField] private TMP_InputField chatInputField;
+        [SerializeField] private GameObject chatUIObj;
 
         private bool isChatVisible = false;
         private bool isChat = false;
+
+        private void Start()
+        {
+            ChattingClose();
+        }
 
         private void Update()
         {
@@ -21,15 +27,39 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
             {
                 if(!isChatVisible && !isChat)
                 {
-                    isChatVisible = true;
-                    isChat = true;
-                    chatInputField.ActivateInputField();
+                    ChattingOpen();
                 }
                 else if (isChatVisible && isChat)
                 {
-                    chatSendEvent?.Invoke("Test Chatting");
+                    SendChat();
+                }
+                else if(isChatVisible && !isChat)
+                {
+                    ChattingClose();
                 }
             }
+        }
+
+        private void ChattingOpen()
+        {
+            chatUIObj.SetActive(true);
+            isChatVisible = true;
+            chatInputField.ActivateInputField();
+            isChat = true;
+        }
+
+        private void ChattingClose()
+        {
+            isChatVisible = false;
+            isChat = false;
+            chatUIObj.SetActive(false);
+        }
+
+        private void SendChat()
+        {
+            isChat = false;
+            chatInputField.DeactivateInputField();
+            chatSendEvent?.Invoke(chatInputField.text);
         }
     }
 }

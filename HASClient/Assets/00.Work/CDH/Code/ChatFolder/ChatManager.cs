@@ -27,10 +27,10 @@ namespace _00.Work.CDH.Code.ChatFolder
         {
             chatGenerator = new();
             _chats = new List<Chat>();
-            chatEventChannel.AddListener<ChatEventHandler>(RecvChat);
+            chatEventChannel.AddListener<ChatRecvEventHandler>(RecvChat);
         }
 
-        private void RecvChat(ChatEventHandler evt)
+        private void RecvChat(ChatRecvEventHandler evt)
         {
             Chat newChat = chatGenerator.Generate(evt.pName, evt.message);
             _chats.Add(newChat);
