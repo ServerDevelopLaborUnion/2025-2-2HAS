@@ -12,10 +12,8 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour
 		public bool HaveNextBehaviour => nextBehaviourList.Count > 0;
 
 		public abstract bool CanExecuteNext<T>(T data);
-		public override bool Execute<T>(T data)
+		protected override bool LogicExecute<T>(T data)
 		{
-			Debug.Log($"{this.name} : Execute");
-
 			foreach (ScriptableBehaviourSO behaviour in executeBeforeBehaviourList)
 				behaviour.Execute(data);
 
@@ -27,14 +25,10 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour
 		/// </summary>
 		protected bool TryExecuteNext<T>(T data)
 		{
-			Debug.Log($"{this.name} : Try Execute Next Behaviour");
-
 			bool canExecute = CanExecuteNext<T>(data);
 			if (canExecute && HaveNextBehaviour)
 				foreach (ScriptableBehaviourSO behaviour in nextBehaviourList)
 					behaviour.Execute(data);
-
-			Debug.Log($"{this.name} : End / Execute{(canExecute ? "" : " not")} Next Behaviour");
 
 			return canExecute;
 		}
