@@ -11,7 +11,6 @@
         Prepare,
         InGame,
         Between,
-        Bomb,
         GameEnd
     }
 }

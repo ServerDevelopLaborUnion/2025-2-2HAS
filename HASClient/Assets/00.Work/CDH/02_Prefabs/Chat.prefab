@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _from: {fileID: 1955825298043858283}
-  _chatText: {fileID: 1955825298043858283}
+  _chatText: {fileID: 432472494989288263}
 --- !u!114 &8755323789256506246
 MonoBehaviour:
   m_ObjectHideFlags: 0

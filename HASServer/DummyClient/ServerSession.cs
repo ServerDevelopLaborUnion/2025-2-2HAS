@@ -12,8 +12,12 @@ namespace DummyClient
         public override void OnConnected(EndPoint endPoint)
         {
             Console.WriteLine($"OnConnected : {endPoint}");
-            C_RoomEnter pak = new C_RoomEnter();
-            pak.roomId = 1;
+            C_SetName c_SetName = new();
+            c_SetName.name = "허버리누";
+            Send(c_SetName.Serialize());
+            C_CreateRoom pak = new C_CreateRoom();
+            pak.roomName = "고한결개돼지";
+            pak.maxCount = 123;
             Send(pak.Serialize());
         }
 

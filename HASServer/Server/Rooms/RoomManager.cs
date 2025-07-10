@@ -29,12 +29,12 @@ namespace Server.Rooms
         {
             return _rooms.GetValueOrDefault(roomId);
         }
-        public int GenerateRoom(C_CreateRoom packet)
+        public int GenerateRoom(C_CreateRoom packet,string hostName)
         {
             int id = Interlocked.Increment(ref _roomIdGenerator);
             Console.WriteLine($"Generate Room: {id}");
             GameRoom room = new(Instance, id, packet.roomName);
-            room.Push(() => room.SetUpRoom(packet));
+            room.Push(() => room.SetUpRoom(packet,hostName));
             _rooms.TryAdd(id, room);
             return id;
         }
@@ -48,7 +48,8 @@ namespace Server.Rooms
                     roomName = room.Value.RoomName,
                     roomId = room.Key,
                     maxCount = room.Value.MaxSessionCount,
-                    currentCount = room.Value.SessionCount
+                    currentCount = room.Value.SessionCount,
+                    hostName = room.Value.HostName
                 });
             }
             return list;

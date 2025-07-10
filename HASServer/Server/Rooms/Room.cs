@@ -23,6 +23,7 @@ namespace Server.Rooms
         private JobQueue _jobQueue = new JobQueue();
         private ConcurrentQueue<ArraySegment<byte>> _pendingList = new();
         public string RoomName { get; private set; }
+        public string HostName { get; private set; }
         public int RoomId { get; private set; } = 0;
         public int MaxSessionCount { get; protected set; }
         public int SessionCount => _sessions.Count;
@@ -117,5 +118,10 @@ namespace Server.Rooms
         }
         public abstract void ObjectDead(ObjectBase obj);
         public abstract void UpdateRoom();
+        public virtual void SetUpRoom(C_CreateRoom packet, string hostName)
+        {
+            HostName = hostName;
+            MaxSessionCount = packet.maxCount;
+        }
     }
 }

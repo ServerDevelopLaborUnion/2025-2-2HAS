@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
-using Server.Rooms;
+﻿using Server.Rooms;
 using Server.Utiles;
 using ServerCore;
+using System;
+using System.Diagnostics;
+using System.Net;
+using System.Timers;
 using Timer = System.Timers.Timer;
+
 
 namespace Server
 {
@@ -18,36 +14,43 @@ namespace Server
     {
         static Listener _listener = new Listener();
         public static RoomManager roomManager = RoomManager.Instance;
-        private static Stopwatch _stopWatch;
-
+        public static Stopwatch timer;
         static void Main(string[] args)
         {
             // DNS (Domain Name System)
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 7777);
-
+            timer = new();
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
             Console.WriteLine("Listening...");
-            _stopWatch = new();
-            GameLoop();
+            InitFlushTimer();
+            //InitUpdateTimer();
+            while (true) { }
+            //FlushRoom();
         }
-        private static void GameLoop()
+        //private static void InitUpdateTimer()
+        //{
+        //    Timer updateTimer = new Timer(30);
+        //    updateTimer.Enabled = true;
+        //    updateTimer.AutoReset = true;
+        //}
+        private static void InitFlushTimer()
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            float lastTime = 0f;
-
-            while (true)
-            {
-                float currentTime = (float)stopwatch.Elapsed.TotalSeconds;
-                Time.deltaTime = currentTime - lastTime;
-                Time.time = currentTime;
-                lastTime = currentTime;
-                roomManager.UpdateRooms();
-                roomManager.FlushRooms();
-
-                Thread.Sleep(10); // 프레임 제한
-            }
+            Timer flushTimer = new Timer(15);
+            timer.Restart();
+            flushTimer.Elapsed += UpdateLoop;
+            flushTimer.Enabled = true;
+            flushTimer.AutoReset = true;
+        }
+        static long beforeTick;
+        private static void UpdateLoop(object sender, ElapsedEventArgs e)
+        {
+            float deltaTime = (timer.ElapsedMilliseconds - beforeTick) / 1000f;
+            //Console.WriteLine(deltaTime);
+            Time.deltaTime = deltaTime;
+            beforeTick = timer.ElapsedMilliseconds;
+            roomManager.UpdateRooms();
+            roomManager.FlushRooms();
         }
     }
 }
+

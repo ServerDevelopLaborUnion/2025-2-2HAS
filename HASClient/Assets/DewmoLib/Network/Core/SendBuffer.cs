@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace DewmoLib.Network.Core
+namespace ServerCore
 {
     public class SendBufferHelper
     {

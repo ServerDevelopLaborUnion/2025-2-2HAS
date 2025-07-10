@@ -1,4 +1,4 @@
-using DewmoLib.Network.Core;
+using ServerCore;
 using DewmoLib.Network.Packets;
 using DewmoLib.Utiles;
 using System;
@@ -28,7 +28,7 @@ namespace AKH.Network
             try
             {
                 //IPAddress ip = Dns.GetHostEntry("akhge.duckdns.org").AddressList[0];
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipAddress), 3303);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ipAddress), 7777);
                 _connector.Connect(endPoint, () => _session = new ServerSession(_packetQueue), 1);
             }
             catch (Exception ex)

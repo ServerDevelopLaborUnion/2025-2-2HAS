@@ -20,6 +20,7 @@
 		<int name ="maxCount"/>
 		<int name ="currentCount"/>
 		<string name="roomName"/>
+		<string name="hostName"/>
 	</dataPacket>
 	
 	<dataPacket name="PlayerNamePacket">
@@ -62,6 +63,7 @@
 	
 	<packet name="C_CreateRoom">
 		<string name="roomName"/>
+		<int name="maxCount"/>
 	</packet>
 	
 	<packet name ="S_RoomList">
