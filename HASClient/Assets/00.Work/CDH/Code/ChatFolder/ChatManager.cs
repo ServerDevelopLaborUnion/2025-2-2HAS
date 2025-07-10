@@ -3,6 +3,7 @@ using Assets._00.Work.CDH.Code.ChatFolder;
 using DewmoLib.Utiles;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _00.Work.CDH.Code.ChatFolder
 {
@@ -11,11 +12,11 @@ namespace _00.Work.CDH.Code.ChatFolder
         [SerializeField] private EventChannelSO chatEventChannel;
 
         [SerializeField] private ChatGenerator chatGenerator;
-        [SerializeField] private Transform chatsTrm;
+        [SerializeField] private RectTransform chatsTrm;
+        [SerializeField] private ScrollRect scrollRect;
 
         private List<Chat> _chats;
-        private bool _isChatting = false;
-        private bool _isChatActive = false;
+        private float maxSize = 0f;
 
         private void Awake()
         {
@@ -23,19 +24,44 @@ namespace _00.Work.CDH.Code.ChatFolder
             chatEventChannel.AddListener<ChatRecvEventHandler>(RecvChat);
         }
 
+        private void Start()
+        {
+            Debug.Log("Test Setting name");
+            C_SetName c_SetName = new C_SetName();
+            c_SetName.name = "It's me! Mario!";
+            NetworkManager.Instance.SendPacket(c_SetName);
+        }
+
         private void RecvChat(ChatRecvEventHandler evt)
         {
             Chat newChat = chatGenerator.Generate(evt.pName, evt.message);
             newChat.transform.SetParent(chatsTrm);
             newChat.transform.localScale = Vector3.one;
+
+            if(maxSize < newChat.transform.position.x)
+                maxSize = newChat.transform.position.x;
+
             _chats.Add(newChat);
+
+            Canvas.ForceUpdateCanvases();
+            chatsTrm.anchoredPosition = new Vector3(maxSize, 0, 0);
+            scrollRect.verticalNormalizedPosition = 0f;
         }
 
         public void SendChat(string message)
         {
+            if (!CheckChatText(message)) return;
+
             C_Chat newChat = new C_Chat();
             newChat.text = message;
             NetworkManager.Instance.SendPacket(newChat);
+        }
+
+        private bool CheckChatText(string message)
+        {
+            if(message == string.Empty)
+                return false;
+            return true;
         }
     }
 }
