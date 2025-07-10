@@ -4,10 +4,6 @@ namespace KHG.UIs
 {
     public class Panel : MonoBehaviour
     {
-        private void Start()
-        {
-            if (gameObject.activeSelf) gameObject.SetActive(false);
-        }
         public void SetActive(bool value)
         {
             if (value)
@@ -18,11 +14,12 @@ namespace KHG.UIs
 
         private void OpenProgress()
         {
-
+            print($"OPEN:{gameObject.name}");
         }
         private void CloseProgress()
         {
             gameObject.SetActive(false);
+            print($"CLOSE:{gameObject.name}");
         }
     }
 

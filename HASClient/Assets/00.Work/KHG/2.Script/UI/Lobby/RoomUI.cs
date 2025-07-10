@@ -4,6 +4,7 @@ using DewmoLib.Dependencies;
 using DewmoLib.Utiles;
 using KHG.Events;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,8 +51,14 @@ namespace KHG.UIs
 
             for (int i = 0; i < list.Count; i++)
             {
-                BuildRoom(list[i]);
+                StartCoroutine(Build(list[i], i * 0.07f));
             }
+        }
+
+        private IEnumerator Build(RoomInfoPacket roomInfo,float num)
+        {
+            yield return new WaitForSeconds(num);
+            BuildRoom(roomInfo);
         }
 
         public void RequestRoomList()

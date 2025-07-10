@@ -4346,7 +4346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiChannel: {fileID: 11400000, guid: 3747d73bf1252bc479ddeae803613f3e, type: 2}
-  target: {fileID: 398013334}
+  targetPanel: {fileID: 398013336}
   TitleTmp: {fileID: 42312949}
   MessageTmp: {fileID: 1029630930}
 --- !u!1 &1857959564

@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 7058320024564630125}
   - component: {fileID: 791776341016331504}
   - component: {fileID: 9204685413429312500}
+  - component: {fileID: 8633800746633597988}
   m_Layer: 5
   m_Name: RoomBar
   m_TagString: Untagged
@@ -653,6 +654,28 @@ MonoBehaviour:
   roomCountTmp: {fileID: 8650071267388790768}
   roomOwnerTmp: {fileID: 4708506249262198838}
   connectButton: {fileID: 2931866181257830242}
+--- !u!95 &8633800746633597988
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6040900563855845204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aec383b1da5b9df49a60b57f6dbd9500, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6586327813613455275
 GameObject:
   m_ObjectHideFlags: 0
