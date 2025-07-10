@@ -1,6 +1,9 @@
 using AKH.Network;
+using Core.EventSystem;
+using DewmoLib.Dependencies;
 using DewmoLib.Utiles;
 using KHG.Events;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +11,32 @@ namespace KHG.UIs
 {
     public class RoomUI : MonoBehaviour
     {
+        [Inject] private PacketResponsePublisher _publisher;
         [SerializeField] private Transform roomHandleTrm;
         [SerializeField] private EventChannelSO packetChannel;
+        [SerializeField] private EventChannelSO uiChannel;
 
         [SerializeField] private GameObject roomPrefab;
 
         private void Awake()
         {
             packetChannel.AddListener<RoomListEvent>(HandleRoomList);
+            _publisher.AddListener(PacketID.C_RoomEnter, IsEnterSuccess);
+        }
+        private void OnDestroy()
+        {
+            packetChannel.RemoveListener<RoomListEvent>(HandleRoomList);
+            _publisher.RemoveListener(PacketID.C_RoomEnter, IsEnterSuccess);
+        }
+        private void IsEnterSuccess(bool val)
+        {
+            if (val) return;
+
+            WarnUiEvent warnUiEvent = UserInterfaceEvents.WarnUiEvent;
+            warnUiEvent.Title = "오류";
+            warnUiEvent.Message = "방 입장에 실패하였습니다.";
+
+            uiChannel.InvokeEvent(warnUiEvent);
         }
 
         private void Start()
