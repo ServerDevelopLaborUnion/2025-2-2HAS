@@ -1,28 +1,12 @@
-using AKH.Network;
-using DewmoLib.Utiles;
-using KHG.Events;
-using System;
 using UnityEngine;
 
-public class RoomManager : MonoBehaviour
+namespace KHG.UIs
 {
-    [SerializeField] private EventChannelSO packetChannel;
-
-    [SerializeField] private RoomUI roomUI;
-
-    private void Awake()
+    public class RoomManager : MonoBehaviour
     {
-        packetChannel.AddListener<RoomListEvent>(HandleRoomList);
-    }
+        private void Start()
+        {
 
-    private void Start()
-    {
-        C_RoomList c_RoomList = new C_RoomList();
-        NetworkManager.Instance.SendPacket(c_RoomList);
-    }
-
-    private void HandleRoomList(RoomListEvent evt)
-    {
-        roomUI.CreateRoomList(evt.infoPackets);
+        }
     }
 }

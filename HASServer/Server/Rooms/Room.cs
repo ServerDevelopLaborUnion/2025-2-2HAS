@@ -121,6 +121,7 @@ namespace Server.Rooms
         public virtual void SetUpRoom(C_CreateRoom packet, string hostName)
         {
             HostName = hostName;
+            MaxSessionCount = packet.maxCount;
         }
     }
 }
