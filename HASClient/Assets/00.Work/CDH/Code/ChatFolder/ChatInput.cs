@@ -1,5 +1,7 @@
 ﻿using _00.Work.CDH.Code.ChatFolder;
+using System.Collections;
 using TMPro;
+using Unity.Hierarchy;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -16,9 +18,11 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         private bool isChatVisible = false;
         private bool isChat = false;
 
+        private Coroutine chatCloseCoroutine;
+
         private void Start()
         {
-            ChattingClose();
+            ChattingImmediatelyClose();
         }
 
         private void Update()
@@ -49,11 +53,14 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
 
         private void Chatting()
         {
+            if (chatCloseCoroutine != null)
+                StopCoroutine(chatCloseCoroutine);
+
             chatInputField.ActivateInputField();
             isChat = true;
         }
 
-        private void ChattingClose()
+        private void ChattingImmediatelyClose()
         {
             isChatVisible = false;
             isChat = false;
@@ -66,7 +73,16 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
             chatInputField.DeactivateInputField();
             chatSendEvent?.Invoke(chatInputField.text);
             chatInputField.text = "";
-            ChattingClose();
+
+            chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
+        }
+
+        private IEnumerator ChatCloseCoroutine(float time)
+        {
+            yield return new WaitForSecondsRealtime(time);
+            isChatVisible = false;
+            isChat = false;
+            chatUIObj.SetActive(false);
         }
     }
 }

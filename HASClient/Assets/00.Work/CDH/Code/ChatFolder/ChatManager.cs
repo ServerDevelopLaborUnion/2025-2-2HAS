@@ -12,10 +12,11 @@ namespace _00.Work.CDH.Code.ChatFolder
         [SerializeField] private EventChannelSO chatEventChannel;
 
         [SerializeField] private ChatGenerator chatGenerator;
-        [SerializeField] private Transform chatsTrm;
+        [SerializeField] private RectTransform chatsTrm;
         [SerializeField] private ScrollRect scrollRect;
 
         private List<Chat> _chats;
+        private float maxSize = 0f;
 
         private void Awake()
         {
@@ -36,9 +37,14 @@ namespace _00.Work.CDH.Code.ChatFolder
             Chat newChat = chatGenerator.Generate(evt.pName, evt.message);
             newChat.transform.SetParent(chatsTrm);
             newChat.transform.localScale = Vector3.one;
+
+            if(maxSize < newChat.transform.position.x)
+                maxSize = newChat.transform.position.x;
+
             _chats.Add(newChat);
 
             Canvas.ForceUpdateCanvases();
+            chatsTrm.anchoredPosition = new Vector3(maxSize, 0, 0);
             scrollRect.verticalNormalizedPosition = 0f;
         }
 
@@ -54,7 +60,7 @@ namespace _00.Work.CDH.Code.ChatFolder
         private bool CheckChatText(string message)
         {
             if(message == string.Empty)
-                return false;   
+                return false;
             return true;
         }
     }
