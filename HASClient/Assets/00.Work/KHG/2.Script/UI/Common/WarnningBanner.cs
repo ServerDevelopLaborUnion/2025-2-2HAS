@@ -18,10 +18,13 @@ namespace KHG.UIs
 
         private void Awake()
         {
-            targetPanel = GetComponent<Panel>();
             uiChannel.AddListener<WarnUiEvent>(HandleBanner);
         }
 
+        private void OnDestroy()
+        {
+            uiChannel.RemoveListener<WarnUiEvent>(HandleBanner);
+        }
         private void HandleBanner(WarnUiEvent evt)
         {
             TitleTmp.SetText(evt.Title);
@@ -38,7 +41,7 @@ namespace KHG.UIs
         public override void Open()
         {
             target.SetActive(true);
-
+            targetPanel = GetComponent<Panel>();
             targetPanel.SetActive(true);
         }
     }

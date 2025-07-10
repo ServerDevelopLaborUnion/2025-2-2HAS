@@ -1,6 +1,6 @@
 using AKH.Network;
 using DewmoLib.Utiles;
-using System.Diagnostics    .Tracing;
+using KHG.Events;
 using UnityEngine;
 
 namespace KHG.Managers
@@ -12,6 +12,11 @@ namespace KHG.Managers
         private void Awake()
         {
             playerInfoChannel.AddListener<PlayerNameEvent>(SetPlayerName);
+        }
+
+        private void OnDestroy()
+        {
+            playerInfoChannel.RemoveListener<PlayerNameEvent>(SetPlayerName);
         }
 
         private void SetPlayerName(PlayerNameEvent evt)
