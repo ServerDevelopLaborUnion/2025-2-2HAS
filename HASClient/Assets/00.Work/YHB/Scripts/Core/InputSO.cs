@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,6 +30,9 @@ namespace Assets._00.Work.YHB.Scripts.Core
 		public event Action<bool> OnJumpStatusChangeEvent;
 		public event Action<bool> OnSpreintStatusChangeEvent;
 
+		public event Action<Vector2> OnMoveKeyPressedEvent;
+		public event Action<Vector2> OnMoveValueChangedEvent;
+
 		public Vector2 MovementDirection { get; private set; }
 		public Vector2 LookDirection { get; private set; }
 
@@ -64,7 +63,12 @@ namespace Assets._00.Work.YHB.Scripts.Core
 		public void OnMove(InputAction.CallbackContext context)
 		{
 			Vector2 movementInputVector = context.ReadValue<Vector2>();
+
+			if (context.performed)
+				OnMoveKeyPressedEvent?.Invoke(movementInputVector);
+
 			MovementDirection = movementInputVector;
+			OnMoveValueChangedEvent?.Invoke(MovementDirection);
 		}
 
 		public void OnSprint(InputAction.CallbackContext context)
