@@ -9,12 +9,10 @@ namespace KHG.UIs
     public class WarnningBanner : PanelController
     {
         [SerializeField] private EventChannelSO uiChannel;
-        [SerializeField] private GameObject target;
+        [SerializeField] private Panel targetPanel;
 
         [SerializeField] private TextMeshProUGUI TitleTmp;
         [SerializeField] private TextMeshProUGUI MessageTmp;
-
-        private Panel targetPanel;
 
         private void Awake()
         {
@@ -40,8 +38,8 @@ namespace KHG.UIs
 
         public override void Open()
         {
-            target.SetActive(true);
-            targetPanel = GetComponent<Panel>();
+            print($"OpenSequence {targetPanel.gameObject.name}이 가지고있습니다:{targetPanel}");
+            targetPanel.gameObject.SetActive(true);
             targetPanel.SetActive(true);
         }
     }
