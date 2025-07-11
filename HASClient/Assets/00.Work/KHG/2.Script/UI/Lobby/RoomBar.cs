@@ -39,10 +39,9 @@ public class RoomBar : MonoBehaviour
     public void ConnectRoom()
     {
         if (_roomId == 0) return;
-        C_RoomEnter c_RoomEnter = new C_RoomEnter()
-        {
-            roomId = _roomId
-        };
+
+        C_RoomEnter c_RoomEnter = new C_RoomEnter() { roomId = _roomId };
+
         NetworkManager.Instance.SendPacket(c_RoomEnter);
     }
 }
