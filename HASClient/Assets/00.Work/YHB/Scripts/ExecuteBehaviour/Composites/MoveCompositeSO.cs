@@ -10,12 +10,5 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Composites
 		{
 			return true;
 		}
-
-		protected override void DebugExecute<T>(T data, bool logicResult)
-		{
-			base.DebugExecute(data, logicResult);
-
-			Debug.Log($"{this.name} : data type = {data.GetType().ToString().Split('.').Last()} / Logic Success : {logicResult}");
-		}
 	}
 }

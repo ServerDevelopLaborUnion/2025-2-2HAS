@@ -58,9 +58,9 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			_movementDirection = rotation * new Vector3(direction.x, _movementDirection.y, direction.y).normalized;
 		}
 
-		public void SetRotationDirection(Vector2 direction)
+		public void SetRotationDirection(Vector2 direction, Quaternion rotation)
 		{
-			_lookTargetRotation = new Vector3(direction.x, _movementDirection.y, direction.y).normalized;
+			_lookTargetRotation = rotation * new Vector3(direction.x, _movementDirection.y, direction.y).normalized;
 			CanRotation = true;
 		}
 
