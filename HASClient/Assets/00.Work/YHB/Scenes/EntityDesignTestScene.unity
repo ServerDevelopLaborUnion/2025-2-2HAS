@@ -526,6 +526,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 807099091790454130, guid: 5c068897a9b916941bc21a36acee4564, type: 3}
+      propertyPath: jumpPower
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7646309997184777630, guid: 5c068897a9b916941bc21a36acee4564, type: 3}
       propertyPath: m_Name
       value: PlayerSet

@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
-using static Unity.VisualScripting.AnnotationUtility;
 
 namespace Assets._00.Work.YHB.Scripts.Entities
 {
 	public class EntityMovement : MonoBehaviour, IEntityResolver
 	{
 		[SerializeField] private float moveSpeed = 5; // 스탯 기반일 필요가 없을 듯
+		[SerializeField] private float jumpPower = 5;
+		[SerializeField] private int maxJumpCount = 2;
 		[SerializeField] private float gravity = -9.8f;
 
 		private CharacterController _characterControllerComp;
@@ -26,6 +27,7 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 		private Vector3 _lookTargetRotation;
 
 		private float _verticalVelocity;
+		private int _currentJumpCount;
 
 		public void Initialize(EntityComponentRegistry registry)
 		{
@@ -64,6 +66,17 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			CanRotation = true;
 		}
 
+		public bool Jump()
+		{
+			// 21억번 눌러서 오버플로우내면 그건 솔직히 대단하니까 인정해주자.
+			if (++_currentJumpCount >= maxJumpCount)
+				return false;
+
+			_verticalVelocity = _verticalVelocity < 0 ? jumpPower : _verticalVelocity + jumpPower;
+
+			return true;
+		}
+
 		public void StopRotation()
 		{
 			CanRotation = false;
@@ -90,8 +103,12 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 
 		private void ApplyGravity()
 		{
-			if (IsGround && _verticalVelocity < 0)
-				_verticalVelocity = -0.03f;
+			if (IsGround)
+			{
+				_currentJumpCount = 0;
+				if (_verticalVelocity < 0)
+					_verticalVelocity = -0.03f;
+			}
 			else
 				_verticalVelocity += gravity * Time.fixedDeltaTime;
 

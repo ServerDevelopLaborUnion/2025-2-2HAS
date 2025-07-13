@@ -294,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  jumpPower: 3
+  maxJumpCount: 3
   gravity: -9.8
 --- !u!1 &8947384211261431858
 GameObject:
@@ -428,5 +430,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSO: {fileID: 11400000, guid: c728ad4e80966354f819bea601b00614, type: 2}
   moveInputBehaviour: {fileID: 11400000, guid: a49fc20a14eaaa8428ee02fa00563989, type: 2}
+  jumpInputBehaviour: {fileID: 11400000, guid: 3ea2d712cc017ef4cacdb6457a69ef87, type: 2}
   cameraRotationOwner: {fileID: 0}
   entityMovement: {fileID: 7840351875046562090}
