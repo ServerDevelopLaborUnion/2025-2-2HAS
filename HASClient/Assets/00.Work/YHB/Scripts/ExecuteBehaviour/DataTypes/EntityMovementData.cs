@@ -6,7 +6,7 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.DataTypes
 	public class EntityMovementData
 	{
 		public EntityMovement entityMovement;
-		public Quaternion entityRotation;
+		public Quaternion moveRotation;
 		public Vector2 moveDirection;
 	}
 }

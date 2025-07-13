@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour
 {
@@ -34,6 +35,9 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour
 		/// </summary>
 		/// <param name="data">사용된 데이터 안 걸러진 들어온 자체의 데이터</param>
 		/// <param name="logicResult">로직의 결과</param>
-		protected virtual void DebugExecute<T>(T data, bool logicResult) { }
+		protected virtual void DebugExecute<T>(T data, bool logicResult)
+		{
+			Debug.Log($"{this.name} : data type : {data.GetType().ToString().Split('.').Last()} / Logic Success : {logicResult}");
+		}
 	}
 }
