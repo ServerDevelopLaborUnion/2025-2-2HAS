@@ -13,9 +13,10 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 		[Header("Value")]
 		[SerializeField] private InputSO inputSO;
 		[SerializeField] private ScriptableBehaviourSO moveInputBehaviour;
+		[SerializeField] private ScriptableBehaviourSO jumpInputBehaviour;
 
 		[Header("Value")]
-		[SerializeField] private Transform entityCamera;
+		[SerializeField] private Transform cameraRotationOwner;
 		[SerializeField] private EntityMovement entityMovement;
 
 		private EntityMovementData _moveData;
@@ -25,17 +26,25 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 			_moveData = new EntityMovementData();
 			_moveData.entityMovement = entityMovement;
 
-			inputSO.OnMoveValueChangedEvent += HandleMoveValueChangedEvent;
+			inputSO.OnJumpStatusChangeEvent += HandleJumpStatusChangeEvent;
 		}
 
 		private void OnDestroy()
 		{
-			inputSO.OnMoveValueChangedEvent -= HandleMoveValueChangedEvent;
+			inputSO.OnJumpStatusChangeEvent -= HandleJumpStatusChangeEvent;
 		}
 
-		private void HandleMoveValueChangedEvent(Vector2 vector)
+		private void HandleJumpStatusChangeEvent(bool status)
 		{
-			_moveData.entityRotation = entityCamera.transform.rotation;
+			if (!status)
+				return;
+
+			jumpInputBehaviour.Execute<EntityMovementData>(_moveData);
+		}
+
+		private void Update()
+		{
+			_moveData.moveRotation = cameraRotationOwner.transform.rotation;
 			_moveData.moveDirection = inputSO.MovementDirection;
 			moveInputBehaviour.Execute<EntityMovementData>(_moveData);
 		}

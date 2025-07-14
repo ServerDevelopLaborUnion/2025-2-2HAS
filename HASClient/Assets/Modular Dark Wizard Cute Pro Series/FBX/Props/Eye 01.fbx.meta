@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: 4504e2aa1ca40884eaf7d322fddb8fec
+AssetOrigin:
+  serializedVersion: 1
+  productId: 318179
+  packageName: Modular Dark Wizard Cute Pro Series
+  packageVersion: 1.0
+  assetPath: Assets/Modular Dark Wizard Cute Pro Series/FBX/Props/Eye 01.fbx
+  uploadId: 751362
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #44
+    second: {fileID: 2100000, guid: cf02677393e47da48bf89a3834ba07f5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,8 +28,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -136,10 +146,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 318179
-  packageName: Modular Dark Wizard Cute Pro Series
-  packageVersion: 1.0
-  assetPath: Assets/Modular Dark Wizard Cute Pro Series/FBX/Props/Eye 01.fbx
-  uploadId: 751362

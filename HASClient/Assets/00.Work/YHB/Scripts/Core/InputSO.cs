@@ -32,9 +32,9 @@ namespace Assets._00.Work.YHB.Scripts.Core
 
 		public event Action<Vector2> OnMoveKeyPressedEvent;
 		public event Action<Vector2> OnMoveValueChangedEvent;
+		public event Action<Vector2> OnLookChangedEvent;
 
 		public Vector2 MovementDirection { get; private set; }
-		public Vector2 LookDirection { get; private set; }
 
 		public void OnAttack(InputAction.CallbackContext context)
 		{
@@ -57,7 +57,8 @@ namespace Assets._00.Work.YHB.Scripts.Core
 		public void OnLook(InputAction.CallbackContext context)
 		{
 			Vector2 lookInputVector = context.ReadValue<Vector2>();
-			LookDirection = lookInputVector;
+			if (context.performed)
+				OnLookChangedEvent?.Invoke(lookInputVector);
 		}
 
 		public void OnMove(InputAction.CallbackContext context)

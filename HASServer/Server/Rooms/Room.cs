@@ -9,8 +9,8 @@ namespace Server.Rooms
 {
     internal abstract class Room : IJobQueue
     {
-        protected Dictionary<int, ObjectBase> _objects = new();
-        private int _objectIdGenerator = 0;
+        protected ObjectManager _objectManager = new();
+        public ObjectManager ObjectManager => _objectManager;
         protected RoomManager _roomManager;
         public Room(RoomManager manager, int roomId, string name)
         {
@@ -23,7 +23,7 @@ namespace Server.Rooms
         private JobQueue _jobQueue = new JobQueue();
         private ConcurrentQueue<ArraySegment<byte>> _pendingList = new();
         public string RoomName { get; private set; }
-        public string HostName { get; private set; }
+        public int HostIndex { get; private set; }
         public int RoomId { get; private set; } = 0;
         public int MaxSessionCount { get; protected set; }
         public int SessionCount => _sessions.Count;
@@ -74,7 +74,7 @@ namespace Server.Rooms
         public virtual void Leave(ClientSession session)
         {
             _sessions.Remove(session.SessionId);
-            _objects.Remove(session.PlayerId);
+            _objectManager.RemoveObject(session.PlayerId);
             if (SessionCount == 0)
             {
                 AllPlayerExit();
@@ -89,38 +89,18 @@ namespace Server.Rooms
         {
             _roomManager.RemoveRoom(RoomId);
         }
-
-        public void AddObject(ObjectBase obj)
-        {
-            _objects.Add(++_objectIdGenerator, obj);
-            Console.WriteLine($"add:{_objectIdGenerator}");
-            obj.index = _objectIdGenerator;
-        }
-        public void RemoveObject(int index)
-        {
-            _objects.Remove(index);
-            //Broadcast(new S_RemoveObject() { index = index });
-        }
         public void ReviveAllPlayer()
         {
             foreach (var session in Sessions)
             {
-                GetObject<Player>(session.Value.PlayerId).Revive();
+                _objectManager.GetObject<Player>(session.Value.PlayerId).Revive();
             }
-        }
-        public T GetObject<T>(int id) where T : ObjectBase
-        {
-            return _objects.GetValueOrDefault(id) as T;
-        }
-        public IEnumerable<T> GetObjects<T>() where T : ObjectBase
-        {
-            return _objects.Values.OfType<T>();
         }
         public abstract void ObjectDead(ObjectBase obj);
         public abstract void UpdateRoom();
-        public virtual void SetUpRoom(C_CreateRoom packet, string hostName)
+        public virtual void SetUpRoom(C_CreateRoom packet, int hostIndex)
         {
-            HostName = hostName;
+            HostIndex = hostIndex;
             MaxSessionCount = packet.maxCount;
         }
     }
