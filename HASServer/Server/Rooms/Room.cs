@@ -10,6 +10,7 @@ namespace Server.Rooms
     internal abstract class Room : IJobQueue
     {
         protected ObjectManager _objectManager = new();
+        public ObjectManager ObjectManager => _objectManager;
         protected RoomManager _roomManager;
         public Room(RoomManager manager, int roomId, string name)
         {
@@ -22,7 +23,7 @@ namespace Server.Rooms
         private JobQueue _jobQueue = new JobQueue();
         private ConcurrentQueue<ArraySegment<byte>> _pendingList = new();
         public string RoomName { get; private set; }
-        public string HostName { get; private set; }
+        public int HostIndex { get; private set; }
         public int RoomId { get; private set; } = 0;
         public int MaxSessionCount { get; protected set; }
         public int SessionCount => _sessions.Count;
@@ -97,9 +98,9 @@ namespace Server.Rooms
         }
         public abstract void ObjectDead(ObjectBase obj);
         public abstract void UpdateRoom();
-        public virtual void SetUpRoom(C_CreateRoom packet, string hostName)
+        public virtual void SetUpRoom(C_CreateRoom packet, int hostIndex)
         {
-            HostName = hostName;
+            HostIndex = hostIndex;
             MaxSessionCount = packet.maxCount;
         }
     }
