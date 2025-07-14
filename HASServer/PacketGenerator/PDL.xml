@@ -45,6 +45,8 @@
 	<packet name="C_RoomEnter">
 		<int name ="roomId"/>
 	</packet>
+	<packet name="C_GameStart">
+	</packet>
 	<packet name="C_SetName">
 		<string name="name"/>
 	</packet>
