@@ -7,19 +7,20 @@ using ServerCore;
 public enum PacketID
 {
 	C_RoomEnter = 1,
-	C_SetName = 2,
-	S_RoomEnter = 3,
-	C_RoomExit = 4,
-	S_RoomExit = 5,
-	C_CreateRoom = 6,
-	S_RoomList = 7,
-	S_PacketResponse = 8,
-	C_RoomList = 9,
-	S_Chat = 10,
-	C_Chat = 11,
-	C_UpdateLocation = 12,
-	S_SyncTimer = 13,
-	S_UpdateRoomState = 14,
+	C_GameStart = 2,
+	C_SetName = 3,
+	S_RoomEnter = 4,
+	C_RoomExit = 5,
+	S_RoomExit = 6,
+	C_CreateRoom = 7,
+	S_RoomList = 8,
+	S_PacketResponse = 9,
+	C_RoomList = 10,
+	S_Chat = 11,
+	C_Chat = 12,
+	C_UpdateLocation = 13,
+	S_SyncTimer = 14,
+	S_UpdateRoomState = 15,
 	
 }
 
@@ -205,6 +206,34 @@ public struct C_RoomEnter : IPacket
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
 		count += PacketUtility.AppendIntData(this.roomId, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct C_GameStart : IPacket
+{
+	
+
+	public ushort Protocol { get { return (ushort)PacketID.C_GameStart; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}
