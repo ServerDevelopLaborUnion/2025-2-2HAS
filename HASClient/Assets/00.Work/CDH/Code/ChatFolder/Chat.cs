@@ -6,7 +6,6 @@ namespace _00.Work.CDH.Code.ChatFolder
 {
     public class Chat : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _from;
         [SerializeField] private TextMeshProUGUI _chatText;
 
         public void Initialize()
@@ -16,8 +15,7 @@ namespace _00.Work.CDH.Code.ChatFolder
         
         public void SetText(string from, string text)
         {
-            _from.SetText(from);
-            _chatText.SetText(text);
+            _chatText.SetText(from + " : " + text);
         }
     }
 }

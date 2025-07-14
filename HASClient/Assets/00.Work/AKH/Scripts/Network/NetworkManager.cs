@@ -47,6 +47,7 @@ namespace AKH.Network
             _session.Disconnect();
             _packetQueue.Clear();
         }
+
         public void SendPacket(IPacket packet)
             => _session.Send(packet.Serialize());
 

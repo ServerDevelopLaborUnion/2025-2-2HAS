@@ -11,7 +11,7 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Behaviours.Moves
 			if (data is not EntityMovementData movementData)
 				return false;
 
-			Quaternion rotation = movementData.entityRotation;
+			Quaternion rotation = movementData.moveRotation;
 			rotation.x = 0;
 			rotation.z = 0;
 			movementData.entityMovement.SetMovementDirection(movementData.moveDirection, rotation);
