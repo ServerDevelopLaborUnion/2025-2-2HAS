@@ -11,7 +11,7 @@ class PacketHandler
     {
         var createRoom = (C_CreateRoom)packet;
         var clientSession = session as ClientSession;
-        int roomId = _roomManager.GenerateRoom(createRoom, clientSession.Name);
+        int roomId = _roomManager.GenerateRoom(createRoom, clientSession.SessionId);
         EnterRoomProcess(roomId, clientSession, (PacketID)createRoom.Protocol);
     }
 
@@ -37,7 +37,7 @@ class PacketHandler
         {
             if (room.CanAddPlayer)
             {
-                Player newPlayer = new Player(room)
+                Player newPlayer = new Player(room.ObjectManager)
                 {
                     Health = 100,
                     Name = clientSession.Name,
@@ -77,6 +77,7 @@ class PacketHandler
     {
         var clientSession = session as ClientSession;
         var list = _roomManager.GetRoomInfos();
+        Console.WriteLine(list.Count);
         S_RoomList roomList = new S_RoomList();
         roomList.roomInfos = list;
         clientSession.Send(roomList.Serialize());
@@ -91,7 +92,7 @@ class PacketHandler
             return;
         room.Push(() =>
         {
-            Player player = room.GetObject<Player>(clientSession.PlayerId);
+            Player player = room.ObjectManager.GetObject<Player>(clientSession.PlayerId);
             if (player.IsDead)
                 return;
             //player.HandlePacket(playerPacket);
@@ -123,5 +124,17 @@ class PacketHandler
         //chat.pName = "ASD";
         Console.WriteLine(chat.text);
         SessionManager.Instance.Broadcast(chat);
+    }
+
+    internal static void C_GameStartHandler(PacketSession session, IPacket packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+        var room = clientSession.Room;
+        if (room == null)
+            return;
+        if(room.HostIndex == clientSession.SessionId)
+        {
+
+        }
     }
 }

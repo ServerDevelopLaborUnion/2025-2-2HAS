@@ -7,11 +7,11 @@ namespace Server.Objects
 {
     internal abstract class ObjectBase
     {
-        protected Room _myRoom;
-        public ObjectBase(Room room)
+        protected ObjectManager _myManager;
+        public ObjectBase(ObjectManager manager)
         {
-            _myRoom = room;
-            room.AddObject(this);
+            _myManager = manager;
+            manager.AddObject(this);
         }
         public ObjectType ObjectType { get; protected set; } = ObjectType.None;
         public int index { get; set; }

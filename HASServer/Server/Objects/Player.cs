@@ -8,7 +8,7 @@ namespace Server.Objects
 {
     internal class Player : ObjectBase, IHittable
     {
-        public Player(Room room) : base(room)
+        public Player(ObjectManager manager) : base(manager)
         {
         }
         public string Name;
