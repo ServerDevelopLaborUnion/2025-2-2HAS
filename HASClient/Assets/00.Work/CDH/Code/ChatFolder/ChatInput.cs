@@ -29,13 +29,14 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         {
             if(Keyboard.current.enterKey.wasPressedThisFrame)
             {
-                if(!isChatVisible && !isChat)
+                if (!isChatVisible && !isChat)
                 {
                     ChattingOpen();
                 }
                 else if (isChatVisible && isChat)
                 {
                     SendChat();
+                    ChattingOpen();
                 }
                 else if(isChatVisible && !isChat)
                 {
