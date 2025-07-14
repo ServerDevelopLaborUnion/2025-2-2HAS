@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace KHG.Managers
 {
-    public class UIManager : MonoBehaviour
+    public class UIPacketManager : MonoBehaviour
     {
 
     }
