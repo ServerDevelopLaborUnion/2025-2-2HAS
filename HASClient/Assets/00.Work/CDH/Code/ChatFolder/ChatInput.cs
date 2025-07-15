@@ -29,7 +29,7 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         {
             if(Keyboard.current.enterKey.wasPressedThisFrame)
             {
-                if(!isChatVisible && !isChat)
+                if (!isChatVisible && !isChat)
                 {
                     ChattingOpen();
                 }
@@ -69,12 +69,22 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
 
         private void SendChat()
         {
+            string message = chatInputField.text;
+
+            if (!CheckChatText(message))
+            {
+                chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
+                Debug.Log("메시지가 없어 채팅을 닫습니다.");
+                return;
+            }
+
             isChat = false;
             chatInputField.DeactivateInputField();
-            chatSendEvent?.Invoke(chatInputField.text);
+            chatSendEvent?.Invoke(message);
             chatInputField.text = "";
 
-            chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
+            
+            ChattingOpen();
         }
 
         private IEnumerator ChatCloseCoroutine(float time)
@@ -83,6 +93,13 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
             isChatVisible = false;
             isChat = false;
             chatUIObj.SetActive(false);
+        }
+
+        private bool CheckChatText(string message)
+        {
+            if (message == "")
+                return false;
+            return true;
         }
     }
 }
