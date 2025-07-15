@@ -56,8 +56,6 @@ namespace _00.Work.CDH.Code.ChatFolder
 
         public void SendChat(string message)
         {
-            if (!CheckChatText(message)) return;
-
             C_Chat newChat = new C_Chat();
             newChat.text = message;
             NetworkManager.Instance.SendPacket(newChat);
@@ -65,11 +63,6 @@ namespace _00.Work.CDH.Code.ChatFolder
             print("º¸³½ Ãª ÆÐÅ¶ : " + newChat.text);
         }
 
-        private bool CheckChatText(string message)
-        {
-            if(message == string.Empty)
-                return false;
-            return true;
-        }
+        
     }
 }

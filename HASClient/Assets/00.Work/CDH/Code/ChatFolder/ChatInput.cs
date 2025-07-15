@@ -70,9 +70,18 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
 
         private void SendChat()
         {
+            string message = chatInputField.text;
+
+            if (!CheckChatText(message))
+            {
+                ChattingImmediatelyClose();
+                Debug.Log("메시지가 없어 채팅을 닫습니다.");
+                return;
+            }
+
             isChat = false;
             chatInputField.DeactivateInputField();
-            chatSendEvent?.Invoke(chatInputField.text);
+            chatSendEvent?.Invoke(message);
             chatInputField.text = "";
 
             chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
@@ -84,6 +93,13 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
             isChatVisible = false;
             isChat = false;
             chatUIObj.SetActive(false);
+        }
+
+        private bool CheckChatText(string message)
+        {
+            if (message == "")
+                return false;
+            return true;
         }
     }
 }
