@@ -36,7 +36,6 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
                 else if (isChatVisible && isChat)
                 {
                     SendChat();
-                    ChattingOpen();
                 }
                 else if(isChatVisible && !isChat)
                 {
@@ -74,7 +73,7 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
 
             if (!CheckChatText(message))
             {
-                ChattingImmediatelyClose();
+                chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
                 Debug.Log("메시지가 없어 채팅을 닫습니다.");
                 return;
             }
@@ -84,7 +83,8 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
             chatSendEvent?.Invoke(message);
             chatInputField.text = "";
 
-            chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
+            
+            ChattingOpen();
         }
 
         private IEnumerator ChatCloseCoroutine(float time)

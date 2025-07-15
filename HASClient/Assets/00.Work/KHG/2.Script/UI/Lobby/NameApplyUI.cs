@@ -25,6 +25,8 @@ namespace KHG.UIs
             PlayerNameEvent evt = PlayerInfoEvents.PlayerNameEvent;
             evt.Name = nickname;
             playerInfoChannel.InvokeEvent(evt);
+
+            print("name apply:" + evt.Name);
         }
     }
 
