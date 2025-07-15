@@ -7,6 +7,14 @@ using UnityEngine.UI;
 
 namespace KHG.UIs
 {
+    public static class DropdownExtension
+    {
+        public static string GetValue(this TMP_Dropdown dropdown)
+        {
+            int index = dropdown.value;
+            return dropdown.options[index].text;
+        }
+    }
     public class RoomCreate : MonoBehaviour
     {
         [SerializeField] private TMP_Dropdown roomPlrCount;
@@ -21,28 +29,10 @@ namespace KHG.UIs
             SetRoomInfo();
             SendRoomInfo();
         }
-        public void OnValueChanged(int index)
-        {
-            switch (index)
-            {
-                case 0:
-                    roomPlrCount.value = 5;
-                    break;
-                case 1:
-                    roomPlrCount.value = 10;
-                    break;
-                case 2:
-                    roomPlrCount.value = 15;
-                    break;
-                default:
-                    roomPlrCount.value = 5;
-                    break;
-            }
-        }
 
         private void SetRoomInfo()
         {
-            _roomCount = roomPlrCount.value;
+            _roomCount = int.Parse(DropdownExtension.GetValue(roomPlrCount));
             _roomName = roomNameField.text;
             print($"방 정보가 입력됨:t{roomNameField.text}-r{_roomName},t{roomPlrCount.value}-r{_roomCount}");
         }
