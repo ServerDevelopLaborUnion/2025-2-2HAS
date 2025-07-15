@@ -17,5 +17,9 @@ namespace Server.Rooms
         public override void UpdateRoom()
         {
         }
+
+        public void FirstEnter(ClientSession clientSession)
+        {
+        }
     }
 }

@@ -17,7 +17,6 @@ namespace Server.Rooms
             _roomManager = manager;
             RoomId = roomId;
             RoomName = name;
-
         }
         protected Dictionary<int, ClientSession> _sessions = new Dictionary<int, ClientSession>();
         private JobQueue _jobQueue = new JobQueue();
@@ -68,7 +67,6 @@ namespace Server.Rooms
         public virtual void Enter(ClientSession session)
         {
             _sessions.Add(session.SessionId, session);
-            Console.WriteLine(SessionCount);
             session.Room = this;
         }
         public virtual void Leave(ClientSession session)
@@ -101,6 +99,7 @@ namespace Server.Rooms
         public virtual void SetUpRoom(C_CreateRoom packet, int hostIndex)
         {
             HostIndex = hostIndex;
+            RoomName = packet.roomName;
             MaxSessionCount = packet.maxCount;
         }
     }
