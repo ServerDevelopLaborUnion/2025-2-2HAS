@@ -19,7 +19,7 @@ namespace _00.Work.CDH.Code.ChatFolder
             _chatText.SetText(from + " : " + text);
         }
 
-        
+        [ContextMenu("TextTest")]
         public void TextSizeSetting()
         {
             float preferredHeight = _chatText.preferredHeight;
