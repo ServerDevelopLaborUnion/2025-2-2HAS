@@ -285,10 +285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30a6f8af2de43f38bb27ac0651ff823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chatEventChannel: {fileID: 11400000, guid: 99db24c427466c147930557418b823d0, type: 2}
+  packetEventChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
   chatsTrm: {fileID: 241732386}
   scrollRect: {fileID: 1369306723}
   chatPrefab: {fileID: 3819089825942642270, guid: 1c28e978c260c794cbeccaf4b8183653, type: 3}
+  chatEventChannel: {fileID: 11400000, guid: 99db24c427466c147930557418b823d0, type: 2}
+  chatInputField: {fileID: 892364659}
+  chatUIObj: {fileID: 2126211707}
 --- !u!114 &116427718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,8 +319,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  chatInputField: {fileID: 892364659}
-  chatUIObj: {fileID: 2126211707}
+  chatEventChannel: {fileID: 11400000, guid: 6ec03b2c941fe1c479e29527bec70792, type: 2}
 --- !u!1 &241732385
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1387,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1193085460}
   m_HandleRect: {fileID: 1193085459}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

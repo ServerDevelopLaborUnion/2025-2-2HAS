@@ -1,4 +1,5 @@
 ﻿using _00.Work.CDH.Code.ChatFolder;
+using DewmoLib.Utiles;
 using System.Collections;
 using TMPro;
 using Unity.Hierarchy;
@@ -12,13 +13,10 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
     {
         public UnityEvent<string> chatSendEvent;
 
-        [SerializeField] private TMP_InputField chatInputField;
-        [SerializeField] private GameObject chatUIObj;
+        [SerializeField] private EventChannelSO chatEventChannel;
 
         private bool isChatVisible = false;
         private bool isChat = false;
-
-        private Coroutine chatCloseCoroutine;
 
         private void Start()
         {
@@ -46,17 +44,14 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
 
         private void ChattingOpen()
         {
-            chatUIObj.SetActive(true);
+            chatEventChannel.InvokeEvent(ChatGameEvents.openEvt);
             isChatVisible = true;
             Chatting();
         }
 
         private void Chatting()
         {
-            if (chatCloseCoroutine != null)
-                StopCoroutine(chatCloseCoroutine);
-
-            chatInputField.ActivateInputField();
+            chatEventChannel.InvokeEvent(ChatGameEvents.chattingEvt);
             isChat = true;
         }
 
@@ -64,42 +59,14 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         {
             isChatVisible = false;
             isChat = false;
-            chatUIObj.SetActive(false);
+            chatEventChannel.InvokeEvent(ChatGameEvents.closeEvt);
         }
 
         private void SendChat()
         {
-            string message = chatInputField.text;
-
-            if (!CheckChatText(message))
-            {
-                chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
-                Debug.Log("메시지가 없어 채팅을 닫습니다.");
-                return;
-            }
-
-            isChat = false;
-            chatInputField.DeactivateInputField();
-            chatSendEvent?.Invoke(message);
-            chatInputField.text = "";
-
-            
+            chatEventChannel.InvokeEvent(ChatGameEvents.chatSendEvt);
             ChattingOpen();
         }
 
-        private IEnumerator ChatCloseCoroutine(float time)
-        {
-            yield return new WaitForSecondsRealtime(time);
-            isChatVisible = false;
-            isChat = false;
-            chatUIObj.SetActive(false);
-        }
-
-        private bool CheckChatText(string message)
-        {
-            if (message == "")
-                return false;
-            return true;
-        }
     }
 }
