@@ -29,7 +29,11 @@
 	</dataPacket>
 	
 	<dataPacket name="PlayerInfoPacket">
-
+		<VectorPacket name="position"/>
+		<VectorPacket name="direction"/>
+		<float name="speed"/>
+		<int name="index"/>
+		<int name="modelIndex"/>
 	</dataPacket>
 	<!--Packets-->
 	<packet name="C_RoomEnter">
@@ -43,6 +47,9 @@
 	
 	<packet name="S_RoomEnter">
 		<PlayerInfoPacket name="newPlayer"/>
+	</packet>
+	<packet name="S_RoomEnterFirst">
+		<!--나중에 추가-->
 	</packet>
 	
 	<packet name="C_RoomExit">

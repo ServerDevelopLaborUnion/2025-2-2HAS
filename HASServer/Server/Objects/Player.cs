@@ -14,6 +14,8 @@ namespace Server.Objects
         public string Name;
 
         public int Health { get; set; }
+        public int ModelIndex { get; set; }
+        public int Speed { get; set; }
 
         public bool IsDead => Health <= 0;
 
