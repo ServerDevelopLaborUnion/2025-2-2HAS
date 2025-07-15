@@ -51,6 +51,7 @@ namespace Server.Rooms
                     currentCount = room.Value.SessionCount,
                     hostName = room.Value.GetSession(room.Value.HostIndex).Name
                 });
+                Console.WriteLine(room.Value.GetSession(room.Value.HostIndex).Name);
             }
             return list;
         }

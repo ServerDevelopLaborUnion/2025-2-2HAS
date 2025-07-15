@@ -29,6 +29,8 @@ class PacketManager
 		_handler.Add((ushort)PacketID.S_PacketResponse, PacketHandler.S_PacketResponseHandler);
 		_onRecv.Add((ushort)PacketID.S_Chat, MakePacket<S_Chat>);
 		_handler.Add((ushort)PacketID.S_Chat, PacketHandler.S_ChatHandler);
+		_onRecv.Add((ushort)PacketID.S_Move, MakePacket<S_Move>);
+		_handler.Add((ushort)PacketID.S_Move, PacketHandler.S_MoveHandler);
 		_onRecv.Add((ushort)PacketID.S_SyncTimer, MakePacket<S_SyncTimer>);
 		_handler.Add((ushort)PacketID.S_SyncTimer, PacketHandler.S_SyncTimerHandler);
 		_onRecv.Add((ushort)PacketID.S_UpdateRoomState, MakePacket<S_UpdateRoomState>);
