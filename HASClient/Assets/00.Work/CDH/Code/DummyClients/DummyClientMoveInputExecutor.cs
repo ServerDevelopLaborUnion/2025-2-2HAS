@@ -18,26 +18,39 @@ namespace Assets._00.Work.CDH.Code.DummyClients
         [SerializeField] private EntityMovement entityMovement;
 
         private EntityMovementData _moveData;
+        private Quaternion _rotation;
+        private Vector2 _moveDirection;
 
         private void Awake()
         {
             _moveData = new EntityMovementData();
             _moveData.entityMovement = entityMovement;
+            _moveData.moveRotation = Quaternion.identity;
+            _moveData.moveDirection = Vector2.zero;
         }
 
         private void Start()
         {
             packetChannel.AddListener<DummyClientMoveEventHandler>(MoveEventHandler);
+            packetChannel.AddListener<DummyClientRotationEventHandler>(RotationEventHandler);
+        }
+
+        private void RotationEventHandler(DummyClientRotationEventHandler evt)
+        {
+            _rotation = new Quaternion(evt.rotation.x, evt.rotation.y, evt.rotation.z, evt.rotation.w);
+            _moveData.moveRotation = _rotation;
+
+            jumpInputBehaviour.Execute<EntityMovementData>(_moveData);
         }
 
         private void MoveEventHandler(DummyClientMoveEventHandler evt)
         {
-            Vector2 moveDirection = new Vector2(evt.direction.x, evt.direction.z);
-            _moveData.moveDirection = moveDirection;
-            // _moveData.moveRotation = evt.
+            _moveDirection = new Vector2(evt.direction.x, evt.direction.z);
+            _moveData.moveDirection = _moveDirection;
 
-            // jumpInputBehaviour.Execute<EntityMovementData>(_moveData);
             moveInputBehaviour.Execute<EntityMovementData>(_moveData);
         }
+
+        // 점프는 나중에 연결
     }
 }
