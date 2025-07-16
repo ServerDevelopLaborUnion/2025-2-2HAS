@@ -1,4 +1,5 @@
 ﻿using Assets._00.Work.YHB.Scripts.Core;
+using Assets._00.Work.YHB.Scripts.Entities;
 using Assets._00.Work.YHB.Scripts.ExecuteBehaviour;
 using Assets._00.Work.YHB.Scripts.ExecuteBehaviour.DataTypes;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 		[SerializeField] private ScriptableBehaviourSO cameraRotateInputBehaviour;
 
 		[Header("Set")]
+		[SerializeField] private EntityMovement entityMovementComp;
 		[SerializeField] private Transform cameraParent;
 		[SerializeField] private float rotationSensitivity = 1f;
 		[SerializeField] private float rotationXMin;
@@ -25,6 +27,7 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 			inputSO.OnLookChangedEvent += HandleLookChangedEvent;
 
 			cameraData = new CameraValueChangeData();
+			cameraData.entityMovementComp = entityMovementComp;
 			cameraData.cameraParent = cameraParent;
 			cameraData.rotationXMin = rotationXMin;
 			cameraData.rotationXMax = rotationXMax;
