@@ -14,4 +14,9 @@ namespace KHG.Events
     {
         public List<RoomInfoPacket> infoPackets;
     }
+
+    public class RoomEnterEvent : GameEvent
+    {
+
+    }
 }
