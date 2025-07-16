@@ -10,17 +10,19 @@ public enum PacketID
 	C_GameStart = 2,
 	C_SetName = 3,
 	S_RoomEnter = 4,
-	C_RoomExit = 5,
-	S_RoomExit = 6,
-	C_CreateRoom = 7,
-	S_RoomList = 8,
-	S_PacketResponse = 9,
-	C_RoomList = 10,
-	S_Chat = 11,
-	C_Chat = 12,
-	C_UpdateLocation = 13,
-	S_SyncTimer = 14,
-	S_UpdateRoomState = 15,
+	S_RoomEnterFirst = 5,
+	C_RoomExit = 6,
+	S_RoomExit = 7,
+	C_CreateRoom = 8,
+	S_RoomList = 9,
+	S_PacketResponse = 10,
+	C_RoomList = 11,
+	S_Chat = 12,
+	C_Chat = 13,
+	C_Move = 14,
+	S_Move = 15,
+	S_SyncTimer = 16,
+	S_UpdateRoomState = 17,
 	
 }
 
@@ -130,55 +132,33 @@ public struct PlayerNamePacket : IDataPacket
 	}
 }
 
-public struct LocationInfoPacket : IDataPacket
+public struct PlayerInfoPacket : IDataPacket
 {
-	public int index;
 	public VectorPacket position;
-	public QuaternionPacket rotation;
+	public VectorPacket direction;
+	public float speed;
+	public int index;
+	public int modelIndex;
 
 	public ushort Deserialize(ArraySegment<byte> segment, int offset)
 	{
 		ushort count = (ushort)offset;
-		count += PacketUtility.ReadIntData(segment, count, out index);
 		count += PacketUtility.ReadDataPacketData(segment, count, out position);
-		count += PacketUtility.ReadDataPacketData(segment, count, out rotation);
+		count += PacketUtility.ReadDataPacketData(segment, count, out direction);
+		count += PacketUtility.ReadFloatData(segment, count, out speed);
+		count += PacketUtility.ReadIntData(segment, count, out index);
+		count += PacketUtility.ReadIntData(segment, count, out modelIndex);
 		return (ushort)(count - offset);
 	}
 
 	public ushort Serialize(ArraySegment<byte> segment, int offset)
 	{
 		ushort count = (ushort)offset;
-		count += PacketUtility.AppendIntData(this.index, segment, count);
 		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
-		return (ushort)(count - offset);
-	}
-}
-
-public struct SnapshotPacket : IDataPacket
-{
-	public int index;
-	public long timestamp;
-	public VectorPacket position;
-	public QuaternionPacket rotation;
-
-	public ushort Deserialize(ArraySegment<byte> segment, int offset)
-	{
-		ushort count = (ushort)offset;
-		count += PacketUtility.ReadIntData(segment, count, out index);
-		count += PacketUtility.ReadLongData(segment, count, out timestamp);
-		count += PacketUtility.ReadDataPacketData(segment, count, out position);
-		count += PacketUtility.ReadDataPacketData(segment, count, out rotation);
-		return (ushort)(count - offset);
-	}
-
-	public ushort Serialize(ArraySegment<byte> segment, int offset)
-	{
-		ushort count = (ushort)offset;
+		count += PacketUtility.AppendDataPacketData(this.direction, segment, count);
+		count += PacketUtility.AppendFloatData(this.speed, segment, count);
 		count += PacketUtility.AppendIntData(this.index, segment, count);
-		count += PacketUtility.AppendLongData(this.timestamp, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
+		count += PacketUtility.AppendIntData(this.modelIndex, segment, count);
 		return (ushort)(count - offset);
 	}
 }
@@ -269,8 +249,7 @@ public struct C_SetName : IPacket
 
 public struct S_RoomEnter : IPacket
 {
-	public PlayerNamePacket playerName;
-	public LocationInfoPacket newPlayer;
+	public PlayerInfoPacket newPlayer;
 
 	public ushort Protocol { get { return (ushort)PacketID.S_RoomEnter; } }
 
@@ -280,7 +259,6 @@ public struct S_RoomEnter : IPacket
 
 		count += sizeof(ushort);
 		count += sizeof(ushort);
-		count += PacketUtility.ReadDataPacketData(segment, count, out playerName);
 		count += PacketUtility.ReadDataPacketData(segment, count, out newPlayer);
 	}
 
@@ -291,8 +269,35 @@ public struct S_RoomEnter : IPacket
 
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.playerName, segment, count);
 		count += PacketUtility.AppendDataPacketData(this.newPlayer, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct S_RoomEnterFirst : IPacket
+{
+	
+
+	public ushort Protocol { get { return (ushort)PacketID.S_RoomEnterFirst; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}
@@ -531,11 +536,13 @@ public struct C_Chat : IPacket
 	}
 }
 
-public struct C_UpdateLocation : IPacket
+public struct C_Move : IPacket
 {
-	public LocationInfoPacket location;
+	public VectorPacket position;
+	public VectorPacket direction;
+	public float velocity;
 
-	public ushort Protocol { get { return (ushort)PacketID.C_UpdateLocation; } }
+	public ushort Protocol { get { return (ushort)PacketID.C_Move; } }
 
 	public void Deserialize(ArraySegment<byte> segment)
 	{
@@ -543,7 +550,9 @@ public struct C_UpdateLocation : IPacket
 
 		count += sizeof(ushort);
 		count += sizeof(ushort);
-		count += PacketUtility.ReadDataPacketData(segment, count, out location);
+		count += PacketUtility.ReadDataPacketData(segment, count, out position);
+		count += PacketUtility.ReadDataPacketData(segment, count, out direction);
+		count += PacketUtility.ReadFloatData(segment, count, out velocity);
 	}
 
 	public ArraySegment<byte> Serialize()
@@ -553,7 +562,46 @@ public struct C_UpdateLocation : IPacket
 
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.location, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.direction, segment, count);
+		count += PacketUtility.AppendFloatData(this.velocity, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct S_Move : IPacket
+{
+	public int index;
+	public float velocity;
+	public VectorPacket position;
+	public VectorPacket direction;
+
+	public ushort Protocol { get { return (ushort)PacketID.S_Move; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		count += PacketUtility.ReadIntData(segment, count, out index);
+		count += PacketUtility.ReadFloatData(segment, count, out velocity);
+		count += PacketUtility.ReadDataPacketData(segment, count, out position);
+		count += PacketUtility.ReadDataPacketData(segment, count, out direction);
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		count += PacketUtility.AppendIntData(this.index, segment, count);
+		count += PacketUtility.AppendFloatData(this.velocity, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.direction, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}

@@ -21,6 +21,8 @@ class PacketManager
 	{
 		_onRecv.Add((ushort)PacketID.S_RoomEnter, MakePacket<S_RoomEnter>);
 		_handler.Add((ushort)PacketID.S_RoomEnter, PacketHandler.S_RoomEnterHandler);
+		_onRecv.Add((ushort)PacketID.S_RoomEnterFirst, MakePacket<S_RoomEnterFirst>);
+		_handler.Add((ushort)PacketID.S_RoomEnterFirst, PacketHandler.S_RoomEnterFirstHandler);
 		_onRecv.Add((ushort)PacketID.S_RoomExit, MakePacket<S_RoomExit>);
 		_handler.Add((ushort)PacketID.S_RoomExit, PacketHandler.S_RoomExitHandler);
 		_onRecv.Add((ushort)PacketID.S_RoomList, MakePacket<S_RoomList>);
@@ -29,6 +31,8 @@ class PacketManager
 		_handler.Add((ushort)PacketID.S_PacketResponse, PacketHandler.S_PacketResponseHandler);
 		_onRecv.Add((ushort)PacketID.S_Chat, MakePacket<S_Chat>);
 		_handler.Add((ushort)PacketID.S_Chat, PacketHandler.S_ChatHandler);
+		_onRecv.Add((ushort)PacketID.S_Move, MakePacket<S_Move>);
+		_handler.Add((ushort)PacketID.S_Move, PacketHandler.S_MoveHandler);
 		_onRecv.Add((ushort)PacketID.S_SyncTimer, MakePacket<S_SyncTimer>);
 		_handler.Add((ushort)PacketID.S_SyncTimer, PacketHandler.S_SyncTimerHandler);
 		_onRecv.Add((ushort)PacketID.S_UpdateRoomState, MakePacket<S_UpdateRoomState>);

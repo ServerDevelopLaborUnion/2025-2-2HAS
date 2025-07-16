@@ -11,6 +11,7 @@ class PacketHandler
     {
         var createRoom = (C_CreateRoom)packet;
         var clientSession = session as ClientSession;
+        Console.WriteLine(createRoom.roomName);
         int roomId = _roomManager.GenerateRoom(createRoom, clientSession.SessionId);
         EnterRoomProcess(roomId, clientSession, (PacketID)createRoom.Protocol);
     }
@@ -44,10 +45,8 @@ class PacketHandler
                 };
                 clientSession.PlayerId = newPlayer.index;
                 room.Enter(clientSession);
-                //room.FirstEnterProcess(clientSession);
-                LocationInfoPacket location = new() { index = newPlayer.index };
-                PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = newPlayer.Name };
-                room.Broadcast(new S_RoomEnter() { newPlayer = location, playerName = playerName });
+                room.FirstEnter(clientSession);
+                room.Broadcast(new S_RoomEnter() { newPlayer = new()});
                 SendPacketResponse(clientSession, caller, true);
             }
             else
@@ -86,7 +85,6 @@ class PacketHandler
     internal static void C_UpdateLocationHandler(PacketSession session, IPacket packet)
     {
         var clientSession = session as ClientSession;
-        var playerPacket = (C_UpdateLocation)packet;
         Room room = clientSession.Room;
         if (room == null)
             return;
@@ -105,6 +103,7 @@ class PacketHandler
         var setName = (C_SetName)packet;
         bool success = !string.IsNullOrEmpty(setName.name) || (setName.name.Length < 6 && setName.name.Length > 2);
         Console.WriteLine(clientSession.Name);
+        Console.WriteLine(success);
         if (success)
         {
             clientSession.Name = setName.name;
@@ -134,7 +133,12 @@ class PacketHandler
             return;
         if(room.HostIndex == clientSession.SessionId)
         {
-
+             
         }
+    }
+
+    internal static void C_MoveHandler(PacketSession session, IPacket packet)
+    {
+        throw new NotImplementedException();
     }
 }

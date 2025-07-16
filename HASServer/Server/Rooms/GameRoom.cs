@@ -17,5 +17,11 @@ namespace Server.Rooms
         public override void UpdateRoom()
         {
         }
+
+        public void FirstEnter(ClientSession clientSession)
+        {
+            S_RoomEnterFirst first = new();
+            clientSession.Send(first.Serialize());
+        }
     }
 }
