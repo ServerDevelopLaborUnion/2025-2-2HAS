@@ -53,23 +53,30 @@ namespace _00.Work.CDH.Code.ChatFolder
             chatEventChannel.AddListener<ChattingSendEvent>(SendChat);
         }
 
+        private void OnDestroy()
+        {
+            chatEventChannel.RemoveListener<ChatOpenEvent>(ChatOpen);
+            chatEventChannel.RemoveListener<ChatCloseEvent>(ChatClose);
+            chatEventChannel.RemoveListener<ChattingEvent>(Chatting);
+            chatEventChannel.RemoveListener<ChattingSendEvent>(SendChat);
+        }
+
         private void SendChat(ChattingSendEvent evt)
         {
+            Debug.Log("SendChat");
             string message = chatInputField.text;
 
             if (!CheckChatText(message))
             {
-                ChatCloseEvent closeEvt = ChatGameEvents.closeEvt;
-                closeEvt.timer = 0f;
-                chatEventChannel.InvokeEvent(closeEvt);
-                Debug.Log("메시지가 없어 채팅을 닫습니다.");
+                Debug.Log("메시지가 없어 채팅을 보내지 않습니다.");
+                chatEventChannel.InvokeEvent(ChatGameEvents.chattingEvt);
                 return;
             }
 
             chatInputField.DeactivateInputField();
             SendChat(message);
             chatInputField.text = "";
-
+            chatEventChannel.InvokeEvent(ChatGameEvents.chattingEvt);
         }
 
         private bool CheckChatText(string message)
@@ -81,6 +88,8 @@ namespace _00.Work.CDH.Code.ChatFolder
 
         private void Chatting(ChattingEvent evt)
         {
+            Debug.Log("Chatting");
+
             if (chatCloseCoroutine != null)
                 StopCoroutine(chatCloseCoroutine);
 
@@ -89,7 +98,8 @@ namespace _00.Work.CDH.Code.ChatFolder
 
         private void ChatClose(ChatCloseEvent evt)
         {
-            chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
+            Debug.Log("ChatClose");
+            chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(evt.timer));
         }
 
         private IEnumerator ChatCloseCoroutine(float time)
@@ -99,9 +109,9 @@ namespace _00.Work.CDH.Code.ChatFolder
         }
 
         private void ChatOpen(ChatOpenEvent evt)
-        { 
+        {
+            Debug.Log("ChatOpen");
             chatUIObj.SetActive(true);
-
         }
 
         private void RecvChat(ChatRecvEventHandler evt)
@@ -130,7 +140,5 @@ namespace _00.Work.CDH.Code.ChatFolder
 
             print("보낸 챗 패킷 : " + newChat.text);
         }
-
-        
     }
 }
