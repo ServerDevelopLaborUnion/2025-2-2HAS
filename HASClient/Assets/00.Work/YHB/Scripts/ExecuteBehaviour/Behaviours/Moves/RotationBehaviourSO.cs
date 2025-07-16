@@ -14,10 +14,10 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Behaviours.Moves
 			if (movementData.moveDirection == Vector2.zero)
 				return false;
 
-			Quaternion rotation = movementData.moveRotation;
+			Vector3 rotation = movementData.moveRotation.eulerAngles;
 			rotation.x = 0;
 			rotation.z = 0;
-			movementData.entityMovement.SetRotationDirection(movementData.moveDirection, rotation);
+			movementData.entityMovement.SetRotationDirection(movementData.moveDirection, Quaternion.Euler(rotation));
 			return true;
 		}
 	}
