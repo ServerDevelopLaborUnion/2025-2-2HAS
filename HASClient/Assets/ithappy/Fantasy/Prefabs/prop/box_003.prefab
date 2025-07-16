@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
@@ -52,7 +53,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 73ac82d59a7a2c349a18f2d9ab7420ab, type: 2}
     - target: {fileID: 919132149155446097, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
@@ -60,23 +61,36 @@ PrefabInstance:
       value: box_003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1928443564307031159}
   m_SourcePrefab: {fileID: 100100000, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
 --- !u!1 &6856406904321262222 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
   m_PrefabInstance: {fileID: 6045994613097365471}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &-2468530039290652326
-MeshCollider:
+--- !u!65 &1928443564307031159
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6856406904321262222}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4517481033685210119, guid: fb223fbe6617d6440a980c3d0f82b89f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.5417047, y: 0.5385579, z: 0.5416408}
+  m_Center: {x: -0.000013142824, y: 0.26927882, z: -0.0000055134296}

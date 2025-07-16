@@ -92,6 +92,13 @@
 		<VectorPacket name="direction"/>
 		<float name="velocity"/>
 	</packet>
+	<packet name="C_Rotate">
+		<QuaternionPacket name="rotation"/>
+	</packet>
+	<packet name="S_Rotate">
+		<int name="index"/>
+		<QuaternionPacket name="rotation"/>
+	</packet>
 	<packet name="S_Move">
 		<int name="index"/>
 		<float name="velocity"/>
