@@ -40,6 +40,10 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
                     Chatting();
                 }
             }
+            if(Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                ChattingImmediatelyClose();
+            }
         }
 
         private void ChattingOpen()
@@ -65,7 +69,6 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         private void SendChat()
         {
             chatEventChannel.InvokeEvent(ChatGameEvents.chatSendEvt);
-            ChattingOpen();
         }
 
     }
