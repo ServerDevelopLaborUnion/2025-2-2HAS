@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using Assets._00.Work.YHB.Scripts.Entities.GroundCheckers;
+using UnityEngine;
 
 namespace Assets._00.Work.YHB.Scripts.Entities
 {
 	public class EntityMovement : MonoBehaviour, IEntityResolver
 	{
+		[SerializeField] private GroundChecker groundChecker;
 		[SerializeField] private float moveSpeed = 5; // 스탯 기반일 필요가 없을 듯
 		[SerializeField] private float jumpPower = 5;
 		[SerializeField] private int maxJumpCount = 2;
-		[SerializeField] private float gravity = -9.8f;
 
-		private CharacterController _characterControllerComp;
+		private Rigidbody _rigidComp;
 
 		public bool CanMovement { get; set; } = true;
 		private bool _canRotation = true;
@@ -19,20 +20,19 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			private set => _canRotation = value;
 		}
 
-		public bool IsGround => _characterControllerComp.isGrounded;
+		public bool IsGround => groundChecker.CheckGround();
 		private Vector3 _velocity;
 		public Vector3 Velocity => _velocity;
 
 		private Vector3 _movementDirection;
 		private Vector3 _lookTargetRotation;
 
-		private float _verticalVelocity;
 		private int _currentJumpCount;
 
 		public void Initialize(EntityComponentRegistry registry)
 		{
-			_characterControllerComp = registry.ResolveComponent<CharacterController>();
-			Debug.Assert(_characterControllerComp != null, $"{typeof(CharacterController)} can not be found.");
+			_rigidComp = registry.ResolveComponent<Rigidbody>();
+			Debug.Assert(_rigidComp != null, $"{typeof(Rigidbody)} can not be found.");
 		}
 
 		private void FixedUpdate()
@@ -72,7 +72,7 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			if (++_currentJumpCount >= maxJumpCount)
 				return false;
 
-			_verticalVelocity = _verticalVelocity < 0 ? jumpPower : _verticalVelocity + jumpPower;
+			_rigidComp.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
 
 			return true;
 		}
@@ -87,7 +87,7 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			if (CanMovement)
 			{
 				_velocity = _movementDirection; // Quaternion은 교환 법칙이 성립하지 않는다.
-				_velocity *= moveSpeed * Time.fixedDeltaTime;
+				_velocity *= moveSpeed;
 			}
 		}
 
@@ -97,28 +97,19 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			{
 				float rotationSpeed = 8f;
 				Quaternion targetRotation = Quaternion.LookRotation(_lookTargetRotation);
-				_characterControllerComp.transform.rotation = Quaternion.Lerp(_characterControllerComp.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+				_rigidComp.transform.rotation = Quaternion.Lerp(_rigidComp.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
 			}
 		}
 
 		private void ApplyGravity()
 		{
 			if (IsGround)
-			{
 				_currentJumpCount = 0;
-				if (_verticalVelocity < 0)
-					_verticalVelocity = -0.03f;
-			}
-			else
-				_verticalVelocity += gravity * Time.fixedDeltaTime;
-
-			float velocitySpeed = 8f;
-			_velocity.y = Mathf.Lerp(_velocity.y, _verticalVelocity, velocitySpeed * Time.fixedDeltaTime);
 		}
 
 		private void Move()
 		{
-			_characterControllerComp.Move(_velocity);
+			_rigidComp.linearVelocity = _velocity;
 		}
 
 		public void StopImmediately()
