@@ -20,9 +20,11 @@ public enum PacketID
 	S_Chat = 12,
 	C_Chat = 13,
 	C_Move = 14,
-	S_Move = 15,
-	S_SyncTimer = 16,
-	S_UpdateRoomState = 17,
+	C_Rotate = 15,
+	S_Rotate = 16,
+	S_Move = 17,
+	S_SyncTimer = 18,
+	S_UpdateRoomState = 19,
 	
 }
 
@@ -565,6 +567,65 @@ public struct C_Move : IPacket
 		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
 		count += PacketUtility.AppendDataPacketData(this.direction, segment, count);
 		count += PacketUtility.AppendFloatData(this.velocity, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct C_Rotate : IPacket
+{
+	public QuaternionPacket rotation;
+
+	public ushort Protocol { get { return (ushort)PacketID.C_Rotate; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		count += PacketUtility.ReadDataPacketData(segment, count, out rotation);
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct S_Rotate : IPacket
+{
+	public int index;
+	public QuaternionPacket rotation;
+
+	public ushort Protocol { get { return (ushort)PacketID.S_Rotate; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		count += PacketUtility.ReadIntData(segment, count, out index);
+		count += PacketUtility.ReadDataPacketData(segment, count, out rotation);
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		count += PacketUtility.AppendIntData(this.index, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}
