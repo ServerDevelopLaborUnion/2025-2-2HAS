@@ -6,6 +6,7 @@ namespace Assets._00.Work.YHB.Scripts.Others
 	public class TransformFollower : MonoBehaviour
 	{
 		[SerializeField] private Transform target;
+		[SerializeField] private Vector3 offset;
 
 		public void SetTarget(Transform newTarget)
 		{
@@ -16,7 +17,7 @@ namespace Assets._00.Work.YHB.Scripts.Others
 		{
 			if (target == null)
 				return;
-            transform.position = target.position;
+            transform.position = target.position + offset;
 		}
 	}
 }
