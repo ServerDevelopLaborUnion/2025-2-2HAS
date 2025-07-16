@@ -1,5 +1,6 @@
 ﻿using KHG.Events;
 using ServerCore;
+using System;
 
 public partial class PacketHandler
 {
@@ -12,8 +13,12 @@ public partial class PacketHandler
         _packetChannel.InvokeEvent(roomListEvent);
     }
 
-    public void S_RoomEnterHandler(PacketSession session, IPacket packet)
+    public void S_RoomEnterHandler(PacketSession session, IPacket packet)// 전체 확인용
     {
 
+    }
+    public void S_RoomEnterFirstHandler(PacketSession session, IPacket packet) //나만 확인용
+    {
+        //_packetChannel.InvokeEvent
     }
 }
