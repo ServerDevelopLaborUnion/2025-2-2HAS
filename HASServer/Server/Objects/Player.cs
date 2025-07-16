@@ -8,12 +8,14 @@ namespace Server.Objects
 {
     internal class Player : ObjectBase, IHittable
     {
-        public Player(Room room) : base(room)
+        public Player(ObjectManager manager) : base(manager)
         {
         }
         public string Name;
 
         public int Health { get; set; }
+        public int ModelIndex { get; set; }
+        public int Speed { get; set; }
 
         public bool IsDead => Health <= 0;
 

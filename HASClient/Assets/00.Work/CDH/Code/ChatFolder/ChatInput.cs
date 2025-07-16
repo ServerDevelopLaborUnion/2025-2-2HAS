@@ -1,4 +1,5 @@
 ﻿using _00.Work.CDH.Code.ChatFolder;
+using DewmoLib.Utiles;
 using System.Collections;
 using TMPro;
 using Unity.Hierarchy;
@@ -12,13 +13,10 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
     {
         public UnityEvent<string> chatSendEvent;
 
-        [SerializeField] private TMP_InputField chatInputField;
-        [SerializeField] private GameObject chatUIObj;
+        [SerializeField] private EventChannelSO chatEventChannel;
 
         private bool isChatVisible = false;
         private bool isChat = false;
-
-        private Coroutine chatCloseCoroutine;
 
         private void Start()
         {
@@ -29,7 +27,7 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         {
             if(Keyboard.current.enterKey.wasPressedThisFrame)
             {
-                if(!isChatVisible && !isChat)
+                if (!isChatVisible && !isChat)
                 {
                     ChattingOpen();
                 }
@@ -42,21 +40,22 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
                     Chatting();
                 }
             }
+            if(Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                ChattingImmediatelyClose();
+            }
         }
 
         private void ChattingOpen()
         {
-            chatUIObj.SetActive(true);
+            chatEventChannel.InvokeEvent(ChatGameEvents.openEvt);
             isChatVisible = true;
             Chatting();
         }
 
         private void Chatting()
         {
-            if (chatCloseCoroutine != null)
-                StopCoroutine(chatCloseCoroutine);
-
-            chatInputField.ActivateInputField();
+            chatEventChannel.InvokeEvent(ChatGameEvents.chattingEvt);
             isChat = true;
         }
 
@@ -64,25 +63,13 @@ namespace Assets._00.Work.CDH.Code.ChatFolder
         {
             isChatVisible = false;
             isChat = false;
-            chatUIObj.SetActive(false);
+            chatEventChannel.InvokeEvent(ChatGameEvents.closeEvt);
         }
 
         private void SendChat()
         {
-            isChat = false;
-            chatInputField.DeactivateInputField();
-            chatSendEvent?.Invoke(chatInputField.text);
-            chatInputField.text = "";
-
-            chatCloseCoroutine = StartCoroutine(ChatCloseCoroutine(3f));
+            chatEventChannel.InvokeEvent(ChatGameEvents.chatSendEvt);
         }
 
-        private IEnumerator ChatCloseCoroutine(float time)
-        {
-            yield return new WaitForSecondsRealtime(time);
-            isChatVisible = false;
-            isChat = false;
-            chatUIObj.SetActive(false);
-        }
     }
 }

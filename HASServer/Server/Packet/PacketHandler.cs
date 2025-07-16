@@ -11,7 +11,8 @@ class PacketHandler
     {
         var createRoom = (C_CreateRoom)packet;
         var clientSession = session as ClientSession;
-        int roomId = _roomManager.GenerateRoom(createRoom, clientSession.Name);
+        Console.WriteLine(createRoom.roomName);
+        int roomId = _roomManager.GenerateRoom(createRoom, clientSession.SessionId);
         EnterRoomProcess(roomId, clientSession, (PacketID)createRoom.Protocol);
     }
 
@@ -37,17 +38,15 @@ class PacketHandler
         {
             if (room.CanAddPlayer)
             {
-                Player newPlayer = new Player(room)
+                Player newPlayer = new Player(room.ObjectManager)
                 {
                     Health = 100,
                     Name = clientSession.Name,
                 };
                 clientSession.PlayerId = newPlayer.index;
                 room.Enter(clientSession);
-                //room.FirstEnterProcess(clientSession);
-                LocationInfoPacket location = new() { index = newPlayer.index };
-                PlayerNamePacket playerName = new() { index = newPlayer.index, nickName = newPlayer.Name };
-                room.Broadcast(new S_RoomEnter() { newPlayer = location, playerName = playerName });
+                room.FirstEnter(clientSession);
+                room.Broadcast(new S_RoomEnter() { newPlayer = new()});
                 SendPacketResponse(clientSession, caller, true);
             }
             else
@@ -77,6 +76,7 @@ class PacketHandler
     {
         var clientSession = session as ClientSession;
         var list = _roomManager.GetRoomInfos();
+        Console.WriteLine(list.Count);
         S_RoomList roomList = new S_RoomList();
         roomList.roomInfos = list;
         clientSession.Send(roomList.Serialize());
@@ -85,13 +85,12 @@ class PacketHandler
     internal static void C_UpdateLocationHandler(PacketSession session, IPacket packet)
     {
         var clientSession = session as ClientSession;
-        var playerPacket = (C_UpdateLocation)packet;
         Room room = clientSession.Room;
         if (room == null)
             return;
         room.Push(() =>
         {
-            Player player = room.GetObject<Player>(clientSession.PlayerId);
+            Player player = room.ObjectManager.GetObject<Player>(clientSession.PlayerId);
             if (player.IsDead)
                 return;
             //player.HandlePacket(playerPacket);
@@ -104,6 +103,7 @@ class PacketHandler
         var setName = (C_SetName)packet;
         bool success = !string.IsNullOrEmpty(setName.name) || (setName.name.Length < 6 && setName.name.Length > 2);
         Console.WriteLine(clientSession.Name);
+        Console.WriteLine(success);
         if (success)
         {
             clientSession.Name = setName.name;
@@ -123,5 +123,22 @@ class PacketHandler
         //chat.pName = "ASD";
         Console.WriteLine(chat.text);
         SessionManager.Instance.Broadcast(chat);
+    }
+
+    internal static void C_GameStartHandler(PacketSession session, IPacket packet)
+    {
+        ClientSession clientSession = session as ClientSession;
+        var room = clientSession.Room;
+        if (room == null)
+            return;
+        if(room.HostIndex == clientSession.SessionId)
+        {
+             
+        }
+    }
+
+    internal static void C_MoveHandler(PacketSession session, IPacket packet)
+    {
+        throw new NotImplementedException();
     }
 }

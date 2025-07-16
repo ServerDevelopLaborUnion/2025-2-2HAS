@@ -24,14 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 257219242732924861}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7226102094443445999}
   - {fileID: 7879322951165139974}
-  - {fileID: 5155814981762506992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6516335724220641383
@@ -201,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   IgnoreTag: Player
   TransparentLayers:
     serializedVersion: 2
@@ -226,56 +225,6 @@ MonoBehaviour:
     NearLimit: 5
     FarLimit: 30
     MaxQualityBoost: 0.2
---- !u!1 &7389027431255759000
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5155814981762506992}
-  - component: {fileID: 9072572607694642826}
-  m_Layer: 0
-  m_Name: CameraInputExecutor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5155814981762506992
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7389027431255759000}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7340261206699946047}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9072572607694642826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7389027431255759000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0cdadd9f2c6c0443b3b9d0381e58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputSO: {fileID: 11400000, guid: c728ad4e80966354f819bea601b00614, type: 2}
-  cameraRotateInputBehaviour: {fileID: 11400000, guid: b43a966f2aaa9464ebee178f7f1b0958, type: 2}
-  cameraParent: {fileID: 7879322951165139974}
-  rotationSensitivity: 1
-  rotationXMin: -90
-  rotationXMax: 90
 --- !u!1 &8902628815024886437
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,30 +28,28 @@
 		<int name="index"/>
 	</dataPacket>
 	
-	<dataPacket name="LocationInfoPacket">
-		<int name="index"/>
+	<dataPacket name="PlayerInfoPacket">
 		<VectorPacket name="position"/>
-		<QuaternionPacket name="rotation"/>
-	</dataPacket>
-
-	<dataPacket name="SnapshotPacket">
+		<VectorPacket name="direction"/>
+		<float name="speed"/>
 		<int name="index"/>
-		<long name="timestamp"/>
-		<VectorPacket name="position"/>
-		<QuaternionPacket name="rotation"/>
+		<int name="modelIndex"/>
 	</dataPacket>
-
 	<!--Packets-->
 	<packet name="C_RoomEnter">
 		<int name ="roomId"/>
+	</packet>
+	<packet name="C_GameStart">
 	</packet>
 	<packet name="C_SetName">
 		<string name="name"/>
 	</packet>
 	
 	<packet name="S_RoomEnter">
-		<PlayerNamePacket name="playerName"/>
-		<LocationInfoPacket name="newPlayer"/>
+		<PlayerInfoPacket name="newPlayer"/>
+	</packet>
+	<packet name="S_RoomEnterFirst">
+		<!--나중에 추가-->
 	</packet>
 	
 	<packet name="C_RoomExit">
@@ -89,8 +87,16 @@
 		<string name="text"/>
 	</packet>
 
-	<packet name="C_UpdateLocation">
-		<LocationInfoPacket name="location"/>
+	<packet name="C_Move">
+		<VectorPacket name="position"/>
+		<VectorPacket name="direction"/>
+		<float name="velocity"/>
+	</packet>
+	<packet name="S_Move">
+		<int name="index"/>
+		<float name="velocity"/>
+		<VectorPacket name="position"/>
+		<VectorPacket name="direction"/>
 	</packet>
 	<packet name="S_SyncTimer">
 		<float name="time"/>
