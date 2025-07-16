@@ -24,4 +24,5 @@ MonoBehaviour:
         keys: []
         values: []
   bookmarks: []
-  bookmarkedScenePaths: []
+  bookmarkedScenePaths:
+  - Assets/MeshBaker/Examples/BatchPrepareObjectsForDynamicBatching.unity
