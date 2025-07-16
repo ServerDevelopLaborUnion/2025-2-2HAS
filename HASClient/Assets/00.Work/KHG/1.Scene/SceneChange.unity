@@ -556,7 +556,7 @@ MonoBehaviour:
   typewriterStartsAutomatically: 0
   animationLoop: 1
   timeScale: 0
-  _text: '<bounce>Loading...
+  _text: 'Loading...
 
 '
   useDynamicScaling: 1
@@ -569,7 +569,7 @@ MonoBehaviour:
   styleSheet: {fileID: 0}
   databaseActions: {fileID: 11400000, guid: 1e1c140956a592c4794626c6f068bab4, type: 2}
   defaultAppearancesTags:
-  - size
+  - 
   defaultDisappearancesTags:
   - fade
   defaultBehaviorsTags: []
