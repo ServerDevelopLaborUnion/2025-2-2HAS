@@ -1,4 +1,5 @@
 ﻿using Server.Objects;
+using Server.Utiles;
 using ServerCore;
 using System;
 using System.Collections.Concurrent;
@@ -12,6 +13,8 @@ namespace Server.Rooms
         protected ObjectManager _objectManager = new();
         public ObjectManager ObjectManager => _objectManager;
         protected RoomManager _roomManager;
+        private EventBus _eventBus;
+
         public Room(RoomManager manager, int roomId, string name)
         {
             _roomManager = manager;
@@ -101,6 +104,10 @@ namespace Server.Rooms
             HostIndex = hostIndex;
             RoomName = packet.roomName;
             MaxSessionCount = packet.maxCount;
+        }
+        public void InvokeEvent(GameEvent evt)
+        {
+            _eventBus.InvokeEvent(evt);
         }
     }
 }
