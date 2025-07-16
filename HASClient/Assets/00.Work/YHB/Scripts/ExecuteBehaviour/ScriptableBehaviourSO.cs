@@ -15,6 +15,7 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour
 		public virtual bool Execute<T>(T data)
 		{
 			bool result = LogicExecute<T>(data);
+			// 이것만으로는 디버그 부족할거 같은데..
 #if UNITY_EDITOR
 			DebugExecute(data, result);
 #endif
