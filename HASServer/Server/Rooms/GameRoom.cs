@@ -20,6 +20,8 @@ namespace Server.Rooms
 
         public void FirstEnter(ClientSession clientSession)
         {
+            S_RoomEnterFirst first = new();
+            clientSession.Send(first.Serialize());
         }
     }
 }
