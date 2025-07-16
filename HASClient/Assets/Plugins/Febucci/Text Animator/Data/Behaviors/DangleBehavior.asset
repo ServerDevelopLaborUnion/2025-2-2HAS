@@ -15,5 +15,5 @@ MonoBehaviour:
   tagID: dangle
   baseAmplitude: 7.87
   baseFrequency: 3.37
-  baseWaveSize: 0.621
+  baseWaveSize: 0.505
   anchorBottom: 0
