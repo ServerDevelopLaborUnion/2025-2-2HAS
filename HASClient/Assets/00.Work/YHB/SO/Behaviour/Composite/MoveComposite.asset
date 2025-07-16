@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MoveComposite
   m_EditorClassIdentifier: 
   executeBeforeBehaviourList:
-  - {fileID: 11400000, guid: 4cb58afa45650b042b150ad5a6da3218, type: 2}
-  - {fileID: 11400000, guid: b0f23c51cdcec524eb2cdddce3a31331, type: 2}
+  - {fileID: 11400000, guid: 1abbd1c86504a784fa7b9ca734f614f6, type: 2}
+  - {fileID: 11400000, guid: 8580450126a8c324ab0e8d6abc6cbff3, type: 2}
   nextBehaviourList: []

@@ -139,6 +139,7 @@ class PacketHandler
 
     internal static void C_MoveHandler(PacketSession session, IPacket packet)
     {
-        throw new NotImplementedException();
+        ClientSession clientSession = session as ClientSession;
+
     }
 }

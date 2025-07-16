@@ -8,16 +8,17 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Behaviours.Moves
 	{
 		protected override bool LogicExecute<T>(T data)
 		{
-			if (data is not EntityMovementData movementData)
+			if (data is not CameraValueChangeData cameraValue)
 				return false;
 
-			if (movementData.moveDirection == Vector2.zero)
-				return false;
-
-			Quaternion rotation = movementData.moveRotation;
+			Vector3 rotation = cameraValue.cameraParent.rotation.eulerAngles;
 			rotation.x = 0;
 			rotation.z = 0;
-			movementData.entityMovement.SetRotationDirection(movementData.moveDirection, rotation);
+
+			if (rotation == Vector3.zero)
+				return false;
+
+			cameraValue.entityMovementComp.SetRotationDirection(Quaternion.Euler(rotation));
 			return true;
 		}
 	}
