@@ -14,4 +14,9 @@ namespace Assets._00.Work.CDH.Code.DummyClients
         public VectorPacket position;
         public VectorPacket direction;
     }
+    public class DummyClientRotationEventHandler : GameEvent
+    {
+        public int index;
+        public QuaternionPacket rotation;
+    }
 }

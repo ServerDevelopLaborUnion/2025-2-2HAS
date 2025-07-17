@@ -1,5 +1,4 @@
 ﻿using Assets._00.Work.YHB.Scripts.Entities.GroundCheckers;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 namespace Assets._00.Work.YHB.Scripts.Entities

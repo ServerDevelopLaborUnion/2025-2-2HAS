@@ -8,5 +8,6 @@ namespace _00.Work.CDH.Code
     {
         public static readonly ChatRecvEventHandler ChatEvent = new();
         public static readonly DummyClientMoveEventHandler dummyClientMoveEvent = new();
+        public static readonly DummyClientRotationEventHandler dummyClientRotationEvent = new();
     }
 }
