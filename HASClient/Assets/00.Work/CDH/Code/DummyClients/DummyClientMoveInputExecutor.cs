@@ -10,7 +10,6 @@ namespace Assets._00.Work.CDH.Code.DummyClients
     public class DummyClientMoveInputExecutor : MonoBehaviour
     {
         [Header("Value")]
-        [SerializeField] private EventChannelSO packetChannel;
         [SerializeField] private ScriptableBehaviourSO moveInputBehaviour;
         [SerializeField] private ScriptableBehaviourSO jumpInputBehaviour;
 
@@ -29,13 +28,7 @@ namespace Assets._00.Work.CDH.Code.DummyClients
             _moveData.moveDirection = Vector2.zero;
         }
 
-        private void Start()
-        {
-            packetChannel.AddListener<DummyClientMoveEventHandler>(MoveEventHandler);
-            packetChannel.AddListener<DummyClientRotationEventHandler>(RotationEventHandler);
-        }
-
-        private void RotationEventHandler(DummyClientRotationEventHandler evt)
+        private void RotationHandler(DummyClientRotationEventHandler evt)
         {
             _rotation = new Quaternion(evt.rotation.x, evt.rotation.y, evt.rotation.z, evt.rotation.w);
             _moveData.moveRotation = _rotation;
@@ -43,7 +36,7 @@ namespace Assets._00.Work.CDH.Code.DummyClients
             jumpInputBehaviour.Execute<EntityMovementData>(_moveData);
         }
 
-        private void MoveEventHandler(DummyClientMoveEventHandler evt)
+        private void MoveHandler(DummyClientMoveEventHandler evt)
         {
             _moveDirection = new Vector2(evt.direction.x, evt.direction.z);
             _moveData.moveDirection = _moveDirection;

@@ -2,7 +2,7 @@
 
 namespace Assets._00.Work.CDH.Code.DummyClients
 {
-    public class DummyClients : Entity
+    public class DummyClient : Entity
     {
     }
 }

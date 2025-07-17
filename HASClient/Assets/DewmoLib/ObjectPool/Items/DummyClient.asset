@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e7e8146b5b5fc948bbe2c52149307f4, type: 3}
-  m_Name: PoolManagerSO
+  m_Script: {fileID: 11500000, guid: 0186317e820cf7746910ded45306b8de, type: 3}
+  m_Name: DummyClient
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: 026e8ed73db799f4bb00a0a90065852b, type: 2}
-  - {fileID: 11400000, guid: 18487ed60cd19264e979cf1632a45419, type: 2}
+  poolingName: DummyClient
+  prefab: {fileID: 8730402522099526769, guid: 1b94fb5a7abaf024da466fa12a5a952d, type: 3}
+  initCount: 15
