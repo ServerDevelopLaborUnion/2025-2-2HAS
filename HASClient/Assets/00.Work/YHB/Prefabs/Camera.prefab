@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 725141852365739439}
   - component: {fileID: 8445534812774471694}
   - component: {fileID: 7294817443661451784}
+  - component: {fileID: 1412988491341304675}
   m_Layer: 0
   m_Name: HunterFollowCam
   m_TagString: Untagged
@@ -168,6 +169,40 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0.5, z: 0}
+--- !u!114 &1412988491341304675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493473431817751450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d54399b04b4fa48a73e121d4937dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ReferenceFrame: 0
+  RecenterTarget: 0
+  PanAxis:
+    Value: 0
+    Center: 0
+    Range: {x: -180, y: 180}
+    Wrap: 1
+    Recentering:
+      Enabled: 0
+      Wait: 1
+      Time: 2
+    Restrictions: 0
+  TiltAxis:
+    Value: 0
+    Center: 0
+    Range: {x: -70, y: 70}
+    Wrap: 0
+    Recentering:
+      Enabled: 0
+      Wait: 1
+      Time: 2
+    Restrictions: 0
 --- !u!1 &6516335724220641383
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +261,7 @@ GameObject:
   - component: {fileID: 3313212725432429609}
   - component: {fileID: 731339866801499763}
   - component: {fileID: 1180963433550134461}
-  - component: {fileID: 8150951656751580302}
+  - component: {fileID: 5190195923962388334}
   m_Layer: 0
   m_Name: RunnerFollowCam
   m_TagString: Untagged
@@ -362,7 +397,7 @@ MonoBehaviour:
     NearLimit: 5
     FarLimit: 30
     MaxQualityBoost: 0.2
---- !u!114 &8150951656751580302
+--- !u!114 &5190195923962388334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
