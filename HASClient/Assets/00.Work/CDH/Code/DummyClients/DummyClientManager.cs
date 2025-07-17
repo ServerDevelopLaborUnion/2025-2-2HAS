@@ -7,7 +7,6 @@ namespace Assets._00.Work.CDH.Code.DummyClients
 {
     public class DummyClientManager : MonoBehaviour
     {
-        [SerializeField] private EventChannelSO packetChannel;
         [SerializeField] private DummyClient dummyClientPrefab;
 
         private List<DummyClient> dummyClients;

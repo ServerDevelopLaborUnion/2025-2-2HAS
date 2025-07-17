@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a98498b71b86d74ab264b16dd1cd9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundChecker: {fileID: 0}
   moveSpeed: 5
+  groundChecker: {fileID: 0}
+  gravityScale: -9.8
   jumpPower: 3
   maxJumpCount: 3
 --- !u!1 &3917951632370097489
@@ -245,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveInputBehaviour: {fileID: 11400000, guid: 1abbd1c86504a784fa7b9ca734f614f6, type: 2}
   jumpInputBehaviour: {fileID: 11400000, guid: 8580450126a8c324ab0e8d6abc6cbff3, type: 2}
+  dummyClient: {fileID: 2543683750096326766}
   entityMovement: {fileID: 1226824612881732777}
 --- !u!1 &8730402522099526769
 GameObject:
@@ -274,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8730402522099526769}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -320,6 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38469a68123ea7d4aafe9ffe3f2b4f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  packetChannel: {fileID: 11400000, guid: 99db24c427466c147930557418b823d0, type: 2}
 --- !u!114 &5080704783587531767
 MonoBehaviour:
   m_ObjectHideFlags: 0
