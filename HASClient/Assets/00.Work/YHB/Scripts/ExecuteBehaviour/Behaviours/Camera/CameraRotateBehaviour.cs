@@ -13,12 +13,11 @@ namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Behaviours.Camera
 
 			Vector3 cameraRotationValue = cameraData.cameraRotateValue;
 			Vector3 cameraRotation = cameraData.cameraParent.rotation.eulerAngles + cameraRotationValue;
-			cameraRotation.z = 0;
 			float angle = Mathf.Repeat(cameraRotation.x + 180f, 360f) - 180f; // warp - around방지
 			cameraRotation.x = Mathf.Clamp(angle, cameraData.rotationXMin, cameraData.rotationXMax);
+			cameraRotation.z = 0;
 
-			Quaternion rotation;
-			rotation = Quaternion.Euler(cameraRotation);
+			Quaternion rotation = Quaternion.Euler(cameraRotation);
 			cameraData.cameraParent.rotation = rotation;
 
 			return true;
