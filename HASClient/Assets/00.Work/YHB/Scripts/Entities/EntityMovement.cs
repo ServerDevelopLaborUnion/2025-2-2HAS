@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets._00.Work.YHB.Scripts.Entities
 {
-	public class EntityMovement : MonoBehaviour, IEntityResolver
+	public class EntityMovement : EntityComponent, IEntityResolver
 	{
 		[Header("move")]
 		[SerializeField] private float moveSpeed = 5; // 스탯 기반일 필요가 없을 듯
@@ -36,8 +36,10 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 		private int _currentJumpCount;
 		private float _verticalVelocity;
 
-		public void Initialize(EntityComponentRegistry registry)
+		public override void Initialize(EntityComponentRegistry registry)
 		{
+			base.Initialize(registry);
+
 			_rigidComp = registry.ResolveComponent<Rigidbody>();
 			Debug.Assert(_rigidComp != null, $"{typeof(Rigidbody)} can not be found.");
 			_rigidComp.useGravity = false;
@@ -45,6 +47,9 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 
 		private void FixedUpdate()
 		{
+			if (!IsInitialize)
+				return;
+
 			CalculateMovement();
 			ApplyGravity();
 
