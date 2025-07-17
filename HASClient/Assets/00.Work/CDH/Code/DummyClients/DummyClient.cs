@@ -13,8 +13,8 @@ namespace Assets._00.Work.CDH.Code.DummyClients
 
         private Pool myPool;
 
-        public Action<MoveEventHandler> OnMoveEvent;
-        public Action<RotateEventHandler> OnRotationEvent;
+        public Action<Vector2> OnMoveEvent;
+        public Action<Quaternion> OnRotationEvent;
 
         public int Id { get; private set; }
 
@@ -22,17 +22,6 @@ namespace Assets._00.Work.CDH.Code.DummyClients
 
         public GameObject GameObject => gameObject;
 
-        private void Start()
-        {
-            packetChannel.AddListener<MoveEventHandler>(HandleDummyClientMoveEvent);
-            packetChannel.AddListener<RotateEventHandler>(HandleDummyClientRotationEvent);
-        }
-
-        private void OnDestroy()
-        {
-            packetChannel.RemoveListener<MoveEventHandler>(HandleDummyClientMoveEvent);
-            packetChannel.RemoveListener<RotateEventHandler>(HandleDummyClientRotationEvent);
-        }
 
         public void SetUpPool(Pool pool)
         {
@@ -48,26 +37,14 @@ namespace Assets._00.Work.CDH.Code.DummyClients
             Id = id;
         }
 
-        private void HandleDummyClientMoveEvent(MoveEventHandler evt)
+        private void HandleDummyClientMove(Vector2 move)
         {
-            print(evt.index);
-            print(Id);
-
-            if(evt.index != Id)
-                return;
-
-            OnMoveEvent?.Invoke(evt);
+            OnMoveEvent?.Invoke(move);
         }
 
-        private void HandleDummyClientRotationEvent(RotateEventHandler evt)
+        private void HandleDummyClientRotation(Quaternion rotation)
         {
-            print(evt.index);
-            print(Id);
-
-            if (evt.index != Id)
-                return;
-
-            OnRotationEvent?.Invoke(evt);
+            OnRotationEvent?.Invoke(rotation);
         }
     }
 }

@@ -32,17 +32,17 @@ namespace Assets._00.Work.CDH.Code.DummyClients
             dummyClient.OnRotationEvent += RotationHandler;
         }
 
-        private void RotationHandler(RotateEventHandler evt)
+        private void RotationHandler(Quaternion rotation)
         {
-            _rotation = new Quaternion(evt.rotation.x, evt.rotation.y, evt.rotation.z, evt.rotation.w);
+            _rotation = rotation;
             _moveData.moveRotation = _rotation;
-
-            jumpInputBehaviour.Execute<EntityMovementData>(_moveData);
+            
+            moveInputBehaviour.Execute<EntityMovementData>(_moveData);
         }
 
-        private void MoveHandler(MoveEventHandler evt)
+        private void MoveHandler(Vector2 moveDirection)
         {
-            _moveDirection = new Vector2(evt.direction.x, evt.direction.z);
+            _moveDirection = moveDirection;
             _moveData.moveDirection = _moveDirection;
 
             moveInputBehaviour.Execute<EntityMovementData>(_moveData);
