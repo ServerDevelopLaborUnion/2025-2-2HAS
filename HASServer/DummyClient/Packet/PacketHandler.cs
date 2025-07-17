@@ -14,7 +14,15 @@ class PacketHandler
     {
     }
 
+    internal static void S_MoveHandler(PacketSession session, IPacket packet)
+    {
+    }
+
     internal static void S_PacketResponseHandler(PacketSession session, IPacket packet)
+    {
+    }
+
+    internal static void S_RoomEnterFirstHandler(PacketSession session, IPacket packet)
     {
     }
 
@@ -35,6 +43,11 @@ class PacketHandler
         {
             Console.WriteLine($"{item.roomId}: {item.currentCount} / {item.maxCount}");
         }
+    }
+
+    internal static void S_RotateHandler(PacketSession session, IPacket packet)
+    {
+        throw new NotImplementedException();
     }
 
     internal static void S_SyncTimerHandler(PacketSession session, IPacket packet)

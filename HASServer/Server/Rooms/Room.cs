@@ -12,6 +12,8 @@ namespace Server.Rooms
         protected ObjectManager _objectManager = new();
         public ObjectManager ObjectManager => _objectManager;
         protected RoomManager _roomManager;
+        public EventBus Bus { get; private set; }
+
         public Room(RoomManager manager, int roomId, string name)
         {
             _roomManager = manager;

@@ -1,6 +1,9 @@
 ﻿using Server;
+using Server.Events;
 using Server.Objects;
+using Server.Pool;
 using Server.Rooms;
+using Server.Utiles;
 using ServerCore;
 using System;
 
@@ -133,13 +136,32 @@ class PacketHandler
             return;
         if(room.HostIndex == clientSession.SessionId)
         {
-             
         }
     }
 
     internal static void C_MoveHandler(PacketSession session, IPacket packet)
     {
         ClientSession clientSession = session as ClientSession;
-
+        var move = (C_Move)packet;
+        if (clientSession.Room == null)
+            return;
+        var room = clientSession.Room;
+        var player = room.ObjectManager.GetObject<Player>(clientSession.PlayerId);
+        player.position = move.position.ToVector3();
+        player.Speed = move.speed;
+        player.direction = move.direction.ToVector3();
+        InvokePlayerChange(player, room);
+    }
+    private static void InvokePlayerChange(Player player,Room room)
+    {
+        var evt = PoolManager.Instance.Pop<ClientChangeEvent>().Init(player.index, player.ModelIndex, player.position, player.direction, player.rotation, player.Speed);
+        room.Push(() =>
+        {
+            room.Bus.InvokeEvent(evt);
+            PoolManager.Instance.Push(evt);
+        });
+    }
+    internal static void C_RotateHandler(PacketSession session, IPacket packet)
+    {
     }
 }

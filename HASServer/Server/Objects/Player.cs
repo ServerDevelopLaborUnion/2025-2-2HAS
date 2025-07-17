@@ -15,9 +15,10 @@ namespace Server.Objects
 
         public int Health { get; set; }
         public int ModelIndex { get; set; }
-        public int Speed { get; set; }
+        public float Speed { get; set; }
 
         public bool IsDead => Health <= 0;
+        public Vector3 direction;
 
         public override IDataPacket CreatePacket()
         {

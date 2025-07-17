@@ -21,10 +21,11 @@ public enum PacketID
 	C_Chat = 13,
 	C_Move = 14,
 	C_Rotate = 15,
-	S_Rotate = 16,
-	S_Move = 17,
-	S_SyncTimer = 18,
-	S_UpdateRoomState = 19,
+	C_ChangeModel = 16,
+	S_Rotate = 17,
+	S_Move = 18,
+	S_SyncTimer = 19,
+	S_UpdateRoomState = 20,
 	
 }
 
@@ -130,37 +131,6 @@ public struct PlayerNamePacket : IDataPacket
 		ushort count = (ushort)offset;
 		count += PacketUtility.AppendStringData(this.nickName, segment, count);
 		count += PacketUtility.AppendIntData(this.index, segment, count);
-		return (ushort)(count - offset);
-	}
-}
-
-public struct PlayerInfoPacket : IDataPacket
-{
-	public VectorPacket position;
-	public VectorPacket direction;
-	public float speed;
-	public int index;
-	public int modelIndex;
-
-	public ushort Deserialize(ArraySegment<byte> segment, int offset)
-	{
-		ushort count = (ushort)offset;
-		count += PacketUtility.ReadDataPacketData(segment, count, out position);
-		count += PacketUtility.ReadDataPacketData(segment, count, out direction);
-		count += PacketUtility.ReadFloatData(segment, count, out speed);
-		count += PacketUtility.ReadIntData(segment, count, out index);
-		count += PacketUtility.ReadIntData(segment, count, out modelIndex);
-		return (ushort)(count - offset);
-	}
-
-	public ushort Serialize(ArraySegment<byte> segment, int offset)
-	{
-		ushort count = (ushort)offset;
-		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.direction, segment, count);
-		count += PacketUtility.AppendFloatData(this.speed, segment, count);
-		count += PacketUtility.AppendIntData(this.index, segment, count);
-		count += PacketUtility.AppendIntData(this.modelIndex, segment, count);
 		return (ushort)(count - offset);
 	}
 }
@@ -595,6 +565,34 @@ public struct C_Rotate : IPacket
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
 		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct C_ChangeModel : IPacket
+{
+	public int modelIndex;
+
+	public ushort Protocol { get { return (ushort)PacketID.C_ChangeModel; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		count += PacketUtility.ReadIntData(segment, count, out modelIndex);
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		count += PacketUtility.AppendIntData(this.modelIndex, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}
