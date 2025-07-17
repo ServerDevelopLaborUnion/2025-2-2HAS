@@ -12,16 +12,18 @@ namespace Assets._00.Work.CDH.Code.DummyClients
 
         private List<DummyClient> dummyClients;
 
-        public Action<DummyClientRotationEventHandler> OnRotationEvent;
-        public Action<DummyClientMoveEventHandler> OnMoveEvent;
-
         private void Awake()
         {
-            
+            dummyClients = new List<DummyClient>();
         }
 
         private void Start()
         {
+            for(int i = 0; i < 4; ++i)
+            {
+                DummyClient newDummyClient = Instantiate(dummyClientPrefab, transform);
+                dummyClients.Add(newDummyClient);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace _00.Work.CDH.Code
     public class PacketEvents
     {
         public static readonly ChatRecvEventHandler ChatEvent = new();
-        public static readonly DummyClientMoveEventHandler dummyClientMoveEvent = new();
-        public static readonly DummyClientRotationEventHandler dummyClientRotationEvent = new();
+        public static readonly MoveEventHandler MoveEvent = new();
+        public static readonly RotateEventHandler RotateEventHandler = new();
     }
 }

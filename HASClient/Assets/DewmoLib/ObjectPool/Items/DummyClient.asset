@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolingName: DummyClient
   prefab: {fileID: 8730402522099526769, guid: 1b94fb5a7abaf024da466fa12a5a952d, type: 3}
-  initCount: 15
+  initCount: 4

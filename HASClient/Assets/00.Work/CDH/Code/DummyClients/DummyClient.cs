@@ -10,24 +10,36 @@ namespace Assets._00.Work.CDH.Code.DummyClients
     {
         [SerializeField] private EventChannelSO packetChannel;
 
-        public Action<DummyClientMoveEventHandler> OnMoveEvent;
-        public Action<DummyClientRotationEventHandler> OnRotationEvent;
+        public Action<MoveEventHandler> OnMoveEvent;
+        public Action<RotateEventHandler> OnRotationEvent;
 
         public int Id { get; set; }
 
         private void Start()
         {
-            packetChannel.AddListener<DummyClientMoveEventHandler>(HandleDummyClientMoveEvent);
-            packetChannel.AddListener<DummyClientRotationEventHandler>(HandleDummyClientRotationEvent);
+            packetChannel.AddListener<MoveEventHandler>(HandleDummyClientMoveEvent);
+            packetChannel.AddListener<RotateEventHandler>(HandleDummyClientRotationEvent);
         }
 
-        private void HandleDummyClientMoveEvent(DummyClientMoveEventHandler evt)
+        private void OnDestroy()
         {
+            packetChannel.RemoveListener<MoveEventHandler>(HandleDummyClientMoveEvent);
+            packetChannel.RemoveListener<RotateEventHandler>(HandleDummyClientRotationEvent);
+        }
+
+        private void HandleDummyClientMoveEvent(MoveEventHandler evt)
+        {
+            if(evt.index != Id)
+                return;
+
             OnMoveEvent?.Invoke(evt);
         }
 
-        private void HandleDummyClientRotationEvent(DummyClientRotationEventHandler evt)
+        private void HandleDummyClientRotationEvent(RotateEventHandler evt)
         {
+            if (evt.index != Id)
+                return;
+
             OnRotationEvent?.Invoke(evt);
         }
 
