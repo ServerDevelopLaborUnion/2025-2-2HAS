@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace Server.Rooms
@@ -29,12 +30,13 @@ namespace Server.Rooms
         {
             return _rooms.GetValueOrDefault(roomId);
         }
-        public int GenerateRoom(C_CreateRoom packet,int hostIndex)
+        public int GenerateRoom(C_CreateRoom packet, int hostIndex)
         {
+
             int id = Interlocked.Increment(ref _roomIdGenerator);
             Console.WriteLine($"Generate Room: {id}");
             GameRoom room = new(Instance, id, packet.roomName);
-            room.Push(() => room.SetUpRoom(packet,hostIndex));
+            room.Push(() => room.SetUpRoom(packet, hostIndex));
             _rooms.TryAdd(id, room);
             return id;
         }

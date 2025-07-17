@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System;
+using Server.Pool;
 
 namespace Server.Utiles
 {
-    public abstract class GameEvent
-    { }
+    public abstract class GameEvent : IPoolable
+    {
+        public abstract void ResetItem();
+    }
     public class EventBus
     {
         private Dictionary<Type, Action<GameEvent>> _events = new Dictionary<Type, Action<GameEvent>>();

@@ -37,6 +37,8 @@ class PacketManager
 		_handler.Add((ushort)PacketID.C_Move, PacketHandler.C_MoveHandler);
 		_onRecv.Add((ushort)PacketID.C_Rotate, MakePacket<C_Rotate>);
 		_handler.Add((ushort)PacketID.C_Rotate, PacketHandler.C_RotateHandler);
+		_onRecv.Add((ushort)PacketID.C_ChangeModel, MakePacket<C_ChangeModel>);
+		_handler.Add((ushort)PacketID.C_ChangeModel, PacketHandler.C_ChangeModelHandler);
 
 	}
 

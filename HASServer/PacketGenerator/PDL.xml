@@ -28,13 +28,6 @@
 		<int name="index"/>
 	</dataPacket>
 	
-	<dataPacket name="PlayerInfoPacket">
-		<VectorPacket name="position"/>
-		<VectorPacket name="direction"/>
-		<float name="speed"/>
-		<int name="index"/>
-		<int name="modelIndex"/>
-	</dataPacket>
 	<!--Packets-->
 	<packet name="C_RoomEnter">
 		<int name ="roomId"/>
@@ -46,7 +39,7 @@
 	</packet>
 	
 	<packet name="S_RoomEnter">
-		<PlayerInfoPacket name="newPlayer"/>
+		<!--<PlayerInfoPacket name="newPlayer"/>-->
 	</packet>
 	<packet name="S_RoomEnterFirst">
 		<!--나중에 추가-->
@@ -90,10 +83,13 @@
 	<packet name="C_Move">
 		<VectorPacket name="position"/>
 		<VectorPacket name="direction"/>
-		<float name="velocity"/>
+		<float name="speed"/>
 	</packet>
 	<packet name="C_Rotate">
 		<QuaternionPacket name="rotation"/>
+	</packet>
+	<packet name="C_ChangeModel">
+		<int name="modelIndex"/>
 	</packet>
 	<packet name="S_Rotate">
 		<int name="index"/>
@@ -101,9 +97,13 @@
 	</packet>
 	<packet name="S_Move">
 		<int name="index"/>
-		<float name="velocity"/>
+		<float name="speed"/>
 		<VectorPacket name="position"/>
 		<VectorPacket name="direction"/>
+	</packet>
+	<packet namme="S_ModelChange">
+		<int name ="index"/>
+		<int name="modelIndex"/>
 	</packet>
 	<packet name="S_SyncTimer">
 		<float name="time"/>
