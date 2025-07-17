@@ -19,7 +19,8 @@ namespace AKH.Network
             RegisterHandler<S_RoomList>((ushort)PacketID.S_RoomList, _packetHandler.S_RoomListHandler);
             RegisterHandler<S_RoomEnter>((ushort)PacketID.S_RoomEnter, _packetHandler.S_RoomEnterHandler);
             RegisterHandler<S_PacketResponse>((ushort)PacketID.S_PacketResponse, _packetHandler.S_PacketResponseHandler);
-            RegisterHandler<S_Move>((ushort)PacketID.S_PacketResponse, _packetHandler.S_DummyClientHandler);
+            RegisterHandler<S_Move>((ushort)PacketID.S_Move, _packetHandler.S_MoveHandler);
+            RegisterHandler<S_Rotate>((ushort)PacketID.S_Rotate, _packetHandler.S_RotateHandler);
             RegisterHandler<S_RoomEnterFirst>((ushort)PacketID.S_RoomEnterFirst, _packetHandler.S_RoomEnterFirstHandler);
         }
     }
