@@ -24,22 +24,22 @@ public partial class PacketHandler
     {
         S_Move move = (S_Move)packet;
 
-        DummyClientMoveEventHandler dummyClientMoveEventHandler = PacketEvents.dummyClientMoveEvent;
-        dummyClientMoveEventHandler.index = move.index;
-        dummyClientMoveEventHandler.velocity = move.velocity;
-        dummyClientMoveEventHandler.position = move.position;
-        dummyClientMoveEventHandler.direction = move.direction;
+        MoveEventHandler MoveEventHandler = PacketEvents.MoveEvent;
+        MoveEventHandler.index = move.index;
+        MoveEventHandler.velocity = move.velocity;
+        MoveEventHandler.position = move.position;
+        MoveEventHandler.direction = move.direction;
 
-        _packetChannel.InvokeEvent(dummyClientMoveEventHandler);
+        _packetChannel.InvokeEvent(MoveEventHandler);
     }
     public void S_RotateHandler(PacketSession session, IPacket packet)
     {
         S_Rotate move = (S_Rotate)packet;
 
-        DummyClientRotationEventHandler dummyClientRotationEventHandler = PacketEvents.dummyClientRotationEvent;
-        dummyClientRotationEventHandler.index = move.index;
-        dummyClientRotationEventHandler.rotation = move.rotation;
+        RotateEventHandler RotateEventHandler = PacketEvents.RotateEventHandler;
+        RotateEventHandler.index = move.index;
+        RotateEventHandler.rotation = move.rotation;
 
-        _packetChannel.InvokeEvent(dummyClientRotationEventHandler);
+        _packetChannel.InvokeEvent(RotateEventHandler);
     }
 }
