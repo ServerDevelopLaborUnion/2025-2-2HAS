@@ -14,6 +14,7 @@ namespace Assets._00.Work.CDH.Code.DummyClients
         [SerializeField] private ScriptableBehaviourSO jumpInputBehaviour;
 
         [Header("Value")]
+        [SerializeField] private DummyClient dummyClient;
         [SerializeField] private EntityMovement entityMovement;
 
         private EntityMovementData _moveData;
@@ -26,6 +27,9 @@ namespace Assets._00.Work.CDH.Code.DummyClients
             _moveData.entityMovement = entityMovement;
             _moveData.moveRotation = Quaternion.identity;
             _moveData.moveDirection = Vector2.zero;
+
+            dummyClient.OnMoveEvent += MoveHandler;
+            dummyClient.OnRotationEvent += RotationHandler;
         }
 
         private void RotationHandler(DummyClientRotationEventHandler evt)

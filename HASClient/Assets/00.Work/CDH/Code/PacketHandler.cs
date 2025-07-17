@@ -20,7 +20,7 @@ public partial class PacketHandler
         _packetChannel.InvokeEvent(chatEventHandler);
     }
 
-    public void S_DummyClientMoveHandler(PacketSession session, IPacket packet)
+    public void S_MoveHandler(PacketSession session, IPacket packet)
     {
         S_Move move = (S_Move)packet;
 
@@ -32,7 +32,7 @@ public partial class PacketHandler
 
         _packetChannel.InvokeEvent(dummyClientMoveEventHandler);
     }
-    public void S_DummyClientRotateHandler(PacketSession session, IPacket packet)
+    public void S_RotateHandler(PacketSession session, IPacket packet)
     {
         S_Rotate move = (S_Rotate)packet;
 

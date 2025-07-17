@@ -1,4 +1,5 @@
 ﻿using DewmoLib.Utiles;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,22 +12,15 @@ namespace Assets._00.Work.CDH.Code.DummyClients
 
         private List<DummyClient> dummyClients;
 
+        public Action<DummyClientRotationEventHandler> OnRotationEvent;
+        public Action<DummyClientMoveEventHandler> OnMoveEvent;
+
         private void Awake()
         {
             
         }
 
         private void Start()
-        {
-            packetChannel.AddListener<DummyClientMoveEventHandler>(DummyClientMoveEventHandler);
-            packetChannel.AddListener<DummyClientRotationEventHandler>(DummyClientRotationEventHandler);
-        }
-
-        private void DummyClientRotationEventHandler(DummyClientRotationEventHandler handler)
-        {
-        }
-
-        private void DummyClientMoveEventHandler(DummyClientMoveEventHandler handler)
         {
         }
     }
