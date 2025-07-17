@@ -3,45 +3,48 @@ using Assets._00.Work.YHB.Scripts.Entities;
 using System.Diagnostics.Tracing;
 using DewmoLib.Utiles;
 using System;
+using DewmoLib.ObjectPool.RunTime;
 
 namespace Assets._00.Work.CDH.Code.DummyClients
 {
-    public class DummyClient : Entity
+    public class DummyClient : Entity, IPoolable
     {
         [SerializeField] private EventChannelSO packetChannel;
 
-        public Action<MoveEventHandler> OnMoveEvent;
-        public Action<RotateEventHandler> OnRotationEvent;
+        private Pool myPool;
 
-        public int Id { get; set; }
+        public Action<Vector2> OnMoveEvent;
+        public Action<Quaternion> OnRotationEvent;
 
-        private void Start()
+        public int Id { get; private set; }
+
+        [field : SerializeField] public PoolItemSO PoolItem { get; private set; }
+
+        public GameObject GameObject => gameObject;
+
+
+        public void SetUpPool(Pool pool)
         {
-            packetChannel.AddListener<MoveEventHandler>(HandleDummyClientMoveEvent);
-            packetChannel.AddListener<RotateEventHandler>(HandleDummyClientRotationEvent);
+            myPool = pool;
         }
 
-        private void OnDestroy()
+        public void ResetItem()
         {
-            packetChannel.RemoveListener<MoveEventHandler>(HandleDummyClientMoveEvent);
-            packetChannel.RemoveListener<RotateEventHandler>(HandleDummyClientRotationEvent);
         }
 
-        private void HandleDummyClientMoveEvent(MoveEventHandler evt)
+        public void Initialize(int id)
         {
-            if(evt.index != Id)
-                return;
-
-            OnMoveEvent?.Invoke(evt);
+            Id = id;
         }
 
-        private void HandleDummyClientRotationEvent(RotateEventHandler evt)
+        private void HandleDummyClientMove(Vector2 move)
         {
-            if (evt.index != Id)
-                return;
-
-            OnRotationEvent?.Invoke(evt);
+            OnMoveEvent?.Invoke(move);
         }
 
+        private void HandleDummyClientRotation(Quaternion rotation)
+        {
+            OnRotationEvent?.Invoke(rotation);
+        }
     }
 }
