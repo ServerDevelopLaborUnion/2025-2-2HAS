@@ -140,6 +140,11 @@ class PacketHandler
     internal static void C_MoveHandler(PacketSession session, IPacket packet)
     {
         ClientSession clientSession = session as ClientSession;
+        if (clientSession.Room == null)
+            return;
+    }
 
+    internal static void C_RotateHandler(PacketSession session, IPacket packet)
+    {
     }
 }
