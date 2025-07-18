@@ -31,7 +31,7 @@ namespace KHG.UIs
 
         private void IsEnterSuccess(bool value)
         {
-            connectPanelController.Close();
+            //connectPanelController.Close();
 
             SceneLoadController.LoadScene("SampleScene");
         }
