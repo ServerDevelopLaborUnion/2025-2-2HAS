@@ -653,6 +653,7 @@ MonoBehaviour:
   roomNameTmp: {fileID: 8472532437970412260}
   roomCountTmp: {fileID: 8650071267388790768}
   roomOwnerTmp: {fileID: 4708506249262198838}
+  uiChannel: {fileID: 11400000, guid: 3747d73bf1252bc479ddeae803613f3e, type: 2}
   connectButton: {fileID: 2931866181257830242}
 --- !u!95 &8633800746633597988
 Animator:
