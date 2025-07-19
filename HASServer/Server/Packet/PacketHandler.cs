@@ -144,25 +144,15 @@ class PacketHandler
         ClientSession clientSession = session as ClientSession;
         if (clientSession.Room == null)
             return;
-
         var move = (C_Move)packet;
-        if (clientSession.Room == null)
-            return;
         var room = clientSession.Room;
-        var player = room.ObjectManager.GetObject<Player>(clientSession.PlayerId);
-        player.position = move.position.ToVector3();
-        player.Speed = move.speed;
-        player.direction = move.direction.ToVector3();
-        InvokePlayerChange(player, room);
-    }
-    private static void InvokePlayerChange(Player player,Room room)
-    {
-        var evt = PoolManager.Instance.Pop<ClientChangeEvent>().Init(player.index, player.ModelIndex, player.position, player.direction, player.rotation, player.Speed);
-        room.Push(() =>
-        {
-            room.Bus.InvokeEvent(evt);
-            PoolManager.Instance.Push(evt);
-        });
+
+        var evt = PoolManager.Instance.Pop<ClientMoveEvent>();
+        evt.index = clientSession.PlayerId;
+        evt.direction = move.direction.ToVector3();
+        evt.position = move.position.ToVector3();
+        evt.speed = move.speed;
+        clientSession.Room.Bus.InvokeEvent(evt);
     }
     internal static void C_RotateHandler(PacketSession session, IPacket packet)
     {
@@ -170,6 +160,5 @@ class PacketHandler
 
     internal static void C_ChangeModelHandler(PacketSession session, IPacket packet)
     {
-        throw new NotImplementedException();
     }
 }

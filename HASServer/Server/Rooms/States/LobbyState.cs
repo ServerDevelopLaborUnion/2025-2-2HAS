@@ -13,10 +13,10 @@ namespace Server.Rooms.States
         public override void Enter()
         {
             base.Enter();
-            _room.Bus.AddListener<ClientChangeEvent>(HandleChange);
+            _room.Bus.AddListener<ClientMoveEvent>(HandleChange);
         }
 
-        private void HandleChange(ClientChangeEvent @event)
+        private void HandleChange(ClientMoveEvent @event)
         {
             var player = _room.ObjectManager.GetObject<Player>(@event.index);
             player.position = @event.position;
