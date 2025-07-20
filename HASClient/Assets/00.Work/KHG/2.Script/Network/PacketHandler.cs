@@ -17,8 +17,4 @@ public partial class PacketHandler
     {
 
     }
-    public void S_RoomEnterFirstHandler(PacketSession session, IPacket packet) //나만 확인용
-    {
-        //_packetChannel.InvokeEvent
-    }
 }

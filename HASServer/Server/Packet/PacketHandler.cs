@@ -41,12 +41,6 @@ class PacketHandler
         {
             if (room.CanAddPlayer)
             {
-                Player newPlayer = new Player(room.ObjectManager)
-                {
-                    Health = 100,
-                    Name = clientSession.Name,
-                };
-                clientSession.PlayerId = newPlayer.index;
                 room.Enter(clientSession);
                 room.FirstEnter(clientSession);
                 room.Broadcast(new S_RoomEnter() /*{ newPlayer = new()}*/);

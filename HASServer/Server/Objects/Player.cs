@@ -22,7 +22,15 @@ namespace Server.Objects
 
         public override IDataPacket CreatePacket()
         {
-            return default;
+            PlayerInitPacket packet = new()
+            {
+                index = index,
+                modelIndex = ModelIndex,
+                name = Name,
+                position = position.ToPacket(),
+                rotation = rotation.ToPacket()
+            };
+            return packet;
         }
 
         public void Hit()

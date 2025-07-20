@@ -27,6 +27,14 @@
 		<string name ="nickName"/>
 		<int name="index"/>
 	</dataPacket>
+
+	<dataPacket name="PlayerInitPacket">
+		<int name="index"/>
+		<int name="modelIndex"/>
+		<string name="name"/>
+		<VectorPacket name ="position"/>
+		<QuaternionPacket name ="rotation"/>
+	</dataPacket>
 	
 	<!--Packets-->
 	<packet name="C_RoomEnter">
@@ -43,6 +51,10 @@
 	</packet>
 	<packet name="S_RoomEnterFirst">
 		<!--나중에 추가-->
+		<int name="myIndex"/>
+		<list name="inits">
+			<PlayerInitPacket name="att"/>
+		</list>
 	</packet>
 	
 	<packet name="C_RoomExit">

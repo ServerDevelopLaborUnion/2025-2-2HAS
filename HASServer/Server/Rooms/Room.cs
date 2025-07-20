@@ -71,6 +71,12 @@ namespace Server.Rooms
         }
         public virtual void Enter(ClientSession session)
         {
+            Player newPlayer = new Player(ObjectManager)
+            {
+                Health = 100,
+                Name = session.Name,
+            };
+            session.PlayerId = newPlayer.index;
             _sessions.Add(session.SessionId, session);
             session.Room = this;
         }

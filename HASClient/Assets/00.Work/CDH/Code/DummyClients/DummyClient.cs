@@ -37,12 +37,12 @@ namespace Assets._00.Work.CDH.Code.DummyClients
             Id = id;
         }
 
-        private void HandleDummyClientMove(Vector2 move)
+        public void HandleDummyClientMove(Vector2 move)
         {
             OnMoveEvent?.Invoke(move);
         }
 
-        private void HandleDummyClientRotation(Quaternion rotation)
+        public void HandleDummyClientRotation(Quaternion rotation)
         {
             OnRotationEvent?.Invoke(rotation);
         }

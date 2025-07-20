@@ -135,6 +135,37 @@ public struct PlayerNamePacket : IDataPacket
 	}
 }
 
+public struct PlayerInitPacket : IDataPacket
+{
+	public int index;
+	public int modelIndex;
+	public string name;
+	public VectorPacket position;
+	public QuaternionPacket rotation;
+
+	public ushort Deserialize(ArraySegment<byte> segment, int offset)
+	{
+		ushort count = (ushort)offset;
+		count += PacketUtility.ReadIntData(segment, count, out index);
+		count += PacketUtility.ReadIntData(segment, count, out modelIndex);
+		count += PacketUtility.ReadStringData(segment, count, out name);
+		count += PacketUtility.ReadDataPacketData(segment, count, out position);
+		count += PacketUtility.ReadDataPacketData(segment, count, out rotation);
+		return (ushort)(count - offset);
+	}
+
+	public ushort Serialize(ArraySegment<byte> segment, int offset)
+	{
+		ushort count = (ushort)offset;
+		count += PacketUtility.AppendIntData(this.index, segment, count);
+		count += PacketUtility.AppendIntData(this.modelIndex, segment, count);
+		count += PacketUtility.AppendStringData(this.name, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
+		return (ushort)(count - offset);
+	}
+}
+
 public struct C_RoomEnter : IPacket
 {
 	public int roomId;
@@ -249,7 +280,8 @@ public struct S_RoomEnter : IPacket
 
 public struct S_RoomEnterFirst : IPacket
 {
-	
+	public int myIndex;
+	public List<PlayerInitPacket> inits;
 
 	public ushort Protocol { get { return (ushort)PacketID.S_RoomEnterFirst; } }
 
@@ -259,7 +291,8 @@ public struct S_RoomEnterFirst : IPacket
 
 		count += sizeof(ushort);
 		count += sizeof(ushort);
-		
+		count += PacketUtility.ReadIntData(segment, count, out myIndex);
+		count += PacketUtility.ReadListData(segment, count, out inits);
 	}
 
 	public ArraySegment<byte> Serialize()
@@ -269,7 +302,8 @@ public struct S_RoomEnterFirst : IPacket
 
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
-		
+		count += PacketUtility.AppendIntData(this.myIndex, segment, count);
+		count += PacketUtility.AppendListData(this.inits, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}

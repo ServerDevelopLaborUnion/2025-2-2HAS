@@ -29,6 +29,10 @@ namespace Server.Rooms
         public void FirstEnter(ClientSession clientSession)
         {
             S_RoomEnterFirst first = new();
+            first.myIndex = clientSession.PlayerId;
+            first.inits = new();
+            foreach(var item in ObjectManager.GetObjects<Player>())
+                first.inits.Add((PlayerInitPacket)item.CreatePacket());
             clientSession.Send(first.Serialize());
         }
         public void ChangeState(RoomState newState) => _stateMachine.ChangeState(newState);
