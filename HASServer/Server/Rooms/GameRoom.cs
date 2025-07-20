@@ -14,6 +14,7 @@ namespace Server.Rooms
         {
             Console.WriteLine($"ID:{Thread.CurrentThread.ManagedThreadId}");
             _stateMachine = new(this);
+            ChangeState(RoomState.Lobby);
         }
 
         public override void ObjectDead(ObjectBase obj)
@@ -22,6 +23,7 @@ namespace Server.Rooms
 
         public override void UpdateRoom()
         {
+            _stateMachine.UpdateRoom();
         }
 
         public void FirstEnter(ClientSession clientSession)
@@ -29,5 +31,6 @@ namespace Server.Rooms
             S_RoomEnterFirst first = new();
             clientSession.Send(first.Serialize());
         }
+        public void ChangeState(RoomState newState) => _stateMachine.ChangeState(newState);
     }
 }

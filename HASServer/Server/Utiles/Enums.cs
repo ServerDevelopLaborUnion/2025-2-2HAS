@@ -5,12 +5,16 @@
         None,
         Player
     }
+    public enum Role
+    {
+        None,
+        Hider,
+        Seeker,
+        Observer
+    }
     public enum RoomState
     {
         Lobby,
-        Prepare,
-        InGame,
-        Between,
-        GameEnd
+        Ready,
     }
 }

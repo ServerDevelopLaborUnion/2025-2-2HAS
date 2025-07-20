@@ -40,4 +40,10 @@ namespace Server.Events
             rotation = default;
         }
     }
+    public class GameStartEvent : GameEvent
+    {
+        public override void ResetItem()
+        {
+        }
+    }
 }

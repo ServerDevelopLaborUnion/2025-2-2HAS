@@ -20,6 +20,7 @@ namespace Server.Rooms
             _roomManager = manager;
             RoomId = roomId;
             RoomName = name;
+            Bus = new();
         }
         protected Dictionary<int, ClientSession> _sessions = new Dictionary<int, ClientSession>();
         private JobQueue _jobQueue = new JobQueue();
@@ -41,16 +42,17 @@ namespace Server.Rooms
             try
             {
                 // N ^ 2
-                if (_pendingList.Count == 0)
-                    return;
                 //Console.WriteLine($"SessionCount : {_sessions.Values.Count}");
+                var list = _pendingList.ToList();
+                _pendingList.Clear();
+                if (list.Count == 0)
+                    return;
                 foreach (ClientSession s in _sessions.Values)
                 {
                     n++;
-                    s.Send(_pendingList.ToList());
+                    s.Send(list);
                 }
                 //Console.WriteLine("Clear");
-                _pendingList.Clear();
             }
             catch (Exception ex)
             {

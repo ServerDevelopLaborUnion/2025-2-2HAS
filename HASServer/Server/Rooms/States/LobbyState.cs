@@ -13,14 +13,27 @@ namespace Server.Rooms.States
         public override void Enter()
         {
             base.Enter();
-            _room.Bus.AddListener<ClientMoveEvent>(HandleChange);
+            _room.Bus.AddListener<ClientMoveEvent>(HandleMove);
         }
-
-        private void HandleChange(ClientMoveEvent @event)
+        public override void Exit()
+        {
+            base.Exit();
+            _room.Bus.RemoveListener<ClientMoveEvent>(HandleMove);
+        }
+        private void HandleMove(ClientMoveEvent @event)
         {
             var player = _room.ObjectManager.GetObject<Player>(@event.index);
             player.position = @event.position;
-            //_room.Broadcast();
+            player.direction = @event.direction;
+            player.Speed = @event.speed;
+            S_Move move = new()
+            {
+                direction = player.direction.ToPacket(),
+                index = player.index,
+                position = player.position.ToPacket(),
+                speed = player.Speed
+            };
+            _room.Broadcast(move);
         }
     }
 }
