@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 3063657221335470953}
   - component: {fileID: 5134188343450515515}
   - component: {fileID: 3259784588808246170}
+  - component: {fileID: 5091587093911390295}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -208,6 +209,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b340137a263eb948a6fcecf93146d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5091587093911390295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575457676974799655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 895a7127a8a03c248922e160245dad1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4132309435179601657
@@ -321,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputSO: {fileID: 11400000, guid: c728ad4e80966354f819bea601b00614, type: 2}
-  cameraRotateInputBehaviour: {fileID: 11400000, guid: 1f3c303f408d3854cb9b99a13df7365b, type: 2}
+  cameraRotateInputBehaviour: {fileID: 11400000, guid: af9fe7b5c4396a74babbb559e9ef4105, type: 2}
   entityMovementComp: {fileID: 7840351875046562090}
   cameraParent: {fileID: 0}
   rotationSensitivity: 1

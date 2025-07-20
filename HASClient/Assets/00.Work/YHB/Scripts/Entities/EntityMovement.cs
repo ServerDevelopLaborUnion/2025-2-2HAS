@@ -1,14 +1,21 @@
 ﻿using Assets._00.Work.YHB.Scripts.Entities.GroundCheckers;
+using Assets._00.Work.YHB.Scripts.Events;
+using DewmoLib.Utiles;
 using UnityEngine;
 
 namespace Assets._00.Work.YHB.Scripts.Entities
 {
 	public class EntityMovement : EntityComponent, IEntityResolver
 	{
+		[Header("event")]
+		[SerializeField] private EventChannelSO gameEventChannel;
+
 		[Header("move")]
+		[SerializeField] private float minMoveSpeed = 0;
+		[SerializeField] private float maxMoveSpeed = 100;
 		[SerializeField] private float moveSpeed = 5; // 스탯 기반일 필요가 없을 듯
 
-		[Header("jump")]
+		[Header("ground")]
 		[SerializeField] private GroundChecker groundChecker;
 		[SerializeField] private float gravityScale = -9.8f;
 
@@ -17,6 +24,20 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 		[SerializeField] private int maxJumpCount = 2;
 
 		private Rigidbody _rigidComp;
+
+		public float MoveSpeed
+		{
+			get => moveSpeed;
+			set
+			{
+				float previous = moveSpeed;
+
+				moveSpeed = Mathf.Clamp(value, minMoveSpeed, maxMoveSpeed);
+
+                if (!Mathf.Approximately(previous, moveSpeed)) // 값차이 발생시
+                gameEventChannel.InvokeEvent(GameObjectChangeEvents.MoveSpeedChangeEvent.Initialize(this, previous, moveSpeed));
+			}
+		}
 
 		public bool CanMovement { get; set; } = true;
 		private bool _canRotation = true;
