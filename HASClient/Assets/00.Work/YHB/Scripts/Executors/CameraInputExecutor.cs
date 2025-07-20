@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 
 namespace Assets._00.Work.YHB.Scripts.Executors
 {
-	public class CameraInputExecutor : MonoBehaviour
+	public class CameraInputExecutor : Executor
 	{
 		[Header("Value")]
 		[SerializeField] private InputSO inputSO;
@@ -22,8 +22,10 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 
 		private CameraValueChangeData cameraData;
 
-		private void Awake()
+		public override void Initialize()
 		{
+			base.Initialize();
+
 			inputSO.OnLookChangedEvent += HandleLookChangedEvent;
 
 			cameraData = new CameraValueChangeData();

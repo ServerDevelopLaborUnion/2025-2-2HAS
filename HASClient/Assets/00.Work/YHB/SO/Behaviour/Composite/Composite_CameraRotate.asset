@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 089297894706c754289ba13017807c58, type: 3}
-  m_Name: MoveComposite
+  m_Script: {fileID: 11500000, guid: 8fb574756c0df4741bc792ba5ee9433b, type: 3}
+  m_Name: Composite_CameraRotate
   m_EditorClassIdentifier: 
   executeBeforeBehaviourList:
-  - {fileID: 11400000, guid: 1abbd1c86504a784fa7b9ca734f614f6, type: 2}
-  - {fileID: 11400000, guid: 8580450126a8c324ab0e8d6abc6cbff3, type: 2}
-  nextBehaviourList: []
+  - {fileID: 11400000, guid: b43a966f2aaa9464ebee178f7f1b0958, type: 2}
+  nextBehaviourList:
+  - {fileID: 11400000, guid: 1f3c303f408d3854cb9b99a13df7365b, type: 2}
