@@ -1,4 +1,6 @@
 using AKH.Network;
+using DewmoLib.Utiles;
+using KHG.Events;
 using System;
 using TMPro;
 using UnityEngine;
@@ -9,6 +11,7 @@ public class RoomBar : MonoBehaviour
     [SerializeField] private TextMeshProUGUI roomNameTmp;
     [SerializeField] private TextMeshProUGUI roomCountTmp;
     [SerializeField] private TextMeshProUGUI roomOwnerTmp;
+    [SerializeField] private EventChannelSO uiChannel;
 
     [SerializeField] private Button connectButton;
 
@@ -40,8 +43,15 @@ public class RoomBar : MonoBehaviour
     {
         if (_roomId == 0) return;
 
+        Connect();
+    }
+
+    private void Connect()
+    {
         C_RoomEnter c_RoomEnter = new C_RoomEnter() { roomId = _roomId };
 
         NetworkManager.Instance.SendPacket(c_RoomEnter);
+
+        uiChannel.InvokeEvent(UserInterfaceEvents.ServerConnectEvent);
     }
 }
