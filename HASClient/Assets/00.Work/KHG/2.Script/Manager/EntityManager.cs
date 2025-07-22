@@ -19,24 +19,26 @@ namespace KHG.Managers
         {
             GameObject obj = Instantiate(_prefabs[type], position, quat);
             _objects.Add(index, obj);
-            compo = obj.GetComponent<T>();
+            compo = obj.GetComponentInChildren<T>();
             return compo.gameObject;
         }
         public T CreateObject<T>(int index, GameObject prefab, Vector3 position, Quaternion quat)
         {
             GameObject obj = Instantiate(prefab, position, quat);
             _objects.Add(index, obj);
-            return obj.GetComponent<T>();
+            return obj.GetComponentInChildren<T>();
         }
         public T CreateObject<T>(int index, ObjectType type)
         {
             GameObject obj = Instantiate(_prefabs[type]);
             _objects.Add(index, obj);
-            return obj.GetComponent<T>();
+            return obj.GetComponentInChildren<T>();
         }
         public T GetObject<T>(int index)
         {
             GameObject obj = _objects.GetValueOrDefault(index);
+            if (obj == default)
+                return default;
             return obj.GetComponent<T>();
         }
         public T GetObjectOrCreate<T>(int index, ObjectType type)
@@ -62,6 +64,7 @@ namespace KHG.Managers
 
     public enum ObjectType
     {
-
+        Player = 1,
+        OtherPlayer = 999,
     }
 }

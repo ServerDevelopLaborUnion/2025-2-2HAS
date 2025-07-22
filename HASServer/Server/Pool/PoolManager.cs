@@ -7,7 +7,7 @@ namespace Server.Pool
 {
     internal class PoolManager : Singleton<PoolManager>
     {
-        private ConcurrentDictionary<Type, IObjectPool> _pools;
+        private ConcurrentDictionary<Type, IObjectPool> _pools = new();
         
         public T Pop<T>() where T : IPoolable,new()
         {

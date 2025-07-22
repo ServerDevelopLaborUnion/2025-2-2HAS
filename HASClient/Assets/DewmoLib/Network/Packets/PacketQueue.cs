@@ -29,7 +29,6 @@ namespace DewmoLib.Network.Packets
             {
                 if (_packets.TryDequeue(out var packet))
                 {
-                    Debug.Log(packet.Protocol);
                     packetManager.HandlePacket(session, packet);
                 }
                 else

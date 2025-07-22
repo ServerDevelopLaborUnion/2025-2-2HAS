@@ -13,8 +13,7 @@ namespace Server.Events
 
     internal class Pool<T> : IObjectPool where T : IPoolable, new()
     {
-        private ConcurrentQueue<T> _pool;
-
+        private ConcurrentQueue<T> _pool = new();
         public void Clear()
         {
             _pool.Clear();

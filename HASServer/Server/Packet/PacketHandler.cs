@@ -24,7 +24,10 @@ class PacketHandler
         var enterPacket = (C_RoomEnter)packet;
         var clientSession = session as ClientSession;
         if (clientSession.Room != null || string.IsNullOrEmpty(clientSession.Name))
+        {
+            Console.WriteLine($"Enter Error");
             return;
+        }
         EnterRoomProcess(enterPacket.roomId, clientSession, (PacketID)enterPacket.Protocol);
     }
 
@@ -99,11 +102,14 @@ class PacketHandler
         var clientSession = session as ClientSession;
         var setName = (C_SetName)packet;
         bool success = !string.IsNullOrEmpty(setName.name) || (setName.name.Length < 6 && setName.name.Length > 2);
-        Console.WriteLine(clientSession.Name);
-        Console.WriteLine(success);
         if (success)
         {
             clientSession.Name = setName.name;
+            Console.WriteLine($"Set Name Success: {clientSession.Name}");
+        }
+        else
+        {
+            Console.WriteLine($"Set Name Error: {clientSession.Name}");
         }
         SendPacketResponse(clientSession, PacketID.C_SetName, success);
     }
