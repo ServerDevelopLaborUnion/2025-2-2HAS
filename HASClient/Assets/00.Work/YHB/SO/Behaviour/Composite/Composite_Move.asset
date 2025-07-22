@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   executeBeforeBehaviourList:
   - {fileID: 11400000, guid: 1abbd1c86504a784fa7b9ca734f614f6, type: 2}
-  nextBehaviourList: []
+  nextBehaviourList:
+  - {fileID: 11400000, guid: 093fff4c0a4bfbe409c80b72d9bdbfe6, type: 2}

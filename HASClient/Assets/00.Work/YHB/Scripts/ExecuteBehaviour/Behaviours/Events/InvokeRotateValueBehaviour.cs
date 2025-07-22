@@ -3,7 +3,7 @@ using Assets._00.Work.YHB.Scripts.ExecuteBehaviour.DataTypes;
 using DewmoLib.Utiles;
 using UnityEngine;
 
-namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Behaviours.Moves
+namespace Assets._00.Work.YHB.Scripts.ExecuteBehaviour.Behaviours.Events
 {
 	[CreateAssetMenu(fileName = "InvokeRotateValueBehaviour", menuName = "SO/ScriptableBehaviour/Behaviour/Event/InveokeRotateValue", order = 0)]
 	public class InvokeRotateValueBehaviour : ScriptableBehaviourSO

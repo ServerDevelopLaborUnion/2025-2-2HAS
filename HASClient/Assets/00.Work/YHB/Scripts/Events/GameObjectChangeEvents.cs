@@ -8,6 +8,7 @@ namespace Assets._00.Work.YHB.Scripts.Events
 	{
 		public static RotateEvent RotateEvent = new RotateEvent();
 		public static MoveSpeedChangeEvent MoveSpeedChangeEvent = new MoveSpeedChangeEvent();
+		public static MoveDirectionChangeEvent MoveDirectionChangeEvent = new MoveDirectionChangeEvent();
 	}
 
 	public class RotateEvent : GameEvent
@@ -28,6 +29,21 @@ namespace Assets._00.Work.YHB.Scripts.Events
 			this.entityMovement = movement;
 			this.previousMoveSpeed = previousValue;
 			this.newMoveSpeed = newVlaue;
+			return this;
+		}
+	}
+
+	public class MoveDirectionChangeEvent : GameEvent
+	{
+		public EntityMovement entityMovement;
+		public Vector2 inputDirection;
+		public Quaternion rotation;
+
+		public MoveDirectionChangeEvent Initialize(EntityMovement entityMovement, Vector2 inputDirection, Quaternion rotation)
+		{
+			this.entityMovement = entityMovement;
+			this.inputDirection = inputDirection;
+			this.rotation = rotation;
 			return this;
 		}
 	}

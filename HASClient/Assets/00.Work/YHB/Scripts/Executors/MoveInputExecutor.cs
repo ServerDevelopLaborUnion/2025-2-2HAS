@@ -18,6 +18,7 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 		[SerializeField] private EntityMovement entityMovement;
 
 		private EntityMovementData _moveData;
+		private bool _executedMoveWhenZero;
 
 		public override void Initialize()
 		{
@@ -43,6 +44,18 @@ namespace Assets._00.Work.YHB.Scripts.Executors
 		}
 
 		private void Update()
+		{
+			// MovementDirection이 0이면 1번만 실행 시키기 위함
+			bool isMoving = inputSO.MovementDirection != Vector2.zero;
+
+			if (isMoving || !_executedMoveWhenZero)
+			{
+				ExecuteMoveBehaviour();
+				_executedMoveWhenZero = !isMoving;
+			}
+		}
+
+		private void ExecuteMoveBehaviour()
 		{
 			_moveData.moveRotation = cameraRotationOwner.transform.rotation;
 			_moveData.moveDirection = inputSO.MovementDirection;
