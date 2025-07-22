@@ -35,6 +35,7 @@ public partial class PacketHandler
         Vector3 velocity = move.direction.ToVector3() * move.speed;
         Debug.Log($"DummyMove: {velocity}");
         var other = EntityManager.Instance.GetObject<DummyClient>(move.index);
+        other.transform.position = move.position.ToVector3();
         other.HandleDummyClientMove(velocity);
     }
     public void S_RotateHandler(PacketSession session, IPacket packet)
@@ -61,7 +62,6 @@ public partial class PacketHandler
                     item.index,
                     ObjectType.Player,
                     item.position.ToVector3(),
-                    item.rotation.ToQuaternion(),
                     out var player);
             }
             else
@@ -70,9 +70,22 @@ public partial class PacketHandler
                     item.index,
                     ObjectType.OtherPlayer,
                     item.position.ToVector3(),
-                    item.rotation.ToQuaternion(),
                     out var player);
+                player.HandleDummyClientRotation(item.rotation.ToQuaternion());
             }
         }
+    }
+    public void S_RoomEnterHandler(PacketSession session, IPacket packet)// 전체 확인용
+    {
+        S_RoomEnter enter = (S_RoomEnter)packet;
+        PlayerInitPacket init = enter.newPlayer;
+        if (enter.newPlayer.index == _myIndex)
+            return;
+        EntityManager.Instance.CreateObject<DummyClient>(
+            init.index,
+            ObjectType.OtherPlayer,
+            init.position.ToVector3(),
+            out var player);
+        player.HandleDummyClientRotation(init.rotation.ToQuaternion());
     }
 }

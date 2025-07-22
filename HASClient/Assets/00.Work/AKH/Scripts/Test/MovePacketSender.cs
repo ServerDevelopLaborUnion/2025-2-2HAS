@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace AKH.Scripts.Test
 {
+    [DefaultExecutionOrder(-10)]
     public class MovePacketSender : MonoBehaviour
     {
         [SerializeField] private EventChannelSO gameChannel;
@@ -37,6 +38,7 @@ namespace AKH.Scripts.Test
         }
         private void SendMovePacket()
         {
+            Console.WriteLine(_speed);
             C_Move move = new()
             {
                 direction = _currentDirection.ToPacket(),

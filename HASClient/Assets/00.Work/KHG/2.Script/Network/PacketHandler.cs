@@ -12,9 +12,4 @@ public partial class PacketHandler
         roomListEvent.infoPackets = s_RoomList.roomInfos;
         _packetChannel.InvokeEvent(roomListEvent);
     }
-
-    public void S_RoomEnterHandler(PacketSession session, IPacket packet)// 전체 확인용
-    {
-
-    }
 }

@@ -64,9 +64,10 @@ namespace Assets._00.Work.YHB.Scripts.Entities
 			_rigidComp = registry.ResolveComponent<Rigidbody>();
 			Debug.Assert(_rigidComp != null, $"{typeof(Rigidbody)} can not be found.");
 			_rigidComp.useGravity = false;
-		}
+            gameEventChannel.InvokeEvent(GameObjectChangeEvents.MoveSpeedChangeEvent.Initialize(this, 0, moveSpeed));
+        }
 
-		private void FixedUpdate()
+        private void FixedUpdate()
 		{
 			if (!IsInitialize)
 				return;

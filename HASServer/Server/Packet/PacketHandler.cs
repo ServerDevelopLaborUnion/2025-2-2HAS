@@ -44,9 +44,9 @@ class PacketHandler
         {
             if (room.CanAddPlayer)
             {
-                room.Enter(clientSession);
+                Player newP = room.Enter(clientSession);
                 room.FirstEnter(clientSession);
-                room.Broadcast(new S_RoomEnter() /*{ newPlayer = new()}*/);
+                room.Broadcast(new S_RoomEnter() { newPlayer = (PlayerInitPacket)newP.CreatePacket() });
                 SendPacketResponse(clientSession, caller, true);
             }
             else
@@ -152,10 +152,19 @@ class PacketHandler
         evt.direction = move.direction.ToVector3();
         evt.position = move.position.ToVector3();
         evt.speed = move.speed;
-        clientSession.Room.Bus.InvokeEvent(evt);
+        clientSession.Room.InvokeEvent(evt);
     }
     internal static void C_RotateHandler(PacketSession session, IPacket packet)
     {
+        ClientSession clientSession = session as ClientSession;
+        if (clientSession.Room == null)
+            return;
+        var rotate = (C_Rotate)packet;
+        var room = clientSession.Room;
+        var evt = PoolManager.Instance.Pop<ClientRotateEvent>();
+        evt.index = clientSession.PlayerId;
+        evt.rotation = rotate.rotation.ToQuaternion();
+        clientSession.Room.InvokeEvent(evt);
     }
 
     internal static void C_ChangeModelHandler(PacketSession session, IPacket packet)

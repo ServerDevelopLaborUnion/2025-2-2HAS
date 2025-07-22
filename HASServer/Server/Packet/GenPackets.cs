@@ -252,7 +252,7 @@ public struct C_SetName : IPacket
 
 public struct S_RoomEnter : IPacket
 {
-	
+	public PlayerInitPacket newPlayer;
 
 	public ushort Protocol { get { return (ushort)PacketID.S_RoomEnter; } }
 
@@ -262,7 +262,7 @@ public struct S_RoomEnter : IPacket
 
 		count += sizeof(ushort);
 		count += sizeof(ushort);
-		
+		count += PacketUtility.ReadDataPacketData(segment, count, out newPlayer);
 	}
 
 	public ArraySegment<byte> Serialize()
@@ -272,7 +272,7 @@ public struct S_RoomEnter : IPacket
 
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
-		
+		count += PacketUtility.AppendDataPacketData(this.newPlayer, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}

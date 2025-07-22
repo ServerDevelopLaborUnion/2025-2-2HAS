@@ -164,6 +164,10 @@ PrefabInstance:
       propertyPath: cameraRotationOwner
       value: 
       objectReference: {fileID: 2716317276731619486}
+    - target: {fileID: 7840351875046562090, guid: 81aa1c1a0a4ced94b9dd5f6689db89aa, type: 3}
+      propertyPath: gameEventChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: af623bb68b63c2345b8b9a6c2797a332, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

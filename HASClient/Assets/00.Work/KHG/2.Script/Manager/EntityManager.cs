@@ -15,9 +15,9 @@ namespace KHG.Managers
             if (_instance == null)
                 _instance = this;
         }
-        public GameObject CreateObject<T>(int index, ObjectType type, Vector3 position, Quaternion quat, out T compo) where T : MonoBehaviour
+        public GameObject CreateObject<T>(int index, ObjectType type, Vector3 position, out T compo) where T : MonoBehaviour
         {
-            GameObject obj = Instantiate(_prefabs[type], position, quat);
+            GameObject obj = Instantiate(_prefabs[type], position,Quaternion.identity);
             _objects.Add(index, obj);
             compo = obj.GetComponentInChildren<T>();
             return compo.gameObject;

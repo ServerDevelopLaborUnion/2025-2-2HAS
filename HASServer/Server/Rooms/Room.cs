@@ -69,7 +69,7 @@ namespace Server.Rooms
         {
             return _sessions[key];
         }
-        public virtual void Enter(ClientSession session)
+        public virtual Player Enter(ClientSession session)
         {
             Player newPlayer = new Player(ObjectManager)
             {
@@ -79,6 +79,7 @@ namespace Server.Rooms
             session.PlayerId = newPlayer.index;
             _sessions.Add(session.SessionId, session);
             session.Room = this;
+            return newPlayer;
         }
         public virtual void Leave(ClientSession session)
         {
@@ -104,6 +105,10 @@ namespace Server.Rooms
             {
                 _objectManager.GetObject<Player>(session.Value.PlayerId).Revive();
             }
+        }
+        public void InvokeEvent(GameEvent evt)
+        {
+            Push(() => Bus.InvokeEvent(evt));
         }
         public abstract void ObjectDead(ObjectBase obj);
         public abstract void UpdateRoom();
