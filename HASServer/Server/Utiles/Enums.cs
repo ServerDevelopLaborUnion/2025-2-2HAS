@@ -16,5 +16,6 @@
     {
         Lobby,
         Ready,
+        InGame
     }
 }

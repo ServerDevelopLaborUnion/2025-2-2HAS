@@ -5,7 +5,7 @@ using System;
 
 namespace Server.Rooms.States
 {
-    class LobbyState : GameRoomState
+    class LobbyState : CanMoveState
     {
         public LobbyState(GameRoom room) : base(room)
         {
@@ -13,42 +13,17 @@ namespace Server.Rooms.States
         public override void Enter()
         {
             base.Enter();
-            _room.Bus.AddListener<ClientMoveEvent>(HandleMove);
-            _room.Bus.AddListener<ClientRotateEvent>(HandleRotate);
+            _room.Bus.AddListener<GameStartEvent>(HandleGameStartReq);
         }
-
         public override void Exit()
         {
+            _room.Bus.RemoveListener<GameStartEvent>(HandleGameStartReq);
             base.Exit();
-            _room.Bus.RemoveListener<ClientMoveEvent>(HandleMove);
-            _room.Bus.RemoveListener<ClientRotateEvent>(HandleRotate);
-        }
-        private void HandleRotate(ClientRotateEvent @event)
-        {
-            var player = _room.ObjectManager.GetObject<Player>(@event.index);
-            player.rotation = @event.rotation;
-            S_Rotate rotate = new()
-            {
-                index = player.index,
-                rotation = player.rotation.ToPacket()
-            };
-            _room.Broadcast(rotate);
         }
 
-        private void HandleMove(ClientMoveEvent @event)
+        private void HandleGameStartReq(GameStartEvent @event)
         {
-            var player = _room.ObjectManager.GetObject<Player>(@event.index);
-            player.position = @event.position;
-            player.direction = @event.direction;
-            player.Speed = @event.speed;
-            S_Move move = new()
-            {
-                direction = player.direction.ToPacket(),
-                index = player.index,
-                position = player.position.ToPacket(),
-                speed = player.Speed
-            };
-            _room.Broadcast(move);
+            _room.ChangeState(RoomState.Ready);
         }
     }
 }
