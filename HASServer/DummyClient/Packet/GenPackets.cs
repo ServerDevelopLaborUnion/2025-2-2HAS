@@ -26,6 +26,8 @@ public enum PacketID
 	S_Move = 18,
 	S_SyncTimer = 19,
 	S_UpdateRoomState = 20,
+	S_RoundStart = 21,
+	S_ResetGame = 22,
 	
 }
 
@@ -142,6 +144,7 @@ public struct PlayerInitPacket : IDataPacket
 	public string name;
 	public VectorPacket position;
 	public QuaternionPacket rotation;
+	public ushort role;
 
 	public ushort Deserialize(ArraySegment<byte> segment, int offset)
 	{
@@ -151,6 +154,7 @@ public struct PlayerInitPacket : IDataPacket
 		count += PacketUtility.ReadStringData(segment, count, out name);
 		count += PacketUtility.ReadDataPacketData(segment, count, out position);
 		count += PacketUtility.ReadDataPacketData(segment, count, out rotation);
+		count += PacketUtility.ReadUshortData(segment, count, out role);
 		return (ushort)(count - offset);
 	}
 
@@ -162,6 +166,7 @@ public struct PlayerInitPacket : IDataPacket
 		count += PacketUtility.AppendStringData(this.name, segment, count);
 		count += PacketUtility.AppendDataPacketData(this.position, segment, count);
 		count += PacketUtility.AppendDataPacketData(this.rotation, segment, count);
+		count += PacketUtility.AppendUshortData(this.role, segment, count);
 		return (ushort)(count - offset);
 	}
 }
@@ -252,7 +257,7 @@ public struct C_SetName : IPacket
 
 public struct S_RoomEnter : IPacket
 {
-	public PlayerInitPacket att;
+	public PlayerInitPacket newPlayer;
 
 	public ushort Protocol { get { return (ushort)PacketID.S_RoomEnter; } }
 
@@ -262,7 +267,7 @@ public struct S_RoomEnter : IPacket
 
 		count += sizeof(ushort);
 		count += sizeof(ushort);
-		count += PacketUtility.ReadDataPacketData(segment, count, out att);
+		count += PacketUtility.ReadDataPacketData(segment, count, out newPlayer);
 	}
 
 	public ArraySegment<byte> Serialize()
@@ -272,7 +277,7 @@ public struct S_RoomEnter : IPacket
 
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
-		count += PacketUtility.AppendDataPacketData(this.att, segment, count);
+		count += PacketUtility.AppendDataPacketData(this.newPlayer, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}
@@ -751,6 +756,62 @@ public struct S_UpdateRoomState : IPacket
 		count += sizeof(ushort);
 		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
 		count += PacketUtility.AppendUshortData(this.state, segment, count);
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct S_RoundStart : IPacket
+{
+	
+
+	public ushort Protocol { get { return (ushort)PacketID.S_RoundStart; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		
+		PacketUtility.AppendUshortData(count, segment, 0);
+		return SendBufferHelper.Close(count);
+	}
+}
+
+public struct S_ResetGame : IPacket
+{
+	public List<PlayerInitPacket> playerinits;
+
+	public ushort Protocol { get { return (ushort)PacketID.S_ResetGame; } }
+
+	public void Deserialize(ArraySegment<byte> segment)
+	{
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += sizeof(ushort);
+		count += PacketUtility.ReadListData(segment, count, out playerinits);
+	}
+
+	public ArraySegment<byte> Serialize()
+	{
+		ArraySegment<byte> segment = SendBufferHelper.Open(4096);
+		ushort count = 0;
+
+		count += sizeof(ushort);
+		count += PacketUtility.AppendUshortData(this.Protocol, segment, count);
+		count += PacketUtility.AppendListData(this.playerinits, segment, count);
 		PacketUtility.AppendUshortData(count, segment, 0);
 		return SendBufferHelper.Close(count);
 	}

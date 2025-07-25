@@ -25,7 +25,13 @@ namespace Server.Rooms
         {
             _stateMachine.UpdateRoom();
         }
-
+        public override Player Enter(ClientSession session)
+        {
+            Player newP = base.Enter(session);
+            if (_stateMachine.CurrentStateEnum != RoomState.Lobby)
+                newP.Role = Role.Observer;
+            return newP;
+        }
         public void FirstEnter(ClientSession clientSession)
         {
             S_RoomEnterFirst first = new();

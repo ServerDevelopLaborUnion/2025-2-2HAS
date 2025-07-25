@@ -1,4 +1,5 @@
 ﻿using Server.Events;
+using Server.Objects;
 using Server.Utiles;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,19 @@ namespace Server.Rooms.States
             base.Enter();
             _room.Bus.AddListener<ClientChangeModelEvent>(HandleModelChanged);
             int seekerCount = _room.SessionCount / 5;
-            List<Role> roles = new(_room.SessionCount) { Role.Hider };
-            for(int i = 0; i < seekerCount; i++)
+            var players = _room.ObjectManager.GetObjects<Player>();
+            players.ForEach(player => player.Role = Role.Hider);
+            for (int i = 0; i < seekerCount; i++)
             {
                 int randomVal = Random.Shared.Next(_room.SessionCount);
-                if (roles[randomVal]==Role.Seeker)
+                if (players[i].Role == Role.Seeker)
                 {
                     i--;
                     continue;
                 }
-                roles[randomVal] = Role.Seeker;
+                players[randomVal].Role = Role.Seeker;
             }
+            //위치 초기화 해주고 Broadcast
         }
         public override void Exit()
         {

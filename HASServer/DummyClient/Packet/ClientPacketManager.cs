@@ -39,6 +39,10 @@ class PacketManager
 		_handler.Add((ushort)PacketID.S_SyncTimer, PacketHandler.S_SyncTimerHandler);
 		_onRecv.Add((ushort)PacketID.S_UpdateRoomState, MakePacket<S_UpdateRoomState>);
 		_handler.Add((ushort)PacketID.S_UpdateRoomState, PacketHandler.S_UpdateRoomStateHandler);
+		_onRecv.Add((ushort)PacketID.S_RoundStart, MakePacket<S_RoundStart>);
+		_handler.Add((ushort)PacketID.S_RoundStart, PacketHandler.S_RoundStartHandler);
+		_onRecv.Add((ushort)PacketID.S_ResetGame, MakePacket<S_ResetGame>);
+		_handler.Add((ushort)PacketID.S_ResetGame, PacketHandler.S_ResetGameHandler);
 
 	}
 

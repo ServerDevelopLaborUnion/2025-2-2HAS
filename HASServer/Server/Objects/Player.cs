@@ -28,7 +28,8 @@ namespace Server.Objects
                 modelIndex = ModelIndex,
                 name = Name,
                 position = position.ToPacket(),
-                rotation = rotation.ToPacket()
+                rotation = rotation.ToPacket(),
+                role = (ushort)Role
             };
             return packet;
         }

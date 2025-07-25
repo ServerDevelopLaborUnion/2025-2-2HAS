@@ -16,9 +16,9 @@ namespace Server.Objects
         {
             return _objects.GetValueOrDefault(id) as T;
         }
-        public IEnumerable<T> GetObjects<T>() where T : ObjectBase
+        public List<T> GetObjects<T>() where T : ObjectBase
         {
-            return _objects.Values.OfType<T>();
+            return _objects.Values.OfType<T>() as List<T>;
         }
         public void AddObject(ObjectBase obj)
         {

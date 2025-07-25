@@ -34,6 +34,7 @@
 		<string name="name"/>
 		<VectorPacket name ="position"/>
 		<QuaternionPacket name ="rotation"/>
+		<ushort name="role"/>
 	</dataPacket>
 	
 	<!--Packets-->
@@ -122,5 +123,13 @@
 	</packet>
 	<packet name="S_UpdateRoomState">
 		<ushort name="state"/>
+	</packet>
+	<packet name="S_RoundStart">
+		
+	</packet>
+	<packet name="S_ResetGame">
+		<list name="playerinits">
+			<PlayerInitPacket name="att"/>
+		</list>
 	</packet>
 </PDL>
