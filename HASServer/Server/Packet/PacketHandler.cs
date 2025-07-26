@@ -39,6 +39,11 @@ class PacketHandler
             Console.WriteLine($"Wrong RoomId: {roomId}");
             return;
         }
+        //if (room == default)//test
+        //{
+        //    int n= _roomManager.GenerateRoom(new C_CreateRoom() { maxCount = 6, roomName = "ASD" }, 1);
+        //    room = _roomManager.GetRoomById(n) as GameRoom;
+        //}
         Console.WriteLine("EnterRoom");
         room.Push(() =>
         {
@@ -136,6 +141,9 @@ class PacketHandler
             return;
         if(room.HostIndex == clientSession.SessionId)
         {
+            var evt = PoolManager.Instance.Pop<GameStartEvent>();
+            room.InvokeEvent(evt);
+            PoolManager.Instance.Push(evt);
         }
     }
 

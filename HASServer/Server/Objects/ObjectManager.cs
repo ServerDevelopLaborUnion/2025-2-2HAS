@@ -18,7 +18,7 @@ namespace Server.Objects
         }
         public List<T> GetObjects<T>() where T : ObjectBase
         {
-            return _objects.Values.OfType<T>() as List<T>;
+            return _objects.Values.OfType<T>().ToList();
         }
         public void AddObject(ObjectBase obj)
         {

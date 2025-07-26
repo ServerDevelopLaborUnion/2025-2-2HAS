@@ -22,7 +22,14 @@ namespace AKH.Scripts.Test
             gameChannel.AddListener<MoveSpeedChangeEvent>(HandleSpeedChange);
             gameChannel.AddListener<MoveDirectionChangeEvent>(HandleDirectionChange);
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                NetworkManager.Instance.SendPacket(new C_GameStart());
+                Debug.Log("ASDASDASDDSAADSADS");
+            }
+        }
         private void HandleDirectionChange(MoveDirectionChangeEvent @event)
         {
             _currentDirection = @event.inputDirection;

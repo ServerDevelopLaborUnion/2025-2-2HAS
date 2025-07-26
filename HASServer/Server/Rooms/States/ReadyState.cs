@@ -30,6 +30,8 @@ namespace Server.Rooms.States
                 }
                 players[randomVal].Role = Role.Seeker;
             }
+            players.ForEach(player => Console.WriteLine(player.Role));
+
             //위치 초기화 해주고 Broadcast
         }
         public override void Exit()

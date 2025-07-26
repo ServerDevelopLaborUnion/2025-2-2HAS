@@ -33,7 +33,7 @@ public partial class PacketHandler
         if (move.index == _myIndex)
             return;
         Vector3 velocity = move.direction.ToVector3() * move.speed;
-        Debug.Log($"DummyMove: {velocity}");
+        //Debug.Log($"DummyMove: {velocity}");
         var other = EntityManager.Instance.GetObject<DummyClient>(move.index);
         other.transform.position = move.position.ToVector3();
         other.HandleDummyClientMove(velocity);
@@ -45,7 +45,7 @@ public partial class PacketHandler
         S_Rotate rotate = (S_Rotate)packet;
         if (rotate.index == _myIndex)
             return;
-        Debug.Log($"DummyRotate: {rotate.rotation.ToQuaternion()}");
+        //Debug.Log($"DummyRotate: {rotate.rotation.ToQuaternion()}");
         var other = EntityManager.Instance.GetObject<DummyClient>(rotate.index);
         other.HandleDummyClientRotation(rotate.rotation.ToQuaternion());
     }

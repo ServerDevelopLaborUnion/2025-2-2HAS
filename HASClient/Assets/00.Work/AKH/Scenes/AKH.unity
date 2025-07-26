@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   packetChannel: {fileID: 11400000, guid: 99db24c427466c147930557418b823d0, type: 2}
-  ipAddress: 192.168.35.61
+  ipAddress: 192.168.35.30
 --- !u!4 &255648405
 Transform:
   m_ObjectHideFlags: 0

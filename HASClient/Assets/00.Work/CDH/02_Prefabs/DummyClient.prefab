@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a98498b71b86d74ab264b16dd1cd9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEventChannel: {fileID: 0}
+  gameEventChannel: {fileID: 11400000, guid: af623bb68b63c2345b8b9a6c2797a332, type: 2}
   minMoveSpeed: 0
   maxMoveSpeed: 100
   moveSpeed: 5

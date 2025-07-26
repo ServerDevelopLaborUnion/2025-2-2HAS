@@ -13,12 +13,10 @@ namespace DummyClient
         {
             Console.WriteLine($"OnConnected : {endPoint}");
             C_SetName c_SetName = new();
-            c_SetName.name = "허버리누";
+            c_SetName.name = "qwd";
             Send(c_SetName.Serialize());
-            C_CreateRoom pak = new C_CreateRoom();
-            pak.roomName = "고한결개돼지";
-            pak.maxCount = 123;
-            Send(pak.Serialize());
+            C_RoomEnter roomEnter = new() { roomId = 1 };
+            Send(roomEnter.Serialize());
         }
 
         public override void OnDisconnected(EndPoint endPoint)
